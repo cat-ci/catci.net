@@ -13,24 +13,19 @@
             body {
                 background-color: #0d0c0d;
                 font-family: 'Neutraface Demi', sans-serif;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-                padding: 20px;
             }
             .projects {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                 gap: 20px;
                 max-width: 1200px;
-                width: 100%;
+                width: 90%;
             }
             .project {
                 background-color: #0f0f10;
                 border-radius: 10px;
                 border: 1px solid #1e1e1f;
-                max-width: 385px;
+                max-width: 480px;
                 display: flex;
                 flex-direction: column;
                 overflow: hidden;
@@ -75,7 +70,7 @@
             .project button {
                 width: 45%;
                 margin: 10px;
-                padding: 10px;
+                padding: 5px 30px;
                 border-radius: 8px;
                 background-color: #1e1e1f;
                 border: none;
@@ -116,23 +111,42 @@
                 height: 15px;
             }
             #fastinfo{
-            	/*background-color:#575758;
                 padding:1px 5px;
                 border-radius:100px;
-                border:2px solid white;*/
                 margin:0;
                 font-size:11px;
+            }
+            .featured{
+                background-color:#575758;
+                border:2px solid white;
+            }
+            .indev{
+            	background-color:#543737;
+                border:2px solid #e85454;
+            }
+            .none{
+            	display:none;
+            }
+            .disabled{
+                cursor: not-allowed !important;
+                filter:brightness(0.7);
+            }
+            .disabled:hover{
+                filter: brightness(0.7) !important;
             }
         </style>
     </head>
     <body>
+        <div class="landing">
+            pe
+        </div>
         <div class="projects">
             <div class="project">
                 <img src="https://catci.net/images/placeholder.png">
                 <div class="description">
                     <div class="header">
                         <h4>Sablescript</h4>
-                        <span id="fastinfo">
+                        <span id="fastinfo" class="featured">
                             <img src="https://catci.net/images/star.svg" style="width:10px; filter: invert(1);"> Featured
                         </span>
                     </div>
@@ -156,8 +170,8 @@
                 <div class="description">
                     <div class="header">
                         <h4>Sablesnap</h4>
-                        <span id="fastinfo">
-                            <img src="https://catci.net/images/important.svg" style="width:10px; filter: invert(1);"> Indev
+                        <span id="fastinfo" class="indev">
+                            <img src="https://catci.net/images/importantred.svg" style="width:10px;"> Indev
                         </span>
                     </div>
                     <div class="info">
@@ -168,8 +182,8 @@
                     </div>
                 </div>
                 <div class="run">
-                    <button id="run"><img src="https://catci.net/images/play.svg">Open</button>
-                    <button id="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
+                    <button id="run" class="disabled"><img src="https://catci.net/images/play.svg">Open</button>
+                    <button id="source" class="disabled"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
                 </div>
             </div>
 
@@ -180,8 +194,7 @@
                 <div class="description">
                     <div class="header">
                         <h4>Sablescript</h4>
-                        <span id="fastinfo">
-                            <img src="https://catci.net/images/star.svg" style="width:10px; filter: invert(1);"> Featured
+                        <span id="fastinfo" class="none">
                         </span>
                     </div>
                     <div class="info">
@@ -196,6 +209,9 @@
                     <button id="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            &copy;2025
         </div>
     </body>
 </html>
