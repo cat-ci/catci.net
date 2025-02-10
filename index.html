@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Catci</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                image-rendering: pixelated;
+                color: white;
+            }
+            body {
+                background-color: #0d0c0d;
+                font-family: 'Neutraface Demi', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 20px;
+            }
+            .projects {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                max-width: 1200px;
+                width: 100%;
+            }
+            .project {
+                background-color: #0f0f10;
+                border-radius: 10px;
+                border: 1px solid #1e1e1f;
+                max-width: 385px;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                height: 100%;
+            }
+            .project img {
+                width: 100%;
+            }
+            .project .description {
+                padding: 15px;
+                flex-grow: 1
+            }
+            .project h4 {
+                font-family: 'Neutraface Bold', sans-serif;
+                display: inline-block;
+                font-size:18px;
+            }
+            .project .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .project .info p {
+                color: #6d6c71;
+                margin-top: 5px;
+                font-size:14px;
+            }
+            .project .language {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-top: 10px;
+            }
+            .project .run {
+                background-color: #151516;
+                display: flex;
+                justify-content: space-between;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border-top: 1px solid #1e1e1f;
+            }
+            .project button {
+                width: 45%;
+                margin: 10px;
+                padding: 10px;
+                border-radius: 8px;
+                background-color: #1e1e1f;
+                border: none;
+                cursor: pointer;
+                font-family: 'Neutraface Bold', sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                transition: 0.3s;
+            }
+            .project button:hover {
+                filter: brightness(80%);
+                transition: 0.7s;
+            }
+            @font-face {
+                font-family: 'Neutraface Demi';
+                src: url('https://catci.net/fonts/Neutraface-Demi.otf') format('opentype');
+                font-weight: 600;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Neutraface Bold';
+                src: url('https://catci.net/fonts/Neutraface-Bold.otf') format('opentype');
+                font-weight: bold;
+                font-style: normal;
+            }
+            #run {
+                background-color: white;
+                color: #050505;
+                margin-left: 5%;
+            }
+            #source {
+                margin-right: 5%;
+            }
+            .project button img {
+                width: 15px;
+                height: 15px;
+            }
+            #fastinfo{
+            	/*background-color:#575758;
+                padding:1px 5px;
+                border-radius:100px;
+                border:2px solid white;*/
+                margin:0;
+                font-size:11px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="projects">
+            <div class="project">
+                <img src="https://catci.net/images/placeholder.png">
+                <div class="description">
+                    <div class="header">
+                        <h4>Sablescript</h4>
+                        <span id="fastinfo">
+                            <img src="https://catci.net/images/star.svg" style="width:10px; filter: invert(1);"> Featured
+                        </span>
+                    </div>
+                    <div class="info">
+                        <p>Sablescript is a lightweight, efficient IDE with fast, resource-friendly performance. It supports multiple languages, tabs and offers features like syntax highlighting, code suggestions, and autocomplete.</p>
+                        <span class="language">
+                            <img src="https://catci.net/images/javascript.svg" style="width:15px;"> Javascript
+                        </span>
+                    </div>
+                </div>
+                <div class="run">
+                    <button id="run"><img src="https://catci.net/images/play.svg">Open</button>
+                    <button id="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
+                </div>
+            </div>
+
+            <!--other project-->
+
+            <div class="project">
+                <img src="https://catci.net/images/placeholder.png">
+                <div class="description">
+                    <div class="header">
+                        <h4>Sablesnap</h4>
+                        <span id="fastinfo">
+                            <img src="https://catci.net/images/important.svg" style="width:10px; filter: invert(1);"> Indev
+                        </span>
+                    </div>
+                    <div class="info">
+                        <p>A visual code editor</p>
+                        <span class="language">
+                            <img src="https://catci.net/images/javascript.svg" style="width:15px;"> Javascript
+                        </span>
+                    </div>
+                </div>
+                <div class="run">
+                    <button id="run"><img src="https://catci.net/images/play.svg">Open</button>
+                    <button id="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
+                </div>
+            </div>
+
+            <!--other project-->
+
+            <div class="project">
+                <img src="https://catci.net/images/placeholder.png">
+                <div class="description">
+                    <div class="header">
+                        <h4>Sablescript</h4>
+                        <span id="fastinfo">
+                            <img src="https://catci.net/images/star.svg" style="width:10px; filter: invert(1);"> Featured
+                        </span>
+                    </div>
+                    <div class="info">
+                        <p>Sablescript is an online IDE without all the bloat...</p>
+                        <span class="language">
+                            <img src="https://catci.net/images/javascript.svg" style="width:15px;"> Javascript
+                        </span>
+                    </div>
+                </div>
+                <div class="run">
+                    <button id="run"><img src="https://catci.net/images/play.svg">Open</button>
+                    <button id="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
