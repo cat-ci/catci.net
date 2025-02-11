@@ -39,11 +39,13 @@
                 overflow: hidden;
             }
             .projectbanner img {
-                transition: transform .2s ease;
+                transition: .2s ease;
             }
             .project:hover .projectbanner img {
                 transform: scale(1.1);
+                filter:brightness(0.6);
                 transition: transform .4s ease;
+                transition: .4s ease;
             }
             .project .description {
                 padding: 15px;
@@ -69,13 +71,23 @@
                 margin-top: 5px;
                 font-size:14px;
             }
-            .project .language {
+            .project .language{
                 display: flex;
                 align-items: center;
                 gap: 5px;
                 margin-top: 10px;
             }
-            .project .run {
+            .project .language .js{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                background-color:rgba(247, 223, 30, 0.1);
+                color:rgb(247, 223, 30);
+                padding:4px 8px;
+                border-radius:100px;
+                font-size:12px;
+            }
+            .project .runcontainer {
                 background-color: #151516;
                 display: flex;
                 justify-content: space-between;
@@ -83,22 +95,23 @@
                 border-bottom-right-radius: 10px;
                 border-top: 1px solid #1e1e1f;
             }
-            .project button {
+            .project a {
                 width: 45%;
                 margin: 10px;
                 padding: 5px 30px;
                 border-radius: 8px;
                 background-color: #1e1e1f;
-                border: none;
-                cursor: pointer;
-                font-family: 'Neutraface Bold', sans-serif;
+                text-decoration: none;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 gap: 5px;
+                cursor: pointer;
+                font-family: 'Neutraface Bold', sans-serif;
                 transition: 0.3s;
+                color: inherit;
             }
-            .project button:hover {
+            .project a:hover {
                 filter: brightness(80%);
                 transition: 0.7s;
             }
@@ -114,15 +127,15 @@
                 font-weight: bold;
                 font-style: normal;
             }
-            #run {
+            .runcontainer .run {
                 background-color: #9ae499;
                 color: #050505;
                 margin-left: 5%;
             }
-            #source {
+            .runcontainer .source {
                 margin-right: 5%;
             }
-            .project button img {
+            .project a img {
                 width: 15px;
                 height: 15px;
             }
@@ -143,7 +156,7 @@
             .none{
                 display:none;
             }
-            .disabled{
+            .runcontainer .disabled{
                 cursor: not-allowed !important;
                 filter:brightness(0.7);
             }
@@ -159,7 +172,7 @@
         <div class="projects">
             <div class="project">
                 <div class="projectbanner">
-                    <img src="https://catci.net/images/placeholder.png">
+                    <img src="https://catci.net/images/thumbnail.png">
                 </div>
                 <div class="description">
                     <div class="header">
@@ -171,13 +184,13 @@
                     <div class="info">
                         <p>Sablescript is a lightweight, efficient IDE with fast, resource-friendly performance. It supports multiple languages, tabs and offers features like syntax highlighting, code suggestions, and autocomplete.</p>
                         <span class="language">
-                            <img src="https://catci.net/images/javascript.svg" style="width:15px;"> Javascript
+                            <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
                         </span>
                     </div>
                 </div>
-                <div class="run">
-                    <button id="run"><img src="https://catci.net/images/play.svg">Open</button>
-                    <button id="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
+                <div class="runcontainer">
+                    <a href="https://catci.net/sablescript.html" class="run"><img src="https://catci.net/images/play.svg">Open</a>
+                    <a href="https://github.com/cat-ci/Sablescript" class="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</a>
                 </div>
             </div>
 
@@ -197,13 +210,13 @@
                     <div class="info">
                         <p>A visual code editor</p>
                         <span class="language">
-                            <img src="https://catci.net/images/javascript.svg" style="width:15px;"> Javascript
+                            <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
                         </span>
                     </div>
                 </div>
-                <div class="run">
-                    <button id="run" class="disabled"><img src="https://catci.net/images/play.svg">Open</button>
-                    <button id="source" class="disabled"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
+                <div class="runcontainer">
+                    <a href="#" class="run disabled"><img src="https://catci.net/images/play.svg">Open</a>
+                    <a href="#" class="source disabled"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</a>
                 </div>
             </div>
 
@@ -222,13 +235,13 @@
                     <div class="info">
                         <p>Sablescript is an online IDE without all the bloat...</p>
                         <span class="language">
-                            <img src="https://catci.net/images/javascript.svg" style="width:15px;"> Javascript
+                            <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
                         </span>
                     </div>
                 </div>
-                <div class="run">
-                    <button id="run"><img src="https://catci.net/images/play.svg">Open</button>
-                    <button id="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</button>
+                <div class="runcontainer">
+                    <a href="#" class="run"><img src="https://catci.net/images/play.svg">Open</a>
+                    <a href="#" class="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</a>
                 </div>
             </div>
         </div>
