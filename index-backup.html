@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Catci</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/images/catcicolor.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Catci | home">
+        <meta property="og:description" content="my tools">
+        <meta property="og:image" content="https://catci.net/images/seothumbnail.png">
+        <style>
+            :root {
+                --background-dark: #0d0c0d;
+                --background-light: #0f0f10;
+                --background-darker: #151516;
+                --accent-light: #6d6c71;
+                --accent-dark: #1e1e1f;
+                --highlight-yellow: rgba(247, 223, 30, 0.1);
+                --highlight-yellow-text: rgb(247, 223, 30);
+                --highlight-gray: #575758;
+                --highlight-error: #543737;
+                --highlight-error-border: #e85454;
+                --highlight-featured-border:#ffffff;
+                --text-light: #f2e5af;
+                --text-dark: #050505;
+                --button-text: white;
+                --button-text-dark: black;
+                --title-color: white;
+                --title-hover-color: #83ab5b;
+                --button-background: #1e1e1f;
+                --light-button-background: #83ab5b;
+                --button-hover: 80%;
+                --border-radius: 10px;
+                --font-family: 'Geist', serif;
+                --font-size-pico: 11px;
+                --font-size-small: 12px;
+                --font-size-smedium: 13.3333px;
+                --font-size-medium: 14px;
+                --font-size-large: 18px;
+                --border-thickness-small: 1px;
+                --border-thickness-medium: 2px;
+                --border-thickness-large: 3px;
+            }
+            /* Scrollbar width */
+            ::-webkit-scrollbar {
+                width: 10px;
+                height: 10px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: var(--background-dark);
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: var(--background-light);
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #676767;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                image-rendering: pixelated;
+                color: var(--title-color);
+            }
+            body {
+                background-color: var(--background-dark);
+                font-family: var(--font-family);
+                display: flex;
+                height: 100vh;
+            }
+            .sidebar {
+                width: 250px;
+                overflow-y: auto;
+                height: 100vh;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .content {
+                flex-grow: 1; /* Take up remaining space next to the sidebar */
+                height: 100vh; /* Ensure it fills the height */
+                overflow-y: auto; /* Enable vertical scrolling for content */
+                box-sizing: border-box;
+            }
+            .projects,
+            .tools {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                width: calc(100% -250px);
+                max-width: 1200px;
+            }
+            .tools {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+                grid-column: 1 / -1;
+            }
+            .project {
+                background-color: var(--background-light);
+                border-radius: var(--border-radius);
+                border: var(--border-thickness-small) solid var(--accent-dark);
+                max-width: 480px;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                height: 100%;
+            }
+            .project .projectbanner img {
+                width: 100%;
+                height: 100%;
+            }
+            .projectbanner {
+                overflow: hidden;
+            }
+            .projectbanner img {
+                transition: .2s ease;
+            }
+            .project:hover .projectbanner img {
+                transform: scale(1.1);
+                filter: brightness(0.6);
+                transition: transform .4s ease;
+            }
+            .project .description {
+                padding: 15px;
+                flex-grow: 1;
+            }
+            .project h4 {
+                color: var(--title-color);
+                font-family: var(--font-family);
+                display: inline-block;
+                font-size: var(--font-size-large);
+                transition: ease 0.2s;
+            }
+            .project .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .project:hover .description h4 {
+                transition: ease 0.4s;
+                color:var(--title-hover-color);
+            }
+            .project .info p {
+                color: var(--accent-light);
+                margin-top: 20px;
+                font-size: var(--font-size-medium);
+            }
+            .language {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            .project .language .js {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                background-color: var(--highlight-yellow);
+                color: var(--highlight-yellow-text);
+                padding: 4px 8px;
+                border-radius: 100px;
+                font-size: var(--font-size-pico);
+            }
+            .project .language .cm {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                background-color: var(--highlight-gray);
+                color: white;
+                padding: 4px 8px;
+                border-radius: 100px;
+                font-size: var(--font-size-pico);
+            }
+            .project .language .bs {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                background-color: #2e2341;
+                color: #7952b3;
+                padding: 4px 8px;
+                border-radius: 100px;
+                font-size: var(--font-size-pico);
+            }
+
+            .project .runcontainer {
+                background-color: var(--background-darker);
+                display: flex;
+                justify-content: space-between;
+                border-bottom-left-radius: var(--border-radius);
+                border-bottom-right-radius: var(--border-radius);
+                border-top: var(--border-thickness-small) solid var(--accent-dark);
+            }
+            .project a {
+                width: 45%;
+                margin: 10px;
+                padding: 5px 30px;
+                border-radius: 8px;
+                background-color: var(--accent-dark);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                cursor: pointer;
+                font-family: var(--font-family);
+                transition: 0.3s;
+                color: var(--button-text);
+                font-size: var(--font-size-smedium);
+            }
+            .project a:hover {
+                filter: brightness(var(--button-hover));
+                transition: 0.7s;
+            }
+            .project .runcontainer .run {
+                background-color: var(--light-button-background);
+                color: var(--text-dark);
+                margin-left: 5%;
+            }
+            .project .runcontainer .source {
+                margin-right: 5%;
+            }
+            .project a img {
+                width: 15px;
+                height: 15px;
+            }
+            .project .fastinfo {
+                padding: 1px 5px;
+                border-radius: 100px;
+                margin: 0;
+                font-size: var(--font-size-pico);
+            }
+            .indev {
+                background-color: var(--highlight-error);
+                border: var(--border-thickness-medium) solid var(--highlight-error-border);
+            }
+            .none {
+                display: none;
+            }
+            .runcontainer .disabled {
+                cursor: not-allowed !important;
+                filter: brightness(0.7);
+            }
+            .disabled:hover {
+                filter: brightness(0.7) !important;
+            }
+            .project .featured {
+                background-color: var(--highlight-gray);
+                border: var(--border-thickness-medium) solid var(--highlight-featured-border);
+            }
+            .tool .run {
+                background-color: var(--light-button-background);
+                cursor: pointer;
+                color: black;
+                font-family: var(--font-family);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                width: 45%;
+                padding: 5px 30px;
+                border-radius: 8px;
+                border: none;
+                font-size: var(--font-size-smedium);
+            }
+            .tool .rightside {
+                display: flex;
+                gap: 15px;
+                width: 30%;
+                justify-content: flex-end;
+            }
+            .tool .source {
+                background-color: var(--accent-dark);
+                cursor: pointer;
+                color: white;
+                font-family: var(--font-family);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                padding: 5px 30px;
+                border-radius: 8px;
+                border: none;
+                width: 45%;
+                font-size: var(--font-size-smedium);
+            }
+            .tool .run img {
+                width: 15px;
+            }
+            .tool .language {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            .tool .language .js {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                background-color: var(--highlight-yellow);
+                color: var(--highlight-yellow-text);
+                padding: 4px 8px;
+                border-radius: 100px;
+                font-size: var(--font-size-pico);
+            }
+            .va {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                background-color: #534f40;
+                color: var(--text-light);
+                padding: 4px 8px;
+                border-radius: 100px;
+                font-size: var(--font-size-pico);
+            }
+            .tool .runcontainer {
+                display: flex;
+                justify-content: space-between;
+                border-bottom-left-radius: var(--border-radius);
+                border-bottom-right-radius: var(--border-radius);
+            }
+            .tool {
+                background-color: var(--background-light);
+                border-radius: var(--border-radius);
+                border: 1px solid var(--accent-dark);
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+            .tool p {
+                color: var(--accent-light);
+                margin-top: 20px;
+                font-size: var(--font-size-medium);
+            }
+            .tool h4 {
+                font-family: var(--font-family);
+                display: inline-block;
+                font-size: var(--font-size-large);
+                transition: ease 0.2s;
+            }
+            .tool .fastinfo {
+                padding: 1px 5px;
+                border-radius: 100px;
+                margin: 0;
+                font-size: var(--font-size-pico);
+            }
+            .tool .featured {
+                background-color: var(--highlight-gray);
+                border: var(--border-thickness-medium) solid var(--highlight-featured-border);
+            }
+            .tool .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .tool .description {
+                padding: 15px;
+                flex-grow: 1;
+            }
+            .seporator {
+                display: flex;
+            }
+            .tool:hover .description h4 {
+                transition: ease 0.4s;
+                color:var(--title-hover-color);
+            }
+            .tool button:hover {
+                filter: brightness(var(--button-hover));
+                transition: 0.7s;
+            }
+            .tool button{
+                transition:0.4s;
+            }
+            .tool .info p {
+                max-width:70%;
+            }
+            .tools .see-more{
+                text-align:center;
+            }
+            .tools .see-more button{
+                padding: 8px 30px;
+                background-color:var(--accent-dark);
+                border:none;
+                border-radius:8px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="top">
+
+            </div>
+            <div class="nav">
+
+            </div>
+        </div>
+        <div class="content">
+            <div class="landing">
+				<img src="https://catci.net/images/catcicolor.svg">
+            </div>
+            <div class="header">
+                <h2>
+                    Projects
+                </h2>
+                <span>
+
+                </span>
+            </div>
+            <div class="projects">
+                <div class="project">
+                    <div class="projectbanner">
+                        <img src="https://catci.net/images/thumbnail.png">
+                    </div>
+                    <div class="description">
+                        <div class="header">
+                            <h4>Sablescript Classic</h4>
+                            <span class="fastinfo featured">
+                                <img src="https://catci.net/images/star.svg" style="width:10px; filter: invert(1);"> Featured
+                            </span>
+                        </div>
+                        <div class="info">
+                            <p>Sablescript is a lightweight, efficient IDE using Codewith fast, resource-friendly performance. It supports multiple languages, tabs and offers features like syntax highlighting, code suggestions, and autocomplete.</p>
+                            <span class="language">
+                                <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
+                                <span class="bs"><img src="https://catci.net/images/bootstrap.svg" style="width:15px;">Bootstrap</span>
+                                <span class="cm"><img src="https://catci.net/images/Baboon.svg" style="width:15px;">CodeMirror</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="runcontainer">
+                        <a href="https://catci.net/sablescript.html" class="run"><img src="https://catci.net/images/play.svg">Open</a>
+                        <a href="https://github.com/cat-ci/Sablescript" class="source"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</a>
+                    </div>
+                </div>
+
+                <!--other project-->
+
+                <div class="project">
+                    <div class="projectbanner">
+                        <img src="https://catci.net/images/placeholder.png">
+                    </div>
+                    <div class="description">
+                        <div class="header">
+                            <h4>Sablesnap</h4>
+                            <span class="fastinfo indev">
+                                <img src="https://catci.net/images/importantred.svg" style="width:10px;"> Indev
+                            </span>
+                        </div>
+                        <div class="info">
+                            <p>SableSnap makes coding easy and fun by letting you build apps, websites, and games with simple drag-and-drop blocks. Whether you're a complete beginner or just starting to learn, it helps you create real projects without worrying about complicated code.</p>
+                            <span class="language">
+                                <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
+                                <span class="va"><img src="https://catci.net/images/vanilla.svg" style="width:15px;">Vanilla</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="runcontainer">
+                        <a href="#" class="run disabled"><img src="https://catci.net/images/play.svg">Open</a>
+                        <a href="#" class="source disabled"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</a>
+                    </div>
+                </div>
+                <!--other project-->
+
+                <div class="project">
+                    <div class="projectbanner">
+                        <img src="https://catci.net/images/placeholder.png">
+                    </div>
+                    <div class="description">
+                        <div class="header">
+                            <h4>Sablescript 2</h4>
+                            <span class="fastinfo indev">
+                                <img src="https://catci.net/images/importantred.svg" style="width:10px;"> Indev
+                            </span>
+                        </div>
+                        <div class="info">
+                            <p>A future IDE to simplify develoupment, combined with prior sablescript and sablesnap, aswell as preset css libraries to make coding easier without slowing website speeds with external libraries</p>
+                            <span class="language">
+                                <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="runcontainer">
+                        <a href="https://catci.net/sablescript.html" class="run disabled"><img src="https://catci.net/images/play.svg">Open</a>
+                        <a href="https://github.com/cat-ci/Sablescript" class="source disabled"><img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tools">
+                <div class="filter">
+
+                </div>
+                <div class="tool">
+                    <div class="description">
+                        <div class="header">
+                            <h4>
+                                Instant resizer
+                            </h4>
+                            <span class="fastinfo featured">
+                                <img src="https://catci.net/images/star.svg" style="width:10px; filter: invert(1);"> Featured
+                            </span>
+                        </div>
+                        <div class="info">
+                            <p>
+                                Client side image resing, instant, no waiting for uploads and downloads
+                            </p>
+                            <div class="runcontainer">
+                                <div class="language">
+                                    <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
+                                    <span class="va"><img src="https://catci.net/images/vanilla.svg" style="width:15px;">Vanilla</span>
+                                </div>
+                                <div class="rightside">
+                                    <button class="run">
+                                        <img src="https://catci.net/images/play.svg">Run
+                                    </button>
+                                    <button class="source">
+                                        <img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="output">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--another tool-->
+
+                <div class="tool">
+                    <div class="description">
+                        <div class="header">
+                            <h4>
+                                Level designer
+                            </h4>
+                            <span class="fastinfo indev">
+                                <img src="https://catci.net/images/importantred.svg" style="width:10px;">old/incomplete
+                            </span>
+                        </div>
+                        <div class="info">
+                            <p>
+                                Not on your main computer?, No game engine?, but want to design levels, this is a level designer however it is old! some functionality doesent work as it is an abadoned project however i will recreate soon!
+                            </p>
+                            <div class="runcontainer">
+                                <div class="language">
+                                    <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
+                                </div>
+                                <div class="rightside">
+                                    <button class="run">
+                                        <img src="https://catci.net/images/play.svg">Run
+                                    </button>
+                                    <button class="source">
+                                        <img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="output">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--another tool-->
+
+                <div class="tool">
+                    <div class="description">
+                        <div class="header">
+                            <h4>
+                                Palette designer
+                            </h4>
+                            <span class="fastinfo indev">
+                                <img src="https://catci.net/images/importantred.svg" style="width:10px;">Indev
+                            </span>
+                        </div>
+                        <div class="info">
+                            <p>
+                                Colour palette designer
+                            </p>
+                            <div class="runcontainer">
+                                <div class="language">
+                                    <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
+                                </div>
+                                <div class="rightside">
+                                    <button class="run disabled">
+                                        <img src="https://catci.net/images/play.svg">Run
+                                    </button>
+                                    <button class="source disabled">
+                                        <img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="output">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--another tool-->
+
+                <div class="tool">
+                    <div class="description">
+                        <div class="header">
+                            <h4>
+                                Text to speech
+                            </h4>
+                            <span class="fastinfo indev">
+                                <img src="https://catci.net/images/importantred.svg" style="width:10px;">old/incomplete
+                            </span>
+                        </div>
+                        <div class="info">
+                            <p>
+                                client side text to speech using your browsers built in voices (works best on chrome)
+                            </p>
+                            <div class="runcontainer">
+                                <div class="language">
+                                    <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
+                                </div>
+                                <div class="rightside">
+                                    <button class="run">
+                                        <img src="https://catci.net/images/play.svg">Run
+                                    </button>
+                                    <button class="source">
+                                        <img src="https://catci.net/images/github.svg" style="filter: invert(1);  width:20px; height:20px;">Source
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="output">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="see-more">
+                    <button id="see-more">
+                        See more
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const toolUrls = {
+                    "Instant resizer": "https://catci.net/instant-resizer",
+                    "Level designer": "https://catci.net/level-designer",
+                    "Text to speech": "https://catci.net/text-to-speech"
+                };
+
+                const runButtons = document.querySelectorAll(".tool .run");
+
+                runButtons.forEach(button => {
+                    button.addEventListener("click", function() {
+                        const toolContainer = button.closest(".tool");
+
+                        const toolName = toolContainer.querySelector(".header h4").textContent.trim();
+
+                        const outputContainer = toolContainer.querySelector(".output");
+
+                        outputContainer.innerHTML = "";
+
+                        if (toolUrls[toolName]) {
+                            const iframe = document.createElement("iframe");
+                            iframe.src = toolUrls[toolName];
+                            iframe.width = "100%";
+                            iframe.height = "500px";
+                            iframe.style.border = "none";
+                            iframe.style.borderRadius = "6px";
+                            iframe.style.marginTop = "20px";
+                            iframe.style.resize = "vertical";
+
+                            outputContainer.appendChild(iframe);
+                        } else {
+                        }
+                    });
+                });
+            });
+
+        </script>
+    </body>
+
+</html>
