@@ -14,11 +14,18 @@
                 --small-icon: 1.25rem;
                 --medium-icon: 1.4rem;
                 --tag-grow:scale(1.05);
+                --accent-green:#20b659;
+                --accent-light-green:#8ae6ad;
+                --accent-dark-blue:#1d294e;
+                --accent-light-blue:#5a6a9c;
+                --light-border:#d6d6d6;
             }
 
             html, body {
                 padding: 0;
                 margin: 0;
+
+
             }
 
             .tag img {
@@ -54,7 +61,43 @@
                 align-items: center;
                 gap: 5px;
             }
+            .online{
+                color:var(--accent-green);
+                font-family: var(--geist);
+                display: inline-flex;
+                align-items: center;
+                font-size: var(--small-text);
+                background-color:var(--accent-light-green);
+                padding:2px 8px;
+                border-radius:999px;
+            }
 
+            .offline{
+                color:var(--accent-dark-blue);
+                font-family: var(--geist);
+                display: inline-flex;
+                align-items: center;
+                font-size: var(--small-text);
+                background-color:var(--accent-light-blue);
+                padding:2px 8px;
+                border-radius:999px;
+            }
+
+            .offline img{
+                filter: invert(14%) sepia(15%) saturate(3421%) hue-rotate(194deg) brightness(92%) contrast(93%);
+                width: var(--small-icon);
+                vertical-align: middle;
+                margin-right: 4px;
+                transition: transform 0.4s;
+            }
+
+            .online img{
+                filter: invert(49%) sepia(92%) saturate(1557%) hue-rotate(105deg) brightness(99%) contrast(75%);
+                width: var(--small-icon);
+                vertical-align: middle;
+                margin-right: 4px;
+                transition: transform 0.4s;
+            }
         </style>
         <style>
             @keyframes spin{
@@ -63,14 +106,11 @@
             }
             .general-about .profile-pic img{
                 border-radius: 50%;
-                animation: spin 7s infinite linear;
+                animation: spin 35s infinite linear;
+                border:2px dotted var(--light-border);
+                width:260px;
             }
-            .offline img{
-            	filter: invert(14%) sepia(15%) saturate(3421%) hue-rotate(194deg) brightness(92%) contrast(93%);
-            }
-            .online img{
-            	filter: invert(49%) sepia(92%) saturate(1557%) hue-rotate(105deg) brightness(99%) contrast(75%);
-            }
+
         </style>
     </head>
     <body>
@@ -97,7 +137,7 @@
                     <div class="general-about">
                         <span class="name">Catci</span>
                         <div class="profile-pic">
-                            <img src="#">
+                            <img src="/images/logos/sketch2.svg">
                         </div>
                         <div class="about">
                             <div class="textinfo">
@@ -127,6 +167,7 @@
                             </div>
                         </div>
                         <div class="viewmy">
+                            View my:
                             <a id="viewblog">Blog</a>
                             <span class="divider">|</span>
                             <a id="viewgithub">Github</a>
