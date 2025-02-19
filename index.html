@@ -6,41 +6,55 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
         <style>
-            :root{
-                --geist:"Geist", serif;
-                --light-grey:#b8b4b4;
-                --lighter-grey:#ebe6e6;
-                --small-text:.875rem;
-                --small-text-hover:.950rem;
-                --small-img:1.25rem;
-                --small-img-hover:1.35rem;
+            :root {
+                --geist: "Geist", serif;
+                --light-grey: #b8b4b4;
+                --lighter-grey: #ebe6e6;
+                --small-text: .875rem;
+                --small-icon: 1.25rem;
+                --medium-icon: 1.4rem;
+                --tag-grow:scale(1.05);
             }
 
-            .tag img{
+            html, body {
+                padding: 0;
+                margin: 0;
+            }
+
+            .tag img {
                 filter: invert(64%) sepia(3%) saturate(192%) hue-rotate(314deg) brightness(109%) contrast(102%);
-                width:var(--small-img);
+                width: var(--small-icon);
                 vertical-align: middle;
                 margin-right: 4px;
+                transition: transform 0.4s;
             }
 
             .tag {
                 display: inline-flex;
                 align-items: center;
-                font-family:var(--geist);
-                color:var(--light-grey);
-                background-color:var(--lighter-grey);
-                border-radius:8px;
-                padding:5px;
-                font-size:var(--small-text);
-                transition:0.4s;
+                font-family: var(--geist);
+                color: var(--light-grey);
+                background-color: var(--lighter-grey);
+                border-radius: 8px;
+                padding: 4px;
+                font-size: var(--small-text);
+                transition: transform 0.4s;
             }
-            .tag:hover{
-            	font-size:var(--small-text-hover);
-                transition:0.4s;
+
+            .tag:hover {
+                transform: var(--tag-grow);
             }
-            .tag:hover img{
-            	width:var(--small-img-hover);
+
+            .tag:hover img {
+                transform: var(--tag-grow);
             }
+
+            .quickinfo {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+
         </style>
         <style>
             @keyframes spin{
@@ -50,6 +64,12 @@
             .general-about .profile-pic img{
                 border-radius: 50%;
                 animation: spin 7s infinite linear;
+            }
+            .offline img{
+            	filter: invert(14%) sepia(15%) saturate(3421%) hue-rotate(194deg) brightness(92%) contrast(93%);
+            }
+            .online img{
+            	filter: invert(49%) sepia(92%) saturate(1557%) hue-rotate(105deg) brightness(99%) contrast(75%);
             }
         </style>
     </head>
@@ -81,59 +101,59 @@
                         </div>
                         <div class="about">
                             <div class="textinfo">
-
+                                I'm a
+                            </div>
+                            <div class="status">
+                                <div class="online">
+                                    <img src="/images/icons/sun.svg">Online
+                                </div>
+                                <div class="offline">
+                                    <img src="/images/icons/moon.svg">Sleeping
+                                </div>
                             </div>
                             <div class="quickinfo">
                                 <div class="tag location">
-                                    <img src="https://catci.net/images/icons/pin.svg">Scotland
+                                    <img src="/images/icons/pin.svg">Scotland
                                 </div>
                                 <div class="tag timezone">
-                                    <img src="https://catci.net/images/icons/clock.svg">Utc+0
+                                    <img src="/images/icons/clock.svg">Utc+0
                                 </div>
                                 <div class="tag stack">
-                                    <img src="https://catci.net/images/icons/ice-cream.svg">Vanilla
+                                    <img src="/images/icons/ice-cream.svg">Vanilla
                                 </div>
                                 <div class="tag age">
-                                    <img src="https://catci.net/images/icons/calendar.svg">16y/o
+                                    <img src="/images/icons/calendar.svg">16y/o
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="connect">
-                        <span>Connect with me</span>
-                        <div class="platforms">
-                            <div class="platform email">
-                                <img src="https://catci.net/images/icons/email.svg">
-                                <span class="tooltip">Email</span>
-                            </div>
-                            <div class="platform ">
-                                <img src=""
-                                     </div>
-                            </div>
+                        <div class="viewmy">
+                            <a id="viewblog">Blog</a>
+                            <span class="divider">|</span>
+                            <a id="viewgithub">Github</a>
+                            <span class="divider">|</span>
+                            <a id="viewgitlab">Gitlab</a>
                         </div>
 
-
-
                     </div>
+                </div>
 
-                    <!--middle content-->
+                <!--middle content-->
 
-                    <div class="middlecontent">
-
-                    </div>
-
-                    <!--right content-->
-
-                    <div class="right-boxes">
-
-                    </div>
+                <div class="middlecontent">
 
                 </div>
-                <div class="side-mascot">
-                    <img src="/placeholder.png">
+
+                <!--right content-->
+
+                <div class="right-boxes">
+
                 </div>
+
             </div>
-            </body>
+            <div class="side-mascot">
+                <img src="/placeholder.png">
+            </div>
+        </div>
+    </body>
 
-        </html>
+</html>
