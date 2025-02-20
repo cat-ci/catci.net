@@ -11,6 +11,7 @@
                 --light-grey: #b8b4b4;
                 --lighter-grey: #ebe6e6;
                 --small-text: .875rem;
+                --tiny-text: .575rem;
                 --medium-text: 1.05rem;
                 --small-icon: 1.25rem;
                 --medium-icon:1.7rem;
@@ -35,7 +36,6 @@
                 justify-content: space-between;
                 max-width: 360px;
                 height: 300px;
-                margin: 0 auto;
                 font-family: var(--geist);
                 border: 2px dotted var(--light-border);
             }
@@ -50,7 +50,6 @@
                 font-size: var(--large-text);
                 font-weight: bold;
                 margin-bottom:0;
-                color: var(--accent-dark-blue);
             }
 
             .profile-content {
@@ -174,9 +173,7 @@
             }
 
             .pronounced{
-                font-size:var(--small-text);
-                margin-bottom: 16px;
-                margin-top:0;
+                font-size:var(--tiny-text);
                 opacity:0.6;
             }
 
@@ -199,14 +196,16 @@
                 display: flex;
                 align-items: center;
                 font-family: var(--geist);
-                background-color:#eee;
+                background-color:var(--lighter-grey);
                 font-size:var(--medium-text);
                 height:35px;
                 border-radius:6px;
                 display:inline-flex;
+                color:var(--light-grey);
             }
             .viewsource img{
                 width:var(--medium-icon);
+                filter: invert(87%) sepia(5%) saturate(142%) hue-rotate(314deg) brightness(85%) contrast(86%);
             }
             .viewsource a {
                 text-decoration: none;
@@ -216,23 +215,23 @@
                 cursor:pointer;
             }
             .viewsource .txt a{
-            	gap:5px;
+                gap:5px;
             }
             .viewsource .txt{
-            	border:none !important;
+                border:none !important;
             }
             .viewsource .txt a img{
-            	transition:0.4s;
+                transition:0.4s;
             }
             .viewsource .txt a:hover {
                 transform: scale(1.025) !important;
             }
             .viewsource .txt a:hover img{
-            	transform: var(--tag-grow) !important;
+                transform: var(--tag-grow) !important;
             }
             .viewsource .sourcecontainer {
                 height: 30px;
-                border-left:2px solid rgba(0, 0, 0, 0.1); 
+                border-left:2px solid rgba(0, 0, 0, 0.1);
                 padding-left:5px;
                 padding-right:5px;
                 display: flex;
@@ -240,12 +239,8 @@
                 align-items: center;
                 border-radius:1px;
             }
-            .viewsource .bold{
-                border-left:2px solid rgba(0, 0, 0, 0.2) !important;
-
-            }
             .bold img{
-            	width:20px !important;
+                width:20px !important;
             }
             .viewsource a:hover {
                 transform: var(--tag-grow);
@@ -285,7 +280,10 @@
                 display: flex;
                 align-items: center;
             }
-
+            .name{
+                line-height:.7rem;
+                margin-top:7px;
+            }
         </style>
     </head>
     <body>
@@ -306,7 +304,7 @@
 
                             <div class="profile-content">
                                 <div class="profile-pic">
-                                    <img src="/images/icons/pfp_placeholder.png">
+                                    <img src="/images/logos/sketch2.svg">
                                 </div>
 
                                 <div class="about">
@@ -380,7 +378,8 @@
                             </div>
                             <div class="runcontainer">
                                 <div class="open">
-
+Open
+                                    <img src="/images/icons/play.svg">
                                 </div>
                                 <div class="viewsource">
                                     <div class="sourcecontainer txt">
