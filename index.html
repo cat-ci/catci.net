@@ -10,16 +10,20 @@
                 --geist: "Geist", serif;
                 --light-grey: #b8b4b4;
                 --lighter-grey: #ebe6e6;
+                --darker-grey:#ada6a9;
                 --small-text: .875rem;
                 --tiny-text: .575rem;
                 --medium-text: 1.05rem;
                 --small-icon: 1.25rem;
                 --medium-icon:1.7rem;
                 --tag-grow: scale(1.05);
+                --open-grow:scale(1.10);
                 --accent-green: #20b659;
                 --accent-light-green: #8ae6ad;
                 --accent-dark-blue: #1d294e;
                 --accent-light-blue: #5a6a9c;
+                --accent-rose:/*#0284C7 #84CC16*/ #E11D48;
+                --accent-dark-rose:#4C0519;
                 --light-border: #d6d6d6;
                 --large-text:1.5rem;
             }
@@ -31,11 +35,11 @@
 
 
             .general-about {
-                display: flex;
+                display: inline-flex;
                 flex-direction: column;
                 justify-content: space-between;
-                max-width: 360px;
                 height: 300px;
+                max-width:380px;
                 font-family: var(--geist);
                 border: 2px dotted var(--light-border);
             }
@@ -115,6 +119,13 @@
             .online:hover img {
                 transform: var(--tag-grow);
             }
+            .school:hover {
+                transform: var(--tag-grow);
+            }
+
+            .school:hover img {
+                transform: var(--tag-grow);
+            }
 
             .quickinfo {
                 display: flex;
@@ -123,12 +134,14 @@
             }
 
             .viewmy {
-                margin-top: 16px;
                 font-family: var(--geist);
+                margin-bottom:5px;
+                margin-left:10px;
+                font-size:0.7rem;
+                opacity:0.7;
             }
 
             .divider {
-                margin: 0 8px;
                 color: var(--light-grey);
             }
 
@@ -156,6 +169,26 @@
                 transition: transform 0.4s;
             }
 
+            .school{
+                color: var(--accent-rose);
+                font-family: var(--geist);
+                display: inline-flex;
+                align-items: center;
+                font-size: var(--small-text);
+                background-color: #f26383;
+                padding: 2px 8px;
+                border-radius: 999px;
+                transition: transform 0.4s;
+            }
+
+            .school img{
+                filter: invert(27%) sepia(70%) saturate(7456%) hue-rotate(337deg) brightness(91%) contrast(92%);
+                width: var(--small-icon);
+                vertical-align: middle;
+                margin-right: 4px;
+                transition: transform 0.4s;
+            }
+
             .offline img {
                 filter: invert(14%) sepia(15%) saturate(3421%) hue-rotate(194deg) brightness(92%) contrast(93%);
                 width: var(--small-icon);
@@ -171,10 +204,14 @@
                 margin-right: 4px;
                 transition: transform 0.4s;
             }
-
+            .status{
+                margin-bottom:20px;
+                margin-top:5px;
+            }
             .pronounced{
                 font-size:var(--tiny-text);
                 opacity:0.6;
+                margin-left:5px;
             }
 
             .general-about{
@@ -191,109 +228,39 @@
                 border:2px dotted var(--light-border);
                 width:160px;
             }
-
-            .viewsource {
-                display: flex;
-                align-items: center;
-                font-family: var(--geist);
-                background-color:var(--lighter-grey);
-                font-size:var(--medium-text);
-                height:35px;
-                border-radius:6px;
-                display:inline-flex;
-                color:var(--light-grey);
+            .general-about .profile-pic{
+                margin-left:10px;
             }
-            .viewsource img{
-                width:var(--medium-icon);
-                filter: invert(87%) sepia(5%) saturate(142%) hue-rotate(314deg) brightness(85%) contrast(86%);
+            .general-about .name{
+                margin-top:10px;
+                margin-left:5px;
+                line-height:15px;
             }
-            .viewsource a {
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-                transition:0.4s;
-                cursor:pointer;
-            }
-            .viewsource .txt a{
-                gap:5px;
-            }
-            .viewsource .txt{
-                border:none !important;
-            }
-            .viewsource .txt a img{
-                transition:0.4s;
-            }
-            .viewsource .txt a:hover {
-                transform: scale(1.025) !important;
-            }
-            .viewsource .txt a:hover img{
-                transform: var(--tag-grow) !important;
-            }
-            .viewsource .sourcecontainer {
-                height: 30px;
-                border-left:2px solid rgba(0, 0, 0, 0.1);
-                padding-left:5px;
-                padding-right:5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius:1px;
-            }
-            .bold img{
-                width:20px !important;
-            }
-            .viewsource a:hover {
-                transform: var(--tag-grow);
-            }
-            .dropdown {
-                position: relative;
-                display: inline-block;
-            }
-
-            .dropdown-content {
-                display: none;
+            .tooltip {
                 position: absolute;
-                background-color: white;
-                min-width: 140px;
-                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-                z-index: 1;
-                padding: 10px 0;
+                bottom: 130%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 5px 8px;
                 border-radius: 5px;
+                font-size: 12px;
+                white-space: nowrap;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease-in-out, visibility 0.3s;
             }
 
-            .dropdown-content a {
-                display: block;
-                padding: 8px 12px;
-                text-align: left;
-            }
-
-            .dropdown-content a img {
-                vertical-align: middle;
-            }
-
-            .dropdown:hover .dropdown-content {
-                display: block;
-            }
-
-            .dropbtn {
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-            }
-            .name{
-                line-height:.7rem;
-                margin-top:7px;
+            .tag:hover .tooltip {
+                opacity: 1;
+                visibility: visible;
             }
         </style>
     </head>
     <body>
         <div class="outer-container">
             <div class="inner-container">
-                <div class="topbar">
-                    <button>
-                        Projects
-                    </button>
-                </div>
                 <div class="leftboxes">
                     <div class="general-about">
                         <div class="topper">
@@ -304,7 +271,7 @@
 
                             <div class="profile-content">
                                 <div class="profile-pic">
-                                    <img src="/images/logos/sketch2.svg">
+                                    <img src="/images/icons/pfp_placeholder.png">
                                 </div>
 
                                 <div class="about">
@@ -319,20 +286,37 @@
                                         <div id="offline-status" class="offline" style="display: none;">
                                             <img src="/images/icons/moon.svg" alt="Sleeping">Sleeping
                                         </div>
+                                        <div id="school-status" class="school" style="display: none;">
+                                            <img src="/images/icons/inschool.svg" alt="School">At school
+                                        </div>
                                     </div>
                                     <div class="quickinfo">
                                         <div class="tag location">
                                             <img src="/images/icons/pin.svg">Scotland
+                                            <div class="tooltip">United Kingdom</div>
                                         </div>
-                                        <div class="tag timezone">
-                                            <img src="/images/icons/clock.svg">Utc+0
+
+                                        <div class="tag timezone" id="timezone">
+                                            <img src="/images/icons/clock.svg">UTC+0
+                                            <div class="tooltip" id="timezone-tooltip">Loading...</div>
                                         </div>
+
                                         <div class="tag stack">
-                                            <img src="/images/icons/ice-cream.svg">Vanilla
+                                            <img src="/images/icons/ice-cream.svg">Vanilla Stack
+                                            <div class="tooltip">HTML, CSS, JavaScript</div>
                                         </div>
+
                                         <div class="tag age">
-                                            <img src="/images/icons/calendar.svg">16y/o
+                                            <img src="/images/icons/calendar.svg">16
+                                            <div class="tooltip">16 years old</div>
                                         </div>
+                                        
+                                        <div class="tag night-owl">
+                                            <img src="/images/icons/moon.svg">Night Owl
+                                            <div class="tooltip">Active late at night</div>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -349,72 +333,27 @@
                             <a id="viewgitlab">Gitlab</a>
                         </div>
                     </div>
+                    
+                    <div class="general-contact">
+                        <div class="header">
+                            Connecting with me
+                        </div>
+                        <div class="contacts">
+                            <div class="contact email">
+                                <a href="mailto:a@catci.net"><img src="/images/icons/email.svg"></a>
+                            </div>
+                            <div class="contact ">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <!--main-->
                 <div class="middleboxes">
                     <div class="hero">
 
-                    </div>
-
-                    <div class="projects">
-                        <div class="project">
-                            <div class="projectbanner">
-                                <img src="https://catci.net/images/placeholder.png">
-                            </div>
-                            <div class="description">
-                                <div class="header">
-                                    <h4>Project</h4>
-                                    <span class="fastinfo featured">
-                                        <img src="https://catci.net/images/star.svg" style="width:10px; filter: invert(1);"> Featured
-                                    </span>
-                                </div>
-                                <div class="info">
-                                    <p>Project info</p>
-                                    <span class="language">
-                                        <span class="js"><img src="https://catci.net/images/javascript.svg" style="width:15px;">Javascript</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="runcontainer">
-                                <div class="open">
-Open
-                                    <img src="/images/icons/play.svg">
-                                </div>
-                                <div class="viewsource">
-                                    <div class="sourcecontainer txt">
-                                        <a title="View on Github"><span>Source</span><img src="/images/icons/github.svg"></a>
-                                    </div>
-                                    <div class="sourcecontainer">
-                                        <a title="View on Gitlab"><img src="/images/icons/gitlab.svg"></a>
-                                    </div>
-                                    <div class="dropdown">
-                                        <div class="sourcecontainer bold">
-                                            <a title="More" class="dropbtn">
-                                                <img src="/images/icons/arrow.svg">
-                                            </a>
-                                        </div>
-                                        <div class="dropdown-content">
-                                            <a class="download" title="Download"><img src="/images/icons/download.svg">Download</a>
-                                            <a class="viewcode" title="View-code here"><img src="/images/icons/source.svg">Viewcode</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <pre>
-
-
-
-
-
-
-
-
-
-
-</pre>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -424,25 +363,48 @@ Open
         function updateStatus() {
             const onlineStatus = document.getElementById("online-status");
             const offlineStatus = document.getElementById("offline-status");
+            const schoolStatus = document.getElementById("school-status");
 
-            // Get the current time in UTC
             const now = new Date();
             const hours = now.getUTCHours();
 
-            // Show "online" if it's between 12:00 PM and 12:00 AM (UTC), otherwise "sleeping"
-            if (hours >= 12 && hours < 24) {
+            // Hide all statuses first
+            onlineStatus.style.display = "none";
+            offlineStatus.style.display = "none";
+            schoolStatus.style.display = "none";
+
+            // Set the correct status based on the current time
+            if (hours >= 7 && hours < 16) {
+                schoolStatus.style.display = "block";
+            } else if (hours >= 16 && hours < 24) {
                 onlineStatus.style.display = "block";
-                offlineStatus.style.display = "none";
             } else {
-                onlineStatus.style.display = "none";
                 offlineStatus.style.display = "block";
             }
         }
 
-        // Run the function to update the status
+        // Run the function once and set an interval to update every minute
         updateStatus();
+        setInterval(updateStatus, 60000);
 
-        // Optionally, you can set an interval to check periodically (e.g., every minute)
-        setInterval(updateStatus, 60000); // Check every 60 seconds
+    </script>
+    <script>
+        function updateTimezoneTooltip() {
+            const userOffset = new Date().getTimezoneOffset() / -60; // Get user's UTC offset
+            const timezoneTooltip = document.getElementById("timezone-tooltip");
+
+            if (userOffset === 0) {
+                timezoneTooltip.textContent = "Same as you";
+            } else if (userOffset > 0) {
+                timezoneTooltip.textContent = `${userOffset} hours behind`;
+            } else {
+                timezoneTooltip.textContent = `${Math.abs(userOffset)} hours ahead`;
+            }
+        }
+
+        updateTimezoneTooltip();
+    </script>
+    <script>
+        console.log("%cHello, fellow dev! 👀", "color: #20b659; font-size: 16px;");
     </script>
 </html>
