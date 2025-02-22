@@ -7,53 +7,58 @@
         <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
         <style>
             :root {
-                --geist: "Geist", serif;
-                --light-grey: #b8b4b4;
-                --lighter-grey: #ebe6e6;
-                --darker-grey:#ada6a9;
-                --small-text: .875rem;
-                --tiny-text: .575rem;
-                --medium-text: 1.05rem;
-                --small-icon: 1.25rem;
-                --medium-icon:1.7rem;
-                --tag-grow: scale(1.05);
-                --open-grow:scale(1.10);
-                --accent-green: #20b659;
-                --accent-light-green: #8ae6ad;
-                --accent-dark-blue: #1d294e;
-                --accent-light-blue: #5a6a9c;
-                --accent-rose:/*#0284C7 #84CC16*/ #E11D48;
-                --accent-dark-rose:#4C0519;
-                --light-border: #d6d6d6;
-                --large-text:1.5rem;
+                --font-primary: "Geist", serif;
+                --color-light-grey: #b8b4b4;
+                --color-lighter-grey: #ebe6e6;
+                --color-darker-grey: #ada6a9;
+                --color-border-light: #d6d6d6;
+                --color-accent-green: #20b659;
+                --color-accent-light-green: #8ae6ad;
+                --color-accent-dark-blue: #1d294e;
+                --color-accent-light-blue: #5a6a9c;
+                --color-accent-rose: #f26383;
+                --color-white: #fff;
+                --color-black: rgba(0, 0, 0, 0.8);
+
+                --text-small: 0.875rem;
+                --text-tiny: 0.575rem;
+                --text-medium: 1.05rem;
+                --text-large: 1.5rem;
+
+                --icon-small: 1.25rem;
+                --icon-medium: 1.7rem;
+
+                --effect-tag-hover: scale(1.05);
+                --effect-open-hover: scale(1.10);
+
+                --border-radius-small: 4px;
+                --border-radius-medium: 8px;
+                --border-radius-large: 10px;
+                --border-radius-full: 999px;
+
+                --animation-spin: spin 35s infinite linear;
             }
 
             html, body {
                 padding: 0;
                 margin: 0;
+                cursor: default;
             }
-
 
             .general-about {
                 display: inline-flex;
                 flex-direction: column;
                 justify-content: space-between;
-                height: 300px;
-                max-width:380px;
-                font-family: var(--geist);
-                border: 2px dotted var(--light-border);
+                max-width: 380px;
+                font-family: var(--font-primary);
+                border: 2px dotted var(--color-border-light);
+                border-radius: var(--border-radius-small);
             }
 
-            .viewmy {
-                margin-top: auto;
-                font-family: var(--geist);
-                align-self: flex-start;
-            }
-
-            .name .name{
-                font-size: var(--large-text);
+            .name .name {
+                font-size: var(--text-large);
                 font-weight: bold;
-                margin-bottom:0;
+                margin-bottom: 0;
             }
 
             .profile-content {
@@ -69,180 +74,108 @@
             }
 
             .textinfo {
-                font-size: var(--small-text);
-                color: var(--light-grey);
+                font-size: var(--text-small);
+                color: var(--color-light-grey);
             }
 
             .status {
                 display: flex;
+                margin: 5px 0 20px;
             }
 
-            .tag img {
-                filter: invert(64%) sepia(3%) saturate(192%) hue-rotate(314deg) brightness(109%) contrast(102%);
-                width: var(--small-icon);
-                vertical-align: middle;
-                margin-right: 4px;
+            .tag, .online, .offline, .school {
+                display: inline-flex;
+                align-items: center;
+                font-family: var(--font-primary);
+                font-size: var(--text-small);
+                padding: 4px;
+                border-radius: var(--border-radius-medium);
                 transition: transform 0.4s;
             }
 
             .tag {
-                display: inline-flex;
-                align-items: center;
-                font-family: var(--geist);
-                color: var(--light-grey);
-                background-color: var(--lighter-grey);
-                border-radius: 8px;
-                padding: 4px;
-                font-size: var(--small-text);
-                transition: transform 0.4s;
+                color: var(--color-darker-grey);
+                background-color: var(--color-white);
             }
 
-            .tag:hover {
-                transform: var(--tag-grow);
-            }
-
-            .tag:hover img {
-                transform: var(--tag-grow);
-            }
-            .offline:hover {
-                transform: var(--tag-grow);
-            }
-
-            .offline:hover img {
-                transform: var(--tag-grow);
-            }
-
-            .online:hover {
-                transform: var(--tag-grow);
-            }
-
-            .online:hover img {
-                transform: var(--tag-grow);
-            }
-            .school:hover {
-                transform: var(--tag-grow);
-            }
-
-            .school:hover img {
-                transform: var(--tag-grow);
-            }
-
-            .quickinfo {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-
-            .viewmy {
-                font-family: var(--geist);
-                margin-bottom:5px;
-                margin-left:10px;
-                font-size:0.7rem;
-                opacity:0.7;
-            }
-
-            .divider {
-                color: var(--light-grey);
+            .tag:hover, .tag:hover img {
+                transform: var(--effect-tag-hover);
             }
 
             .online {
-                color: var(--accent-green);
-                font-family: var(--geist);
-                display: inline-flex;
-                align-items: center;
-                font-size: var(--small-text);
-                background-color: var(--accent-light-green);
+                color: var(--color-accent-green);
+                background-color: var(--color-accent-light-green);
                 padding: 2px 8px;
-                border-radius: 999px;
-                transition: transform 0.4s;
+                border-radius: var(--border-radius-full);
             }
 
             .offline {
-                color: var(--accent-dark-blue);
-                font-family: var(--geist);
-                display: inline-flex;
-                align-items: center;
-                font-size: var(--small-text);
-                background-color: var(--accent-light-blue);
+                color: var(--color-accent-dark-blue);
+                background-color: var(--color-accent-light-blue);
                 padding: 2px 8px;
-                border-radius: 999px;
-                transition: transform 0.4s;
+                border-radius: var(--border-radius-full);
             }
 
-            .school{
-                color: var(--accent-rose);
-                font-family: var(--geist);
-                display: inline-flex;
-                align-items: center;
-                font-size: var(--small-text);
-                background-color: #f26383;
+            .school {
+                color: var(--color-accent-rose);
+                background-color: var(--color-accent-rose);
                 padding: 2px 8px;
-                border-radius: 999px;
-                transition: transform 0.4s;
+                border-radius: var(--border-radius-full);
             }
 
-            .school img{
-                filter: invert(27%) sepia(70%) saturate(7456%) hue-rotate(337deg) brightness(91%) contrast(92%);
-                width: var(--small-icon);
+            .tag img, .online img, .offline img, .school img {
+                width: var(--icon-small);
                 vertical-align: middle;
                 margin-right: 4px;
                 transition: transform 0.4s;
+            }
+
+
+            .online img {
+                filter: invert(49%) sepia(92%) saturate(1557%) hue-rotate(105deg) brightness(99%) contrast(75%);
             }
 
             .offline img {
                 filter: invert(14%) sepia(15%) saturate(3421%) hue-rotate(194deg) brightness(92%) contrast(93%);
-                width: var(--small-icon);
-                vertical-align: middle;
-                margin-right: 4px;
-                transition: transform 0.4s;
             }
 
-            .online img {
-                filter: invert(49%) sepia(92%) saturate(1557%) hue-rotate(105deg) brightness(99%) contrast(75%);
-                width: var(--small-icon);
-                vertical-align: middle;
-                margin-right: 4px;
-                transition: transform 0.4s;
+            .school img {
+                filter: invert(27%) sepia(70%) saturate(7456%) hue-rotate(337deg) brightness(91%) contrast(92%);
             }
-            .status{
-                margin-bottom:20px;
-                margin-top:5px;
+            
+            .tag img {
+                filter: invert(64%) sepia(3%) saturate(192%) hue-rotate(314deg) brightness(109%) contrast(102%);
             }
-            .pronounced{
-                font-size:var(--tiny-text);
-                opacity:0.6;
-                margin-left:5px;
+            .pronounced {
+                font-size: var(--text-tiny);
+                opacity: 0.6;
+                margin-left: 5px;
             }
 
-            .general-about{
-                border:2px dotted var(--light-border);
-            }
-
-            @keyframes spin{
-                from{ transform:rotate(0deg); }
-                to{ transform:rotate(-360deg); }
-            }
-            .general-about .profile-pic img{
+            .general-about .profile-pic img {
                 border-radius: 50%;
-                animation: spin 35s infinite linear;
-                border:2px dotted var(--light-border);
-                width:160px;
+                animation: var(--animation-spin);
+                border: 2px dotted var(--color-border-light);
+                width: 160px;
             }
-            .general-about .profile-pic{
-                margin-left:10px;
+
+            .general-about .profile-pic {
+                margin-left: 10px;
             }
-            .general-about .name{
-                margin-top:10px;
-                margin-left:5px;
-                line-height:15px;
+
+            .general-about .name {
+                margin-top: 10px;
+                margin-left: 5px;
+                line-height: 15px;
             }
+
             .tooltip {
                 position: absolute;
-                bottom: 130%;
+                bottom: 110%;
                 left: 50%;
                 transform: translateX(-50%);
-                background: rgba(0, 0, 0, 0.8);
-                color: white;
+                background: var(--color-black);
+                color: var(--color-white);
                 padding: 5px 8px;
                 border-radius: 5px;
                 font-size: 12px;
@@ -256,6 +189,88 @@
                 opacity: 1;
                 visibility: visible;
             }
+            .quickinfo {
+                display: flex;
+                flex-wrap: wrap;
+                background-color: var(--color-lighter-grey);
+                gap: 8px;
+                margin-right:4px;
+                border-radius:10px;
+                padding:4px;
+            }
+            .contact:hover .tooltip  {
+                opacity: 1;
+                visibility: visible;
+            }
+            .contacts, .email a, .github a, .gitlab a {
+                display: inline-flex;
+                align-items: center;
+
+                width: 100%;
+                gap: 2.5%;
+            }
+
+            .contacts {
+                margin-bottom: 10px;
+            }
+            .contact{
+                position:relative;
+            }
+            .contact img {
+                height: var(--icon-small);
+                width: var(--icon-small);
+            }
+
+            .email, .git {
+                width: 45%;
+                height: 47px;
+                border-radius: 6px;
+            }
+
+            .email {
+                background-color: var(--color-accent-light-blue);
+                margin-left: 3.5%;
+            }
+
+            .email img {
+                filter: invert(13%) sepia(9%) saturate(7028%) hue-rotate(198deg) brightness(98%) contrast(92%);
+            }
+
+            .email a, .git a {
+                text-decoration: none;
+                display: flex;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+            }
+
+            .email a {
+                color: var(--color-accent-dark-blue);
+            }
+
+            .git {
+                background-color: var(--color-lighter-grey);
+            }
+
+            .git a {
+                color: var(--color-light-grey);
+                margin: 2px;
+            }
+
+            .git img {
+                filter: invert(64%) sepia(3%) saturate(192%) hue-rotate(314deg) brightness(109%) contrast(102%);
+            }
+
+            .gitlab {
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(-360deg); }
+            }
+
         </style>
     </head>
     <body>
@@ -271,7 +286,7 @@
 
                             <div class="profile-content">
                                 <div class="profile-pic">
-                                    <img src="/images/icons/pfp_placeholder.png">
+                                    <img src="/images/logos/sketch2.svg">
                                 </div>
 
                                 <div class="about">
@@ -310,7 +325,7 @@
                                             <img src="/images/icons/calendar.svg">16
                                             <div class="tooltip">16 years old</div>
                                         </div>
-                                        
+
                                         <div class="tag night-owl">
                                             <img src="/images/icons/moon.svg">Night Owl
                                             <div class="tooltip">Active late at night</div>
@@ -322,89 +337,82 @@
                             </div>
                         </div>
 
+                        <div class="general-contact">
+                            <div class="contacts">
+                                <div class="contact email">
+                                    <a href="mailto:a@catci.net"><img src="/images/icons/mailbox.svg"><span>Contact</span></a>
+                                    <div class="tooltip">Conact me via email</div>
+                                </div>
+                                <div class="git">
+                                    <div class="contact github">
+                                        <a href="https://github.com/cat-ci"><img src="/images/icons/github.svg"><span>GitHub</span></a>
+                                        <div class="tooltip">Check my GitHub</div>
+                                    </div>
+                                    <div class="contact gitlab">
+                                        <a href="https://gitlab.com/catci"><img src="/images/icons/gitlab.svg"><span>GitLab</span></a>
+                                        <div class="tooltip">Check my GitLab</div>
+                                    </div>
+                                </div>
 
-                        <!-- "View My" Section -->
-                        <div class="viewmy">
-                            View my:
-                            <a id="viewblog">Blog</a>
-                            <span class="divider">|</span>
-                            <a id="viewgithub">Github</a>
-                            <span class="divider">|</span>
-                            <a id="viewgitlab">Gitlab</a>
-                        </div>
-                    </div>
-                    
-                    <div class="general-contact">
-                        <div class="header">
-                            Connecting with me
-                        </div>
-                        <div class="contacts">
-                            <div class="contact email">
-                                <a href="mailto:a@catci.net"><img src="/images/icons/email.svg"></a>
-                            </div>
-                            <div class="contact ">
-                                
                             </div>
                         </div>
+
+
                     </div>
-                    
-                </div>
 
-                <!--main-->
-                <div class="middleboxes">
-                    <div class="hero">
+                    <!--main-->
+                    <div class="middleboxes">
+                        <div class="hero">
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
-    <script>
-        function updateStatus() {
-            const onlineStatus = document.getElementById("online-status");
-            const offlineStatus = document.getElementById("offline-status");
-            const schoolStatus = document.getElementById("school-status");
+            </body>
+        <script>
+            function updateStatus() {
+                const onlineStatus = document.getElementById("online-status");
+                const offlineStatus = document.getElementById("offline-status");
+                const schoolStatus = document.getElementById("school-status");
 
-            const now = new Date();
-            const hours = now.getUTCHours();
+                const now = new Date();
+                const hours = now.getUTCHours();
 
-            // Hide all statuses first
-            onlineStatus.style.display = "none";
-            offlineStatus.style.display = "none";
-            schoolStatus.style.display = "none";
+                onlineStatus.style.display = "none";
+                offlineStatus.style.display = "none";
+                schoolStatus.style.display = "none";
 
-            // Set the correct status based on the current time
-            if (hours >= 7 && hours < 16) {
-                schoolStatus.style.display = "block";
-            } else if (hours >= 16 && hours < 24) {
-                onlineStatus.style.display = "block";
-            } else {
-                offlineStatus.style.display = "block";
+                if (hours >= 7 && hours < 16) {
+                    schoolStatus.style.display = "block";
+                } else if (hours >= 16 && hours < 24) {
+                    onlineStatus.style.display = "block";
+                } else {
+                    offlineStatus.style.display = "block";
+                }
             }
-        }
 
-        // Run the function once and set an interval to update every minute
-        updateStatus();
-        setInterval(updateStatus, 60000);
+            updateStatus();
+            setInterval(updateStatus, 60000);
 
-    </script>
-    <script>
-        function updateTimezoneTooltip() {
-            const userOffset = new Date().getTimezoneOffset() / -60; // Get user's UTC offset
-            const timezoneTooltip = document.getElementById("timezone-tooltip");
+        </script>
+        <script>
+            function updateTimezoneTooltip() {
+                const userOffset = new Date().getTimezoneOffset() / -60;
+                const timezoneTooltip = document.getElementById("timezone-tooltip");
 
-            if (userOffset === 0) {
-                timezoneTooltip.textContent = "Same as you";
-            } else if (userOffset > 0) {
-                timezoneTooltip.textContent = `${userOffset} hours behind`;
-            } else {
-                timezoneTooltip.textContent = `${Math.abs(userOffset)} hours ahead`;
+                if (userOffset === 0) {
+                    timezoneTooltip.textContent = "Same as you";
+                } else if (userOffset > 0) {
+                    timezoneTooltip.textContent = `${userOffset} hours behind`;
+                } else {
+                    timezoneTooltip.textContent = `${Math.abs(userOffset)} hours ahead`;
+                }
             }
-        }
 
-        updateTimezoneTooltip();
-    </script>
-    <script>
-        console.log("%cHello, fellow dev! 👀", "color: #20b659; font-size: 16px;");
-    </script>
-</html>
+            updateTimezoneTooltip();
+        </script>
+        <script>
+            console.clear()
+            console.log("%cMeow! (˃ᆺ˂)", "color: #20b659; font-size: 16px;");
+        </script>
+        </html>
