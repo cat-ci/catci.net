@@ -17,6 +17,7 @@
                 --color-accent-dark-blue: #1d294e;
                 --color-accent-light-blue: #5a6a9c;
                 --color-accent-rose: #f26383;
+                --color-accent-rose-dark: #e01d49;
                 --color-white: #fff;
                 --color-black: rgba(0, 0, 0, 0.8);
 
@@ -49,15 +50,31 @@
                 display: inline-flex;
                 flex-direction: column;
                 justify-content: space-between;
-                max-width: 380px;
+                max-width: 385px;
                 font-family: var(--font-primary);
                 border: 2px dotted var(--color-border-light);
                 border-radius: var(--border-radius-small);
+                padding-top:2px;
             }
 
-            .name .name {
+            .name {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                font-weight:600;
+            }
+
+            .status {
+                margin-left: auto;
+                display: flex;
+                margin-right:12px;
+                margin-bottom:10px;
+            }
+            .name .inner-name {
                 font-size: var(--text-large);
                 font-weight: bold;
+                color: var(--color-accent-light-blue);
                 margin-bottom: 0;
             }
 
@@ -76,13 +93,8 @@
             .textinfo {
                 font-size: var(--text-small);
                 color: var(--color-light-grey);
+                margin-bottom:10px;
             }
-
-            .status {
-                display: flex;
-                margin: 5px 0 20px;
-            }
-
             .tag, .online, .offline, .school {
                 display: inline-flex;
                 align-items: center;
@@ -94,10 +106,15 @@
             }
 
             .tag {
-                color: var(--color-darker-grey);
+                color: var(--color-accent-light-blue);
                 background-color: var(--color-white);
+                font-weight:600;
             }
+            .tag {
+    flex: 1; /* Allows the tag to take up equal space */
+}
 
+            
             .tag:hover, .tag:hover img {
                 transform: var(--effect-tag-hover);
             }
@@ -130,7 +147,6 @@
                 transition: transform 0.4s;
             }
 
-
             .online img {
                 filter: invert(49%) sepia(92%) saturate(1557%) hue-rotate(105deg) brightness(99%) contrast(75%);
             }
@@ -142,14 +158,15 @@
             .school img {
                 filter: invert(27%) sepia(70%) saturate(7456%) hue-rotate(337deg) brightness(91%) contrast(92%);
             }
-            
+
             .tag img {
-                filter: invert(64%) sepia(3%) saturate(192%) hue-rotate(314deg) brightness(109%) contrast(102%);
+                /*filter: invert(64%) sepia(3%) saturate(192%) hue-rotate(314deg) brightness(109%) contrast(102%);*/
+                filter: invert(41%) sepia(14%) saturate(1179%) hue-rotate(188deg) brightness(97%) contrast(97%);
             }
             .pronounced {
                 font-size: var(--text-tiny);
                 opacity: 0.6;
-                margin-left: 5px;
+                color: var(--color-accent-dark-blue);
             }
 
             .general-about .profile-pic img {
@@ -162,9 +179,8 @@
             .general-about .profile-pic {
                 margin-left: 10px;
             }
-
             .general-about .name {
-                margin-top: 10px;
+                margin-top: 5px;
                 margin-left: 5px;
                 line-height: 15px;
             }
@@ -193,11 +209,12 @@
                 display: flex;
                 flex-wrap: wrap;
                 background-color: var(--color-lighter-grey);
-                gap: 8px;
+                gap: 4px;
                 margin-right:4px;
                 border-radius:10px;
-                padding:4px;
+                padding:5px;
             }
+
             .contact:hover .tooltip  {
                 opacity: 1;
                 visibility: visible;
@@ -205,7 +222,6 @@
             .contacts, .email a, .github a, .gitlab a {
                 display: inline-flex;
                 align-items: center;
-
                 width: 100%;
                 gap: 2.5%;
             }
@@ -215,6 +231,9 @@
             }
             .contact{
                 position:relative;
+            }
+            .contact:hover a{
+                transform: var(--effect-tag-hover);
             }
             .contact img {
                 height: var(--icon-small);
@@ -230,6 +249,7 @@
             .email {
                 background-color: var(--color-accent-light-blue);
                 margin-left: 3.5%;
+                font-weight:600;
             }
 
             .email img {
@@ -242,7 +262,7 @@
                 height: 100%;
                 align-items: center;
                 justify-content: center;
-                gap: 5px;
+                transition:0.4s;
             }
 
             .email a {
@@ -251,11 +271,11 @@
 
             .git {
                 background-color: var(--color-lighter-grey);
+                font-weight:600;
             }
 
             .git a {
                 color: var(--color-light-grey);
-                margin: 2px;
             }
 
             .git img {
@@ -264,13 +284,74 @@
 
             .gitlab {
                 border-top: 1px solid rgba(0, 0, 0, 0.1);
+                width:100%;
+                background-color:inherit;
+                border-bottom-left-radius:8px;
+                height:50%;
+                border-bottom-right-radius:8px;
+                transition:0.4s;
+            }
+            .github{
+                width:100%;
+                background-color:inherit;
+                border-top-left-radius:7px;
+                height:50%;
+                border-top-right-radius:7px;
+                transition:0.4s;
             }
 
             @keyframes spin {
                 from { transform: rotate(0deg); }
                 to { transform: rotate(-360deg); }
             }
+            .current-project .percentage{
+                color:var(--color-accent-light-blue);
+                background-color:var(--color-lighter-grey);
+                border-radius: var(--border-radius-small);
+                padding:0 3px;
+                margin:6px;
+                margin-top:0 !important;
+                transition:0.4s;
+            }
+            .current-project .percentage:hover{
+            	transform: scale(1.015);
+            }
+            .current-project{
+                font-family:var(--font-primary);
+                max-width: 385px;
+                border: 2px dotted var(--color-border-light);
+                border-radius: var(--border-radius-small);
+                margin-top:5px;
+            }
 
+            .current-project .project-header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin:6px;
+                margin-bottom:0 !important;
+                color: var(--color-light-grey);
+            }
+            .current-project .left{
+                color: var(--color-accent-light-blue) !important;
+            }
+            .current-project .right{
+            	font-size:var(--text-tiny);
+                opacity:0.6;
+                margin-top:5px;
+            }
+            .current-project hr{
+                padding:0;
+                margin-left:2px !important;
+                margin-right:2px !important;
+                margin-bottom:5px;
+                margin-top:5px;
+                border-radius:999px;
+                border: .4px solid var(--color-border-light);
+            }
+            .tag span{
+            	width:3px;
+            }
         </style>
     </head>
     <body>
@@ -280,8 +361,21 @@
                     <div class="general-about">
                         <div class="topper">
                             <div class="name">
-                                <span class="name">Catci</span><br>
-                                <span class="pronounced">(Cat-ki)</span>
+                                <div class="name-header">
+                                    <span class="inner-name"><b>Catci</b></span><br>
+                                    <span class="pronounced">(Cat-ki)</span>
+                                </div>
+                                <div class="status">
+                                    <div id="online-status" class="online" style="display: none;">
+                                        <img src="/images/icons/sun.svg" alt="Online"><span>Online</span>
+                                    </div>
+                                    <div id="offline-status" class="offline" style="display: none;">
+                                        <img src="/images/icons/moon.svg" alt="Sleeping"><span>Sleeping</span>
+                                    </div>
+                                    <div id="school-status" class="school" style="display: none;">
+                                        <img src="/images/icons/inschool.svg" alt="School"><span>In class</span>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="profile-content">
@@ -290,21 +384,12 @@
                                 </div>
 
                                 <div class="about">
+
                                     <div class="textinfo">
                                         I'm Catci, a <span class="shine">Full-Stack Developer</span> from Scotland
                                     </div>
 
-                                    <div class="status">
-                                        <div id="online-status" class="online" style="display: none;">
-                                            <img src="/images/icons/sun.svg" alt="Online">Online
-                                        </div>
-                                        <div id="offline-status" class="offline" style="display: none;">
-                                            <img src="/images/icons/moon.svg" alt="Sleeping">Sleeping
-                                        </div>
-                                        <div id="school-status" class="school" style="display: none;">
-                                            <img src="/images/icons/inschool.svg" alt="School">At school
-                                        </div>
-                                    </div>
+
                                     <div class="quickinfo">
                                         <div class="tag location">
                                             <img src="/images/icons/pin.svg">Scotland
@@ -317,17 +402,17 @@
                                         </div>
 
                                         <div class="tag stack">
-                                            <img src="/images/icons/ice-cream.svg">Vanilla Stack
+                                            <img src="/images/icons/ice-cream.svg">Vanilla<span>‎</span>Stack
                                             <div class="tooltip">HTML, CSS, JavaScript</div>
                                         </div>
 
                                         <div class="tag age">
-                                            <img src="/images/icons/calendar.svg">16
+                                            <img src="/images/icons/calendar.svg">16y/o
                                             <div class="tooltip">16 years old</div>
                                         </div>
 
                                         <div class="tag night-owl">
-                                            <img src="/images/icons/moon.svg">Night Owl
+                                            <img src="/images/icons/moon.svg">Night<span>‎</span>Owl
                                             <div class="tooltip">Active late at night</div>
                                         </div>
 
@@ -340,48 +425,70 @@
                         <div class="general-contact">
                             <div class="contacts">
                                 <div class="contact email">
-                                    <a href="mailto:a@catci.net"><img src="/images/icons/mailbox.svg"><span>Contact</span></a>
-                                    <div class="tooltip">Conact me via email</div>
+                                    <a href="mailto:a@catci.net"><img src="/images/icons/mailbox.svg"><span>Contact</span><div class="tooltip">Conact me via email</div></a>
                                 </div>
                                 <div class="git">
                                     <div class="contact github">
-                                        <a href="https://github.com/cat-ci"><img src="/images/icons/github.svg"><span>GitHub</span></a>
-                                        <div class="tooltip">Check my GitHub</div>
+                                        <a href="https://github.com/cat-ci"><img src="/images/icons/github.svg"><span>GitHub</span><div class="tooltip">Check my GitHub</div></a>
                                     </div>
                                     <div class="contact gitlab">
-                                        <a href="https://gitlab.com/catci"><img src="/images/icons/gitlab.svg"><span>GitLab</span></a>
-                                        <div class="tooltip">Check my GitLab</div>
+                                        <a href="https://gitlab.com/catci"><img src="/images/icons/gitlab.svg"><span>GitLab</span><div class="tooltip">Check my GitLab</div></a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
 
-                    <!--main-->
-                    <div class="middleboxes">
-                        <div class="hero">
 
+                    <div class="current-project">
+                        <div class="project-header">
+                            <div class="left">
+                                <span class="project-title"><b>SableScript</b>:</span>
+                            </div>
+                            <div class="right">
+                                <span>Completed:</span><span>40%</span>
+                            </div>
                         </div>
+                        <hr>
+                        <div class="percentage-container">
+                            <div class="percentage">
+                                <b>|||||||||||||||||||||||||||||||||||</b>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!--main-->
+                <div class="middleboxes">
+                    <div class="hero">
+
                     </div>
                 </div>
             </div>
-            </body>
-        <script>
-            function updateStatus() {
-                const onlineStatus = document.getElementById("online-status");
-                const offlineStatus = document.getElementById("offline-status");
-                const schoolStatus = document.getElementById("school-status");
+        </div>
+    </body>
+    <script>
+        function updateStatus() {
+            const onlineStatus = document.getElementById("online-status");
+            const offlineStatus = document.getElementById("offline-status");
+            const schoolStatus = document.getElementById("school-status");
 
-                const now = new Date();
-                const hours = now.getUTCHours();
+            const now = new Date();
+            const hours = now.getUTCHours();
+            const day = now.getUTCDay();
 
-                onlineStatus.style.display = "none";
-                offlineStatus.style.display = "none";
-                schoolStatus.style.display = "none";
+            onlineStatus.style.display = "none";
+            offlineStatus.style.display = "none";
+            schoolStatus.style.display = "none";
 
+            if (day === 0 || day === 6) {
+                if (hours >= 10 && hours < 24) {
+                    onlineStatus.style.display = "block";
+                } else {
+                    offlineStatus.style.display = "block";
+                }
+            } else {
                 if (hours >= 7 && hours < 16) {
                     schoolStatus.style.display = "block";
                 } else if (hours >= 16 && hours < 24) {
@@ -390,29 +497,29 @@
                     offlineStatus.style.display = "block";
                 }
             }
+        }
 
-            updateStatus();
-            setInterval(updateStatus, 60000);
+        updateStatus();
+        setInterval(updateStatus, 60000);
+    </script>
+    <script>
+        function updateTimezoneTooltip() {
+            const userOffset = new Date().getTimezoneOffset() / -60;
+            const timezoneTooltip = document.getElementById("timezone-tooltip");
 
-        </script>
-        <script>
-            function updateTimezoneTooltip() {
-                const userOffset = new Date().getTimezoneOffset() / -60;
-                const timezoneTooltip = document.getElementById("timezone-tooltip");
-
-                if (userOffset === 0) {
-                    timezoneTooltip.textContent = "Same as you";
-                } else if (userOffset > 0) {
-                    timezoneTooltip.textContent = `${userOffset} hours behind`;
-                } else {
-                    timezoneTooltip.textContent = `${Math.abs(userOffset)} hours ahead`;
-                }
+            if (userOffset === 0) {
+                timezoneTooltip.textContent = "Same as you";
+            } else if (userOffset > 0) {
+                timezoneTooltip.textContent = `${userOffset} hours behind`;
+            } else {
+                timezoneTooltip.textContent = `${Math.abs(userOffset)} hours ahead`;
             }
+        }
 
-            updateTimezoneTooltip();
-        </script>
-        <script>
-            console.clear()
-            console.log("%cMeow! (˃ᆺ˂)", "color: #20b659; font-size: 16px;");
-        </script>
-        </html>
+        updateTimezoneTooltip();
+    </script>
+    <script>
+        console.clear()
+        console.log("%cMeow! (˃ᆺ˂)", "color: #20b659; font-size: 16px;");
+    </script>
+</html>
