@@ -134,7 +134,7 @@
       }
 
       .school {
-        color: var(--color-accent-rose);
+        color: var(--color-accent-rose-dark);
         background-color: var(--color-accent-rose);
         padding: 2px 8px;
         border-radius: var(--border-radius-full);
@@ -205,6 +205,7 @@
         opacity: 1;
         visibility: visible;
       }
+      
       .quickinfo {
         display: flex;
         flex-wrap: wrap;
@@ -353,46 +354,66 @@
       .tag span{
         width:3px;
       }
-      .stack {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 8px;
+      .stacks{
+        display: inline-flex;
+        flex-direction:column;
+        width:450px;
+        gap:8px;
+        background-color:var(--color-lighter-grey);
+        padding:10px 0 10px 0;
+        border-radius: var(--border-radius-large);
+      }
+      .stack a{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: var(--border-radius-large);
         padding:10px;
-}
+        text-decoration:none;
+        font-family:var(--font-primary);
+        color:black;
+        background-color:var(--color-white);
+        margin: 0 10px 0 10px;
+      }
 
-.left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+      .left .image-container{
+        padding:5px;
+        border-radius:var(--border-radius-large);
+      }
 
-.left img {
-  width: 40px;
-  height: 40px;
-  filter: invert(41%) sepia(14%) saturate(1179%) hue-rotate(188deg) brightness(97%) contrast(97%);
-}
+      .left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-.left div {
-  display: flex;
-  flex-direction: column;
-}
+      .left img {
+        width: 40px;
+        height: 40px;
+        filter: invert(41%) sepia(14%) saturate(1179%) hue-rotate(188deg) brightness(97%) contrast(97%);
+      }
 
-.stack-name {
-  font-weight: bold;
-  font-size: 16px;
-}
+      .left div {
+        display: flex;
+        flex-direction: column;
+      }
 
-.stack-desc {
-  font-size: 14px;
-  opacity:0.6;
-}
+      .stack-name {
+        font-weight: bold;
+        font-size: 16px;
+        color:var(--color-accent-light-blue);
+      }
 
-.right img {
-  width: 20px; /* Adjust size as needed */
-  height: 20px;
-  filter: invert(41%) sepia(14%) saturate(1179%) hue-rotate(188deg) brightness(97%) contrast(97%);
-}
+      .stack-desc {
+        font-size: 14px;
+        opacity:0.6;
+      }
+
+      .right img {
+        width: 20px; /* Adjust size as needed */
+        height: 20px;
+        filter: invert(41%) sepia(14%) saturate(1179%) hue-rotate(188deg) brightness(97%) contrast(97%);
+      }
 
     </style>
   </head>
@@ -421,7 +442,7 @@
 
           <div class="profile-content">
             <div class="profile-pic">
-              <img src="/images/logos/sketch2.svg">
+              <img src="/images/icons/pfp_placeholder.png">
             </div>
 
             <div class="about">
@@ -509,112 +530,124 @@
       <div class="my-stack">
         <div class="stack-title">
           <div class="stack-title-upper">
-            <img src="/placeholder"><span>My Tech Stack</span>
+            <img src="/images/icons/stack.svg"><span>My Tech Stack</span>
           </div>
           <div class="stack-title-lower">
             My favourite tech stack that i use on my projects
           </div>
+          <span class="stack-name">Luna stack</span>
         </div>
-
         <div class="stacks">
           <div class="stack">
-            <div class="left">
-              <img src="/images/icons/lua.svg">
-              <div>
-                <span class="stack-name">Lua</span>
+            <a target="_blank" href="https://leafo.net/lapis/">
+              <div class="left">
+                <div class="image-container">
+                  <img src="/images/icons/lua.svg">
+                </div>
+                <div>
+                  <span class="stack-name">Lua</span>
+                </div>
               </div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="https://leafo.net/lapis/"><img src="/images/icons/new-tab.svg"></a>
-            </div>
+              <div class="right">
+                <img src="/images/icons/open-in-new-window.svg">
+              </div>
+            </a>
           </div>
 
           <div class="stack">
-            <div class="left">
-              <img src="/images/icons/nginx.svg">
-              <div>
-                <span class="stack-name">Nginx</span>
-                <span class="stack-desc">Version 1.27.4</span>
+            <a target="_blank" href="https://nginx.org/">
+              <div class="left">
+                <div class="image-container">
+                  <img src="/images/icons/nginx.svg">
+                </div>
+                <div>
+                  <span class="stack-name">Nginx</span>
+                  <span class="stack-desc">Version 1.27.4</span>
+                </div>
               </div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="https://nginx.org/"><img src="/images/icons/new-tab.svg"></a>
-            </div>
+              <div class="right">
+                <img src="/images/icons/open-in-new-window.svg">
+              </div>
+            </a>
           </div>
 
 
           <div class="stack">
-            <div class="left">
-              <img src="/images/icons/alpinedotjs.svg">
-              <div>
-                <span class="stack-name">Alpine.JS</span>
+            <a target="_blank" href="https://alpinejs.dev/">
+              <div class="left">
+                <div class="image-container">
+                  <img src="/images/icons/alpinedotjs.svg">
+                </div>
+                <div>
+                  <span class="stack-name">Alpine.JS</span>
+                </div>
               </div>
-            </div>
-            <div class="right">
-              <a target="_blank" href="https://alpinejs.dev/"><img src="/images/icons/new-tab.svg"></a>
-            </div>
+              <div class="right">
+                <img src="/images/icons/open-in-new-window.svg">
+              </div>
+            </a>
           </div>
-
         </div>
-        
-        <div class="technologies">
-          
-        </div>
-        
       </div>
-      </body>
-    <script>
-      function updateStatus() {
-        const onlineStatus = document.getElementById("online-status");
-        const offlineStatus = document.getElementById("offline-status");
-        const schoolStatus = document.getElementById("school-status");
+      <span class="technologies-name">Additional technologies</span>
+      <div class="technologies">
 
-        const now = new Date();
-        const hours = now.getUTCHours();
-        const day = now.getUTCDay();
+      </div>
 
-        onlineStatus.style.display = "none";
-        offlineStatus.style.display = "none";
-        schoolStatus.style.display = "none";
+    </div>
+  </body>
+  <script>
+    function updateStatus() {
+      const onlineStatus = document.getElementById("online-status");
+      const offlineStatus = document.getElementById("offline-status");
+      const schoolStatus = document.getElementById("school-status");
 
-        if (day === 0 || day === 6) {
-          if (hours >= 10 && hours < 24) {
-            onlineStatus.style.display = "block";
-          } else {
-            offlineStatus.style.display = "block";
-          }
+      const now = new Date();
+      const hours = now.getUTCHours();
+      const day = now.getUTCDay();
+
+      onlineStatus.style.display = "none";
+      offlineStatus.style.display = "none";
+      schoolStatus.style.display = "none";
+
+      if (day === 0 || day === 6) {
+        if (hours >= 10 && hours < 24) {
+          onlineStatus.style.display = "block";
         } else {
-          if (hours >= 7 && hours < 16) {
-            schoolStatus.style.display = "block";
-          } else if (hours >= 16 && hours < 24) {
-            onlineStatus.style.display = "block";
-          } else {
-            offlineStatus.style.display = "block";
-          }
+          offlineStatus.style.display = "block";
+        }
+      } else {
+        if (hours >= 7 && hours < 16) {
+          schoolStatus.style.display = "block";
+        } else if (hours >= 16 && hours < 24) {
+          onlineStatus.style.display = "block";
+        } else {
+          offlineStatus.style.display = "block";
         }
       }
+    }
 
-      updateStatus();
-      setInterval(updateStatus, 60000);
-    </script>
-    <script>
-      function updateTimezoneTooltip() {
-        const userOffset = new Date().getTimezoneOffset() / -60;
-        const timezoneTooltip = document.getElementById("timezone-tooltip");
+    updateStatus();
+    setInterval(updateStatus, 60000);
+  </script>
+  <script>
+    function updateTimezoneTooltip() {
+      const userOffset = new Date().getTimezoneOffset() / -60;
+      const timezoneTooltip = document.getElementById("timezone-tooltip");
 
-        if (userOffset === 0) {
-          timezoneTooltip.textContent = "Same as you";
-        } else if (userOffset > 0) {
-          timezoneTooltip.textContent = `${userOffset} hours behind`;
-        } else {
-          timezoneTooltip.textContent = `${Math.abs(userOffset)} hours ahead`;
-        }
+      if (userOffset === 0) {
+        timezoneTooltip.textContent = "Same as you";
+      } else if (userOffset > 0) {
+        timezoneTooltip.textContent = `${userOffset} hours behind`;
+      } else {
+        timezoneTooltip.textContent = `${Math.abs(userOffset)} hours ahead`;
       }
+    }
 
-      updateTimezoneTooltip();
-    </script>
-    <script>
-      console.clear()
-      console.log("%cMeow! (˃ᆺ˂)", "color: #20b659; font-size: 16px;");
-    </script>
-    </html>
+    updateTimezoneTooltip();
+  </script>
+  <script>
+    console.clear()
+    console.log("%cMeow! (˃ᆺ˂)", "color: #20b659; font-size: 16px;");
+  </script>
+</html>
