@@ -1,0 +1,182 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+      :root{
+        --geist: "Geist", serif;
+      }
+      .crt::before {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 2;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+      }
+
+      @keyframes flicker {
+        0% {
+          opacity: 0.27861;
+        }
+        5% {
+          opacity: 0.34769;
+        }
+        10% {
+          opacity: 0.23604;
+        }
+        15% {
+          opacity: 0.10626;
+        }
+        20% {
+          opacity: 0.18128;
+        }
+        25% {
+          opacity: 0.10626;
+        }
+        30% {
+          opacity: 0.18128;
+        }
+        35% {
+          opacity: 0.23604;
+        }
+      }
+
+      .crt::after {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(18, 16, 16, 0.1);
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+        animation: flicker 0.15s infinite;
+      }
+      .outer-container{
+        width:100%;
+      }
+
+      .inner-container{
+        border:2px dotted #cdcdcd;
+        padding:10px;
+        margin:auto;
+        max-width:700px;
+        border-radius:20px;
+      }
+      nav{
+        display:flex;
+        width:100%;
+      }
+      nav ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        margin:auto;
+        display:inline-flex;
+        gap:10px;
+      }
+      nav li {
+        float: left;
+      }
+      .general-about{
+        border:2px dotted #cdcdcd;
+        border-radius:10px;
+        padding:10px;
+      }
+      .general-about .profile-picture img{
+        width:160px;
+        border:2px dotted #cdcdcd;
+        border-radius:50%;
+      }
+      .general-about .tags{
+        background-color:#ebe6e6;
+        display:inline-flex;
+      }
+      .general-about .tag{
+        display:inline-flex;
+        align-items:center;
+        font-family:var(--geist);
+        gap:2px;
+        padding:2px 4px;
+        border-radius:4px;
+        background-color:#ebe6e6;
+      }
+      .general-about .tag img{
+        width:1.25rem;
+      }
+    </style>
+  </head>
+  <body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0">
+    <div class="crt"></div>
+    <div class="outer-container">
+      <header>
+        <img src="/placeholder">
+        <nav>
+          <ul>
+            <li>
+              <a href="#projects">Projects</a>
+            </li>
+            <li>
+              <a href="#tools">Tools</a>
+            </li>
+            <li>
+              <a href="#photos">Photography</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="inner-container">
+        <section class="main-content">
+          <article class="general-about">
+            <div class="name">
+              <span class="username">Catci</span>
+              <span class="pronounced">Kat-ki</span>
+            </div>
+            <div class="profile-picture">
+              <img src="/images/icons/pfp_placeholder.png">
+            </div>
+            <div class="about">
+              <div class="textabout">
+                I'm Catci
+              </div>
+              <div class="tags">
+                <div class="tag">
+                  <img src="/images/icons/pin.svg">
+                  <span>Scotland</span>
+                </div>
+                <div class="tag">
+                  <img src="/images/icons/clock.svg">
+                  <span>UTC+0</span>
+                </div>
+                <div class="tag age">
+                  <img src="/images/icons/calendar.svg">16y/o
+                </div>
+
+                <div class="tag browser">
+                  <img src="/images/icons/firefox.svg">Firefox
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <aside>
+        <img src="/placeholder">
+      </aside>
+    </div>
+  </body>
+</html>
