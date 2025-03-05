@@ -296,14 +296,17 @@
       .posters ul li img{
         width:100%;
       }
-      @media screen and (max-width: 1200px) {
+      footer{
+        width:100%;
+        text-align: center;
+      }
+      @media screen and (max-width: 1400px) {
         .side-mascot img{
           display:none;
         }
         .inner-container{
           margin:0 !important;
         }
-
       }
       @media screen and (max-width: 840px){
         .inner-container .main-content{
@@ -312,6 +315,32 @@
         }
         .general-about, .general-socials{
           max-width:100%;
+        }
+        .general-projects .project,
+        .general-projects .project .project-banner img{
+          max-width:100%;
+        }
+        .posters{
+          display: none;
+        }
+        
+      }
+      @media screen and (max-width: 700px){
+        .sticker-strip{
+          display: none;
+        }
+        .about-and-socials{
+          border-radius:10px;
+          border: 2px dotted #cdcdcd;
+        }
+        .general-about{
+          border:none;
+        }
+        .general-socials{
+          border:none;
+        }
+        .general-socials .connect{
+          display:none;
         }
       }
     </style>
@@ -323,7 +352,7 @@
     <div class="crt"></div>
     <div class="outer-container">
       <header>
-        <img src="/images/placeholder.png">
+        <img src="https://catci.net/images/placeholder.png">
         <nav>
           <ul>
             <li>
@@ -345,72 +374,73 @@
         <div class="inner-container">
           <section class="main-content">
             <aside class="me">
-              <article class="general-about">
-                <div class="name">
-                  <ul>
-                    <li class="username">Catci</li>
-                    <li class="pronounce">Kat-ki</li>
-                  </ul>
-                </div>
-                <div class="center">
-                  <div class="profile-picture">
-                    <img src="https://catci.net/images/icons/pfp_placeholder.png">
+              <section class="about-and-socials">
+                <article class="general-about">
+                  <div class="name">
+                    <ul>
+                      <li class="username">Catci</li>
+                      <li class="pronounce">Kat-ki</li>
+                    </ul>
                   </div>
-                  <div class="about">
-                    <div class="textabout">
-                      I'm Catci <span>a Full Stack Develouper</span>, from scotland
+                  <div class="center">
+                    <div class="profile-picture">
+                      <img src="https://catci.net/images/icons/pfp_placeholder.png">
                     </div>
-
+                    <div class="about">
+                      <div class="textabout">
+                        I'm Catci <span>a Full Stack Develouper</span>, from scotland
+                      </div>
+  
+                    </div>
+  
                   </div>
-
-                </div>
-              </article>
-              <article class="general-socials">
-                <div class="connect">
-                  Connecting with me:
-                </div>
-                <div class="socials">
-                  <div class="social">
-                    <a href="mailto:a@catci.net">
-                      <img
-                           src="https://catci.net/images/icons/mailbox.svg"><span>a@catci.net</span>
-                    </a>
+                </article>
+                <article class="general-socials">
+                  <div class="connect">
+                    Connecting with me:
                   </div>
-                  <div class="social">
-                    <a href="https://x.com/_catci">
-                      <img
-                           src="https://catci.net/images/icons/twitter.svg"><span>@_catci</span>
-                    </a>
+                  <div class="socials">
+                    <div class="social">
+                      <a href="mailto:a@catci.net">
+                        <img
+                             src="https://catci.net/images/icons/mailbox.svg"><span>a@catci.net</span>
+                      </a>
+                    </div>
+                    <div class="social">
+                      <a href="https://x.com/_catci">
+                        <img
+                             src="https://catci.net/images/icons/twitter.svg"><span>@_catci</span>
+                      </a>
+                    </div>
+                    <div class="social">
+                      <a href="https://bsky.app/profile/catci.net">
+                        <img
+                             src="https://catci.net/images/icons/bluesky.svg"><span>@catci.net</span>
+                      </a>
+                    </div>
+                    <div class="social">
+                      <a href="https://github.com/cat-ci">
+                        <img
+                             src="https://catci.net/images/icons/github.svg"><span>@cat-ci</span>
+                      </a>
+                    </div>
+                    <div class="social">
+                      <a href="https://gitlab.com/catci">
+                        <img
+                             src="https://catci.net/images/icons/gitlab.svg"><span>@catci</span>
+                      </a>
+                    </div>
                   </div>
-                  <div class="social">
-                    <a href="https://bsky.app/profile/catci.net">
-                      <img
-                           src="https://catci.net/images/icons/bluesky.svg"><span>@catci.net</span>
-                    </a>
-                  </div>
-                  <div class="social">
-                    <a href="https://github.com/cat-ci">
-                      <img
-                           src="https://catci.net/images/icons/github.svg"><span>@cat-ci</span>
-                    </a>
-                  </div>
-                  <div class="social">
-                    <a href="https://gitlab.com/catci">
-                      <img
-                           src="https://catci.net/images/icons/gitlab.svg"><span>@catci</span>
-                    </a>
-                  </div>
-                </div>
-
-
-              </article>
+                </article>
+              </section>
+              
             </aside>
             <section class="main-page">
               <section class="sticker-strip">
                 <ul>
-                  <li><img src="/images/placeholder.png"></li>
-                  <li><img src="/images/placeholder.png"></li>
-                  <li><img src="/images/placeholder.png"></li>
+                  <li><img src="https://catci.net/images/placeholder.png"></li>
+                  <li><img src="https://catci.net/images/placeholder.png"></li>
+                  <li><img src="https://catci.net/images/placeholder.png"></li>
                 </ul>
               </section>
               <article class="general-projects">
@@ -419,7 +449,7 @@
                 </div>
                 <article class="project">
                   <div class="project-banner">
-                    <img src="/images/placeholder.png">
+                    <img src="https://catci.net/images/placeholder.png">
                   </div>
                   <div class="description">
                     <div class="general-info">
@@ -428,11 +458,11 @@
                     </div>
                     <div class="technologies">
                       <div class="technology javascript">
-                        <img src="/images/javascript.svg">
+                        <img src="https://catci.net/images/javascript.svg">
                         <span>JavaScript</span>
                       </div>
                       <div class="technology codemirror">
-                        <img src="/images/Baboon.svg">
+                        <img src="https://catci.net/images/Baboon.svg">
                         <span>CodeMirror</span>
                       </div>
                     </div>
@@ -440,13 +470,13 @@
                       <div class="run-options">
                         <button>
                           <a href="https://sablescript.catci.net" class="run">
-                            <img src="/images/icons/play.svg">
+                            <img src="https://catci.net/images/icons/play.svg">
                             <span>Live Demo</span>
                           </a>
                         </button>
                         <button>
                           <a href="https://github.com/cat-ci/Sablescript" class="source">
-                            <img src="/images/icons/github.svg">
+                            <img src="https://catci.net/images/icons/github.svg">
                             <span>View Source</span>
                           </a>
                         </button>
@@ -458,25 +488,24 @@
             </section>
             <aside class="posters">
               <ul>
-                <li><img src="/images/placeholder.png"></li>
+                <li><img src="https://catci.net/images/placeholder.png"></li>
               </ul>
               <ul>
-                <li><img src="/images/placeholder.png"></li>
+                <li><img src="https://catci.net/images/placeholder.png"></li>
               </ul>
               <ul>
-                <li><img src="/images/placeholder.png"></li>
+                <li><img src="https://catci.net/images/placeholder.png"></li>
               </ul>
             </aside>
           </section>
         </div>
         <aside class="side-mascot">
-          <img src="/images/placeholder.png">
+          <img src="https://catci.net/images/placeholder.png">
         </aside>
       </div>
-
-
-
+      <footer>
+        <span>&copy;2025</span>
+      </footer>
     </div>
   </body>
-
 </html>
