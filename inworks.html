@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <title>/ᐠ > ˕ <マ Catci.net.ᐟ</title> -->
+    <title>Catci.net ฅ(ᵔ꒳ ᵔマ.ᐟ</title>
+    <style>
+        @import"https://use.typekit.net/rdv7hff.css";
+        @import '/styles/fonts.css';
+        @import '/styles/music.css';
+
+        :root {
+            --outline: 2px solid #232323;
+        }
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: inherit;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1d1d1d;
+            outline: #222b16 solid 1.5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            outline-width: 2px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif, sans-serif;
+            letter-spacing: -.50px;
+            background-color: black;
+        }
+
+        .nothing {
+            font-family: 'nothing', sans-serif;
+        }
+
+        .MS-UI-Gothic {
+            font-family: 'MS-UI-Gothic', sans-serif;
+        }
+
+        .Jetbrains-Mono {
+            font-family: 'Jetbrains Mono', sans-serif;
+        }
+
+        .neue-haas-grotesk-display {
+            font-family: 'neue-haas-grotesk-display', sans-serif;
+        }
+
+        .pixel {
+            font-family: 'Pixel', sans-serif;
+        }
+
+        .raphigrafie {
+            font-family: 'raphigrafie', sans-serif;
+        }
+
+        .lineal {
+            font-family: 'lineal', sans-serif;
+        }
+
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .invert {
+            filter: invert(1);
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .margin-zero {
+            margin: 0;
+        }
+
+        .ten-gap {
+            gap: 10px;
+        }
+
+        .five-gap {
+            gap: 5px;
+        }
+
+        .five-gap {
+            gap: 5px;
+        }
+
+        .no-style-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .space-between {
+            justify-content: space-between;
+        }
+
+        .dashed-line {
+            width: 100%;
+            height: 10px;
+            background: repeating-linear-gradient(to right,
+                    transparent 0,
+                    transparent 3px,
+                    rgb(255, 255, 255) 3px,
+                    rgb(255, 255, 255) 6px);
+        }
+
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .accent {
+            color: #8ca457 !important;
+        }
+
+        .text {
+            color: white;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            display: block;
+            outline: var(--outline);
+            border-radius: 2px;
+        }
+
+        .nav-title {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar-left {
+            padding: 10px 5px 10px 10px;
+            max-width: 200px;
+            min-width: 145px;
+        }
+
+        main {
+            padding: 10px 10px 10px 5px;
+        }
+
+        .online-offline {
+            text-align: center;
+            font-size: 25px;
+        }
+
+        .online-offline #steamStatus {
+            font-family: "lineal", sans-serif;
+        }
+
+        .online {
+            color: #8ca457;
+        }
+
+        .away {
+            color: #ffd700;
+        }
+
+        .offline {
+            color: #898989;
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+        }
+
+        .about-me {
+            max-width: 600px;
+        }
+
+        .bold {
+            font-weight: 700;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .no-resize {
+            resize: none;
+        }
+
+        .default-textarea {
+            width: 100%;
+            height: 40px;
+            background-color: inherit;
+            color: inherit;
+            border: none;
+            outline: var(--outline);
+            border-radius: inherit;
+        }
+
+        .hotlink-button div {
+            background-color: inherit;
+            border-radius: inherit;
+        }
+
+        .hotlink-button div button {
+            background-color: inherit;
+            color: inherit;
+            border: none;
+            border-left: var(--outline);
+            border-bottom: var(--outline);
+            margin-right: -3px;
+            cursor: pointer;
+            height: 20px;
+            border-radius: inherit;
+            margin-bottom: -20px;
+            z-index: 999;
+            transition: 0.4s;
+        }
+
+        .hotlink-button div button:hover {
+            filter: brightness(1.6);
+        }
+
+        .white-emoji {
+            color: transparent;
+            text-shadow: -1px -1px white;
+        }
+
+        .image-emoji {
+            width: 1rem;
+            height: 1rem;
+            margin: 0;
+        }
+
+        .background {
+            background-size: cover;
+            pointer-events: none;
+            image-rendering: pixelated;
+            width: 100%;
+            position: absolute;
+            margin-top: -115px;
+        }
+
+        #ground {
+            z-index: -901;
+            filter: brightness(0.2);
+        }
+
+        #decor {
+            z-index: -902;
+            filter: brightness(0.15);
+        }
+
+        #tent {
+            z-index: -903;
+            filter: brightness(0.15);
+        }
+
+        #campfire {
+            z-index: -904;
+            filter: brightness(0.15);
+        }
+
+        #front-trees {
+            z-index: -905;
+            filter: brightness(0.2);
+        }
+
+        #middle-trees {
+            z-index: -906;
+            filter: brightness(0.065);
+        }
+
+        #back-trees {
+            z-index: -907;
+            filter: brightness(0.05);
+        }
+
+        #mountains {
+            z-index: -908;
+            filter: brightness(0.045);
+        }
+
+        #back-mountains {
+            z-index: -909;
+            filter: brightness(0.03);
+        }
+
+        #clouds {
+            z-index: -910;
+            opacity: 0.2;
+        }
+
+        #moon {
+            z-index: -911;
+            filter: brightness(0.8);
+        }
+
+        #stars {
+            z-index: -912;
+            filter: brightness(0.8);
+        }
+
+        .random-brightness {
+            transition: filter 1s ease;
+        }
+
+        .dont-display {
+            display: none;
+        }
+
+        .shade::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -900;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .crt::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background:
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 2;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+            animation: scanlines 1s linear infinite;
+        }
+
+        @keyframes scanlines {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+
+            100% {
+                background-position: 0 100%, 0 0;
+            }
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .main-page-wrapper {
+            display: flex;
+            max-width: 1700px;
+            margin: auto;
+            flex-direction: row;
+            height: 100%;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        main .flex-row.ten-gap {
+            display: flex;
+            gap: 10px;
+        }
+
+        main .flex-row.ten-gap .item {
+            flex: 1;
+            display: flex;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            margin-left: -200px;
+        }
+        .width-200{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="effects">
+        <div class="filters">
+            <div class="crt"></div>
+            <div class="shade"></div>
+        </div>
+        <div class="background-items">
+            <img src="/images/backgrounds/ground.png" id="ground" alt="" class="background">
+            <img src="/images/backgrounds/decor.png" id="decor" alt="" class="background">
+            <img src="/images/backgrounds/tent.png" id="tent" alt="" class="background">
+            <img src="/images/backgrounds/campfire.png" id="campfire" alt="" class="background">
+            <img src="/images/backgrounds/tree.png" id="front-trees" alt="" class="background">
+            <img src="/images/backgrounds/middle-tree.png" id="middle-trees" alt="" class="background">
+            <img src="/images/backgrounds/back-tree.png" id="back-trees" alt="" class="background">
+            <img src="/images/backgrounds/mountains.png" id="mountains" alt="" class="background">
+            <img src="/images/backgrounds/back-mountains.png" id="back-mountains" alt="" class="background">
+            <img src="/images/backgrounds/clouds.png" id="clouds" alt="" class="background">
+            <img src="/images/backgrounds/moon.png" id="moon" alt="" class="background">
+            <img src="/images/backgrounds/stars.png" id="stars" alt="" class="background random-brightness">
+        </div>
+        <div class="sounds dont-display">
+            <audio id="ambience" loop>
+                <source src="https://files.catbox.moe/obhie1.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <audio controls loop>
+                <source src="https://files.catbox.moe/m0pzye.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <audio controls>
+                <source src="https://files.catbox.moe/ywn4xl.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <!-- <marquee behavior="scroll" direction="left" scrollamount="10" style="color: white; font-size: 20px;">
+        ⠇⠕⠗⠑⠍⠀⠊⠏⠎⠥⠍⠀⠙⠕⠇⠕⠗⠀⠎⠊⠞⠀⠁⠍⠑⠞⠂⠀⠉⠕⠝⠎⠑⠉⠞⠑⠞⠥⠗⠀⠁⠙⠊⠏⠊⠎⠉⠊⠝⠛⠀⠑⠇⠊⠞⠂⠀⠎⠑⠙⠀⠙⠕⠀⠑⠊⠥⠎⠍⠕⠙⠀⠞⠑⠍⠏⠕⠗⠀⠊⠝⠉⠊⠙⠊⠙⠥⠝⠞⠀⠥⠞⠀⠇⠁⠃⠕⠗⠑⠀⠑⠞⠀⠙⠕⠇⠕⠗⠑⠀⠍⠁⠛⠝⠁⠀⠁⠇⠊⠟⠥⠁⠲⠀⠥⠞⠀⠑⠝⠊⠍⠀⠁⠙⠀⠍⠊⠝⠊⠍⠀⠧⠑⠝⠊⠁⠍⠂⠀⠟⠥⠊⠎⠀⠝⠕⠎⠞⠗⠥⠙⠀⠑⠭⠑⠗⠉⠊⠞⠁⠞⠊⠕⠝⠀⠥⠇⠇⠁⠍⠉⠕⠀⠇⠁⠃⠕⠗⠊⠎⠀⠝⠊⠎⠊⠀⠥⠞⠀⠁⠇⠊⠟⠥⠊⠏⠀⠑⠭⠀⠑⠁⠀⠉⠕⠍⠍⠕⠙⠕⠀⠉⠕⠝⠎⠑⠟⠥⠁⠞⠲⠀⠙⠥⠊⠎⠀⠁⠥⠞⠑⠀⠊⠗⠥⠗⠑⠀⠙⠕⠇⠕⠗⠀⠊⠝⠀⠗⠑⠏⠗⠑⠓⠑⠝⠙⠑⠗⠊⠞⠀⠊⠝⠀⠧⠕⠇⠥⠏⠞⠁⠞⠑⠀⠧⠑⠇⠊⠞⠀⠑⠎⠎⠑⠀⠉⠊⠇⠇⠥⠍⠀⠙⠕⠇⠕⠗⠑⠀⠑⠥⠀⠋⠥⠛⠊⠁⠞⠀⠝⠥⠇⠇⠁⠀⠏⠁⠗⠊⠁⠞⠥⠗⠲⠀⠑⠭⠉⠑⠏⠞⠑⠥⠗⠀⠎⠊⠝⠞⠀⠕⠉⠉⠁⠑⠉⠁⠞⠀⠉⠥⠏⠊⠙⠁⠞⠁⠞⠀⠝⠕⠝⠀⠏⠗⠕⠊⠙⠑⠝⠞⠂⠀⠎⠥⠝⠞⠀⠊⠝⠀⠉⠥⠇⠏⠁⠀⠟⠥⠊⠀⠕⠋⠋⠊⠉⠊⠁⠀⠙⠑⠎⠑⠗⠥⠝⠞⠀⠍⠕⠇⠇⠊⠞⠀⠁⠝⠊⠍⠀⠊⠙⠀⠑⠎⠞⠀⠇⠁⠃⠕⠗⠥⠍⠲
+    </marquee> -->
+    <header>
+    </header>
+    <div class="main-page-wrapper flex-row">
+        <!-- <aside class="sidebar-left">
+            <ul class="no-style-list flex-col ten-gap">
+                <li>
+                    <nav id="main-nav" class="card">
+                        <ul class="no-style-list flex-col five-gap">
+                            <li>
+                                <h3 class="flex-row align-center nav-title space-between"><span
+                                        class="neue-haas-grotesk-display">Links</span> <span>(•˕ •マ.ᐟ</span></h3>
+                            </li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./index.html" class="symbol MS-UI-Gothic">Home</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./about.html" class="symbol MS-UI-Gothic">About</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">OC Gallery</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Photo album</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Guestbook</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Archives</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Insporation</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Blog</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Neocities</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Itch.io</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Bluesky</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Twitter</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Github</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="mailto:a@catci.net" class="symbol MS-UI-Gothic">E-mail</a></li>
+                        </ul>
+                    </nav>
+                </li>
+                <li>
+                    <div class="card online-offline flex-row">
+                        <span class="lineal">IM:</span>
+                        <span id="steamStatus">Loading...</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="card music-playing">
+                        <div class="status-container">
+                            <div id="orb" class="orb"></div>
+                            <div id="status" class="music-status">Loading...</div>
+                        </div>
+                        <div class="row">
+                            <img id="album-art" class="album-art" src="" alt="Album Art" />
+                            <marquee id="song-info" class="song-info">Loading...</marquee>
+                        </div>
+                        <div id="time-info" class="time-info"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="card hotlink-button center-text">
+                        <img src="/images/buttons/button.gif">
+                        <div class="space-between flex-row">
+                            <div class="spacer"></div>
+                            <button id="copyButton">Copy</button>
+                        </div>
+                        <textarea id="hotlinkTextarea"
+                            class="Jetbrains-Mono no-resize default-textarea"><a href="https://catci.net"><img src="https://catci.net/images/buttons/button.gif"></a></textarea>
+                        <div class="MS-UI-Gothic">
+                            <span class="neue-haas-grotesk-display bold">/ᐠ •⩊•マ</span> Hotlink my button!
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </aside> -->
+        <main class="flex-col ten-gap">
+            <div class="flex-row ten-gap">
+                <div class="flex-col ten-gap width-200">
+                    <nav id="main-nav" class="card">
+                        <ul class="no-style-list flex-col">
+                            <li>
+                                <h3 class="flex-row align-center nav-title space-between"><span
+                                        class="neue-haas-grotesk-display">Links</span> <span>(•˕ •マ.ᐟ</span></h3>
+                            </li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./index.html" class="symbol MS-UI-Gothic">Home</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./about.html" class="symbol MS-UI-Gothic">About</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">OC Gallery</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Photo album</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Guestbook</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Archives</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Insporation</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Blog</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Neocities</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Itch.io</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Bluesky</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Twitter</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="./inworks.html" class="symbol MS-UI-Gothic">Github</a></li>
+                            <li class="flex-row align-center"><span class="symbol MS-UI-Gothic">☆</span><a
+                                    href="mailto:a@catci.net" class="symbol MS-UI-Gothic">E-mail</a></li>
+                        </ul>
+                    </nav>
+                    <div class="card online-offline flex-row">
+                        <span class="lineal">IM:</span>
+                        <span id="steamStatus">Loading...</span>
+                    </div>
+                </div>
+
+                <article class="card item about-me flex-col">
+                    <h2 class="lineal margin-zero">Welcome to catci.net! - ˕ •マ</h2>
+                    <div class="flex-row five-gap">
+
+                        <div class="flex-col ten-gap">
+                            <p class="margin-zero">
+                                This is my website inspired by Neocities websites and my other sites I've made
+                                in
+                                the past. I'm still working on it so expect some changes꘎
+                            </p>
+                            <p class="margin-zero">
+                                you can read more about me <a href="#">here</a>꘎
+                            </p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card item">
+                    <h3>Projects</h3>
+                </article>
+            </div>
+            <div class="flex-row ten-gap">
+                <div class="card item">
+                    test
+                </div>
+                <div class="flex-row ten-gap">
+                    <div class="flex-col ten-gap">
+                        <div class="card item">
+                            test and if there is no space this has failed
+                        </div>
+                        <div class="card item">
+                            test
+                        </div>
+                    </div>
+                    <div class="card item">
+                        test
+                    </div>
+                </div>
+            </div>
+
+            <article>
+
+            </article>
+            <footer class="flex-col">
+                <span><a href=mailto:a@catci.net class="accent">a@catci.net</a></span>
+                <span class="text">&copy; 2025</span>
+            </footer>
+
+        </main>
+    </div>
+    <script src="/scripts/ambience.js"></script>
+
+    <script src="/scripts/lastfm.js"></script>
+    <script src="/scripts/status.js"></script>
+    <script src="/scripts/copy.js"></script>
+</body>
+
+</html>

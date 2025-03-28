@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <name>Catci.net</name>
+    <url>http://catci.net</url>
+    <description>This is a description of your site.</description>
+    <updates>
+        <!-- Add your updates here -->
+    </updates>
+</site>

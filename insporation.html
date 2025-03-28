@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspiration Gallery</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: #000;
+        color: #ffffff;
+      }
+
+      h1 {
+        color: #ffffff;
+        font-weight: 300;
+        margin-bottom: 2rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .card {
+        background: #000000;
+        border: 1px solid #474747;
+        border-radius: 4px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+        cursor: pointer;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        border-color: #666;
+      }
+
+      .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      .card a{
+        color: #ffffff;
+      }
+
+      .card-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .credit {
+        color: #999;
+        font-size: 0.9rem;
+      }
+
+      .title {
+        color: #ffffff;
+        font-weight: 500;
+      }
+
+      .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .popup.active {
+        display: flex;
+      }
+
+      .popup-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        background: #000000;
+        border: 1px solid #474747;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .popup-content img {
+        max-width: 100%;
+        max-height: calc(90vh - 80px);
+        object-fit: contain;
+        display: block;
+      }
+
+      .popup-info {
+        padding: 1rem;
+        border-top: 1px solid #474747;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.5);
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        z-index: 1001;
+      }
+
+      .close-btn:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Inspiration Gallery</h1>
+    <div class="gallery">
+        <div class="card">
+            <img src="/inspo/about.png" alt="about" />
+            <div class="card-info">
+                <span class="credit">by: <a href="https://dimden.dev/">Dimden</a></span>
+                <span class="title">About</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/inspo/lastsong.png" alt="last played" />
+            <div class="card-info">
+                <span class="credit">by: <a href="https://dimden.dev/">Dimden</a></span>
+                <span class="title">Last played</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="/inspo/nav.png" alt="nav" />
+            <div class="card-info">
+                <span class="credit">by: <a href="https://dimden.dev/">Dimden</a></span>
+                <span class="title">Navigation</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/inspo/system-stats-and-chat.png" alt="chat" />
+            <div class="card-info">
+                <span class="credit">by: <a href="https://dimden.dev/">Dimden</a></span>
+                <span class="title">System stats and chat</span>
+            </div>
+        </div>
+      <div class="card">
+        <img src="/inspo/weather.jpeg" alt="weather" />
+        <div class="card-info">
+          <span class="credit">by: <a href="https://www.reddit.com/user/SkyttleXD/">SkyttleXD?</a></span>
+          <span class="title">Weather widget</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/inspo/morecommandlines.png" alt="desktop" />
+        <div class="card-info">
+          <span class="credit">by: <a href="https://www.reddit.com/user/GoldStarAlexis/">GoldStarAlexis</a></span>
+          <span class="title">Desktop</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/inspo/commandline.png" alt="desktop" />
+        <div class="card-info">
+          <span class="credit">by: <a href="https://www.reddit.com/user/rBeliy/">rBeliy</a></span>
+          <span class="title">A. desktop</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/inspo/desktop2.png" alt="desktop" />
+        <div class="card-info">
+          <span class="credit">by: <a href="https://www.reddit.com/user/Elegant_Albatross945/">Elegant_Albatross945</a></span>
+          <span class="title">A.A. Desktop</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="/inspo/cards.webp" alt="cards" />
+        <div class="card-info">
+          <span class="credit">by: <a href="https://www.reddit.com/user/Adept-Craft-4370/">Adept-Craft-4370</a></span>
+          <span class="title">Cards</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/inspo/desktop.webp" alt="desktop" />
+        <div class="card-info">
+          <span class="credit">by: <a href="https://www.reddit.com/user/ItZFir3St0rm/">ItsFireStorm</a></span>
+          <span class="title">A.A.A. Desktop</span>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/inspo/desktop3.png" alt="desktop" />
+        <div class="card-info">
+          <span class="credit">by: <a href="https://www.reddit.com/user/faleing/">faleing</a></span>
+          <span class="title">A.A.A.A. Desktop</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="popup">
+      <div class="popup-content">
+        <button class="close-btn">×</button>
+        <img src="" alt="Expanded image" />
+        <div class="popup-info">
+          <span class="credit">by: N/A</span>
+          <span class="title">Title</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const cards = document.querySelectorAll(".card");
+      const popup = document.querySelector(".popup");
+      const popupImg = popup.querySelector("img");
+      const popupCredit = popup.querySelector(".popup-info .credit");
+      const popupTitle = popup.querySelector(".popup-info .title");
+      const closeBtn = popup.querySelector(".close-btn");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const imgSrc = card.querySelector("img").src;
+          const credit = card.querySelector(".credit").textContent;
+          const title = card.querySelector(".title").textContent;
+          
+          popupImg.src = imgSrc;
+          popupCredit.textContent = credit;
+          popupTitle.textContent = title;
+          popup.classList.add("active");
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        popup.classList.remove("active");
+      });
+
+      popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+          popup.classList.remove("active");
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && popup.classList.contains("active")) {
+          popup.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

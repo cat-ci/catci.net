@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Last Played Song</title>
+    <style>
+    .status-container {
+      display: flex;
+      align-items: center;
+    }
+    .status {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .orb {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: gray; /* Default color */
+    }
+    .orb.blink {
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% {
+        background-color: green;
+      }
+      100% {
+        background-color: transparent;
+      }
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .record {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #161616 60%, #000000 100%);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: spin 3s linear infinite;
+    }
+    .record.paused {
+      animation: none;
+    }
+    .record::before {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, transparent 70%, rgba(0, 0, 0, 0.1) 100%);
+      z-index: 1;
+    }
+    .record::after {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: repeating-radial-gradient(
+        circle,
+        transparent 0%,
+        transparent 2%,
+        rgba(0, 0, 0, 0.2) 3%,
+        transparent 4%
+      );
+      z-index: 0;
+    }
+    .album-art {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      z-index: 2;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    .song-info {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .time-info {
+      font-size: 1em;
+      color: #555;
+    }
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="status-container">
+        <div id="orb" class="orb"></div>
+      <div id="status" class="status">Loading...</div>
+    </div>
+    <div class="row">
+      <div id="record" class="record">
+        <img
+          id="album-art"
+          class="album-art"
+          src=""
+          alt="Album Art"
+        />
+      </div>
+      <div id="song-info" class="song-info">Loading...</div>
+    </div>
+    <div id="time-info" class="time-info"></div>
+  </div>
+
+  <script>
+    const apiUrl =
+      "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=cat-ci&api_key=3b559041ed6faf7a5faf30a491b56026&format=json";
+
+    async function fetchSongData() {
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        const recentTrack = data.recenttracks.track[0];
+
+        const songName = recentTrack.name;
+        const artistName = recentTrack.artist["#text"];
+        const albumArt = recentTrack.image[2]["#text"]; 
+        const nowPlaying = recentTrack["@attr"]?.nowplaying === "true";
+        const playedTime = nowPlaying
+          ? "Now Playing"
+          : `Last Played`;
+
+        let timeInfo = "";
+        if (!nowPlaying && recentTrack.date) {
+          const playedTimestamp = parseInt(recentTrack.date.uts) * 1000;
+          const timeElapsed = Date.now() - playedTimestamp;
+          const hours = Math.floor(timeElapsed / (1000 * 60 * 60));
+          const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+          timeInfo = hours > 0
+            ? `Played ${hours} hours ago`
+            : `Played ${minutes} minutes ago`;
+        } else {
+          timeInfo = "Currently playing";
+        }
+
+        document.getElementById("status").textContent = playedTime;
+        document.getElementById("album-art").src = albumArt || "placeholder.jpg";
+        document.getElementById("song-info").textContent = `${songName} by ${artistName}`;
+        document.getElementById("time-info").textContent = timeInfo;
+
+        const orb = document.getElementById("orb");
+        if (nowPlaying) {
+          orb.classList.add("blink");
+        } else {
+          orb.classList.remove("blink");
+          orb.style.backgroundColor = "gray";
+        }
+
+        const record = document.getElementById("record");
+        if (nowPlaying) {
+          record.classList.remove("paused");
+        } else {
+          record.classList.add("paused");
+        }
+      } catch (error) {
+        console.error("Error fetching song data:", error);
+        document.getElementById("status").textContent = "Error loading song data.";
+        document.getElementById("song-info").textContent = "";
+        document.getElementById("time-info").textContent = "";
+        document.getElementById("orb").style.backgroundColor = "gray";
+        document.getElementById("record").classList.add("paused");
+      }
+    }
+
+    fetchSongData();
+    setInterval(fetchSongData, 5000);
+  </script>
+</body>
+</html>
