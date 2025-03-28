@@ -1,0 +1,206 @@
+@import"https://use.typekit.net/rdv7hff.css";
+@import"./fonts.css";
+@import"./variables.css";
+@import"./position.css";
+@import"./effects.css";
+
+body {
+    margin: 0;
+	font-family: "neue-haas-grotesk-display",Helvetica,Arial,sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+    background: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-color);
+    outline: var(--scrollbar-thumb-outline) solid var(--scrollbar-thumb-outline-width);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    outline-width: var(--scrollbar-thumb-outline-hover-width);
+}
+
+.skip-to-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--skip-to-content-bg);
+    color: var(--skip-to-content-color);
+    padding: var(--skip-to-content-padding);
+    z-index: 1000;
+    text-decoration: none;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.skip-to-content:focus {
+    transform: translateY(0);
+}
+
+.tooltip {
+    position: absolute;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-color);
+    padding: var(--tooltip-padding);
+    outline: 1px solid var(--tooltip-border);
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 1000;
+}
+
+.tooltip.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.no-list-style{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.horizontal-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--gap-small);
+    width: 80%;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content: space-between;
+}
+
+.intro .profile-pic img {
+    width: var(--profile-pic-size);
+    height: var(--profile-pic-size);
+}
+
+.intro .profile-pic .emoji {
+    font-size: var(--profile-pic-emoji-size);
+    margin: 5px 0 0 5px;
+    color: var(--profile-pic-emoji-color);
+    position: absolute;
+    z-index: 1000;
+}
+
+.intro .profile-pic .stroke {
+    color: transparent;
+    position: absolute;
+    z-index: 999;
+    -webkit-text-stroke: 10px var(--profile-pic-stroke-color);
+}
+
+
+
+.SevenSegment {
+    font-family: "SevenSegment";
+}
+
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-small);
+    padding: var(--gap-medium);
+    outline: 2px solid var(--card-outline);
+}
+.main-page {
+    margin: auto;
+    padding: var(--gap-medium);
+}
+
+.sidebar{
+    background-color: var(--folder-bg);
+    outline: 2px solid var(--folder-outline);
+    padding: var(--gap-medium);
+    border-radius: var(--border-radius-large);
+}
+
+.folder {
+    background-color: var(--folder-bg);
+    outline: 2px solid var(--folder-outline);
+    padding: var(--gap-medium);
+    border-radius: var(--border-radius-large);
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+.invert {
+    filter: invert(1);
+}
+.white{
+    color: white;
+}
+.title{
+    color: var(--link-color);
+    font-size:var(--font-size-large);
+    display: inline-flex;
+    align-items: center;
+    font-family: 'pixel';
+}
+
+.title h1 {
+    font-size: var(--font-size-large);
+    font-weight: inherit;
+    margin:0;
+}
+
+.title .spacer {
+    width: 18px;
+}
+.pixel-emoji-symbol {
+    font-family: 'emojifont';
+}
+.title .pixel-emoji-symbol{
+    color:white;
+    font-size: 2.25rem;
+    margin-right:5px;
+}
+.image-symbol {
+    width: var(--icon-size);
+}
+.noto-symbol{
+    font-family: "noto-emoji";
+}
+
+.special-symbol {
+    font-family: arial;
+}
+
+.emoji-symbol {
+    font-size: var(--font-size-small);
+    text-shadow: var(--emoji-symbol-shadow);
+    color: transparent;
+}
+.emoji {
+    font-family: 'emojifont';
+    image-rendering: pixelated;
+}
+
+.icon {
+    filter: invert(1);
+    width: var(--icon-size);
+    height: var(--icon-size);
+}

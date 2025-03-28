@@ -1,0 +1,59 @@
+.status-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-status {
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.orb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.orb.blinking {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        background-color: green;
+    }
+
+    50%,
+    100% {
+        background-color: transparent;
+    }
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom:5px;
+}
+
+.album-art {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.song-info {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.time-info {
+    font-size: .7rem;
+    color: #555;
+}

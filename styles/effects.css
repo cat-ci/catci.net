@@ -1,0 +1,44 @@
+.crt::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    z-index: 2;
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+    animation: scanlines 1s linear infinite;
+}
+
+@keyframes scanlines {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: 0 100%, 0 0;
+    }
+}
+.background {
+    z-index: -999;
+    background-size: cover;
+    pointer-events: none;
+    image-rendering: pixelated;
+    width: 100%;
+    margin-top: -10px;
+    position: absolute;
+    filter: var(--background-filter);
+}
+
+#sky {
+    opacity: 0.5;
+}
+
+#ground {
+    opacity: 0.2;
+}

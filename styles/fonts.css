@@ -1,0 +1,68 @@
+
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+        url('../fonts/JetBrainsMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('JetBrainsMono-Italic.woff2') format('woff2'),
+        url('JetBrainsMono-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+} */ 
+
+@font-face {
+    font-family: 'MS-UI-Gothic';
+    src: url('../fonts/MS-UIGothic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'emojifont';
+    src: url('../fonts/EmojiFont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sevensegment';
+    src: url('../fonts/seven-segment.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'nothing';
+    src: url('../fonts/nothing-font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'pixel';
+    src: url('../fonts/Pixel_NES.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'noto-emoji';
+    src: url('../fonts/NotoEmoji-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'raphigrafie';
+    src: url('../fonts/Raphigrafie-1VEZ.ttf') format('truetype');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'lineal';
+    src: url('../fonts/Lineal-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

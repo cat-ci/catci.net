@@ -1,0 +1,35 @@
+:root {
+    --background-color: #000;
+    --text-color: white;
+    --link-color: #8ca457;
+    --scrollbar-thumb-color: #1d1d1d;
+    --scrollbar-thumb-outline: #222b16;
+    --background-filter: invert(62%) sepia(13%) saturate(1214%) hue-rotate(37deg) brightness(96%) contrast(90%);
+    --skip-to-content-bg: #000;
+    --skip-to-content-color: #fff;
+    --tooltip-bg: rgba(0, 0, 0, 0.8);
+    --tooltip-border: #373737;
+    --tooltip-color: #fff;
+    --profile-pic-emoji-color: rgb(212, 72, 72);
+    --profile-pic-stroke-color: rgb(173, 37, 37);
+    --card-bg: rgba(0, 0, 0, 0.5);
+    --card-outline: #373737;
+    --folder-bg: rgba(0, 0, 0, 0.5);
+    --folder-outline: #373737;
+    --emoji-symbol-shadow: -1px -1px white;
+    --font-size-small: 0.7rem;
+    --font-size-medium: 1rem;
+    --font-size-large: 2rem;
+    --profile-pic-size: 140px;
+    --profile-pic-emoji-size: 40px;
+    --icon-size: 1rem;
+    --gap-small: 5px;
+    --gap-medium: 10px;
+    --border-radius-small: 10px;
+    --border-radius-large: 20px;
+    --scrollbar-width: 7px;
+    --scrollbar-thumb-outline-width: 1.5px;
+    --scrollbar-thumb-outline-hover-width: 2px;
+    --skip-to-content-padding: 10px 15px;
+    --tooltip-padding: 8px 12px;
+}
