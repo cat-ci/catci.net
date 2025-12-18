@@ -59,19 +59,163 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <meta name="darkreader-lock" content="">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .wireframed {
+            outline: 2px black solid;
+        }
+        #root .r-row{
+            display: flex;
+        }
+        header {
+            display: flex;
+        }
+
+        .crt-bevel {
+            clip-path: url(#curvePath);
+            background: rgba(0, 0, 0, 0.5);
+            width: 500px;
+            height: 375px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .crt {
+            clip-path: url(#crtPath);
+            background: white;
+            width: 90%;
+            height: 90%;
+        }
+    </style>
 </head>
+<!-- 
+ ░▒▓██████▓▒░ ░▒▓██████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓█▓▒░      ░▒▓███████▓▒░░▒▓████████▓▒░▒▓████████▓▒░ 
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
+░▒▓█▓▒░      ░▒▓████████▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░    ░▒▓█▓▒░     
+░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
+░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓██▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
+ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓██████▓▒░░▒▓█▓▒░▒▓██▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      -->
 
 <body>
     <!--main site-->
     <div id="root">
         <header>
-            <div class="heading" aria-labelledby="main-heading">
+            <div class="heading wireframed" aria-labelledby="main-heading">
                 <h1 id="main-heading">catci.net</h1>
             </div>
+            <div class="cables wireframed">
+                <div class="cable video wireframed"></div>
+                <div class="cable audio-left wireframed"></div>
+                <div class="cable audio-right wireframed"></div>
+            </div>
         </header>
+        <div class="r-row">
+            <aside class="sidebar">
+                <nav class="wireframed">
+                    <ul class="wireframed">
+                        <li>
+                            <ul class="internal">
+                                <li>
+                                    <h3>Internal</h3>
+                                </li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="projects.html">Projects</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="external">
+                                <li>
+                                    <h3>External</h3>
+                                </li>
+                                <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Guestbook</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Bluesky</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Itch.io</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Patreon</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Mastodon</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Last.fm</a></li>
+                                <li><a href="mailto:hello@catci.net" target="_blank" rel="noopener">hello@catci.net</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="status wireframed">
+                    <h3>Im</h3>
+                    <div class="wireframed">
+                        <h3>Online</h3>
+                    </div>
+                    <div class="detail wireframed"></div>
+                </div>
+                <div class="hitcounter wireframed">
+                    <div class="left">
+                        <h3>HitCounter /ᐠ&gt;ヮ&lt;マ</h3>
+                        <div class="output wireframed">
+                            <table>
+                                <th>
+                                    <tr>
+                                        <td>Unique</td>
+                                        <td>000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Live</td>
+                                        <td>000000</td>
+                                    </tr>
+                                </th>
+                            </table>
+                        </div>
+                        <div class="barcode wireframed"></div>
+                    </div>
+                    <aside>
+                        <div class="warning wireframed">
+                            ⚠Please do not poke the fan!
+                        </div>
+                        <div class="fan wireframed">
+
+                        </div>
+                    </aside>
+                </div>
+            </aside>
+            <main>
+                <div class="m-row">
+                    <div class="intro wireframed">
+                        <div class="crt-bevel">
+                            <div class="crt">
+                                <div class="crt-screen">
+                                    <h2>Welcome to catci.net!</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="i-controls">
+                            <div class="i-sticker wireframed"></div>
+                            <div class="i-tray wireframed"></div>
+                            <div class="i-power wireframed"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-row">
+                    <div class="blog wireframed">
+
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
     <!--svgs-->
-        <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
+    <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
         <clipPath id="crtPath" clipPathUnits="objectBoundingBox" transform="scale(0.01065 0.01312)">
             <path d="M47.78,0.5
         c8,0,36.5,0.5,41.81,2.5
