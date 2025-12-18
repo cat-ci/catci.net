@@ -67,12 +67,6 @@
         .wireframed {
             outline: 2px black solid;
         }
-        #root .r-row{
-            display: flex;
-        }
-        header {
-            display: flex;
-        }
 
         .crt-bevel {
             clip-path: url(#curvePath);
@@ -90,21 +84,25 @@
             width: 90%;
             height: 90%;
         }
+        .flex-row{
+            display: flex;
+        }
+        .sidebar nav{
+            padding: 10px;
+        }
+        .sidebar nav ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: fit-content;
+        }
     </style>
 </head>
-<!-- 
- ░▒▓██████▓▒░ ░▒▓██████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓█▓▒░      ░▒▓███████▓▒░░▒▓████████▓▒░▒▓████████▓▒░ 
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
-░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
-░▒▓█▓▒░      ░▒▓████████▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓██████▓▒░    ░▒▓█▓▒░     
-░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
-░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░▒▓██▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░     
- ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░   ░▒▓██████▓▒░░▒▓█▓▒░▒▓██▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░  ░▒▓█▓▒░      -->
 
 <body>
     <!--main site-->
     <div id="root">
-        <header>
+        <header class="flex-row">
             <div class="heading wireframed" aria-labelledby="main-heading">
                 <h1 id="main-heading">catci.net</h1>
             </div>
@@ -114,7 +112,7 @@
                 <div class="cable audio-right wireframed"></div>
             </div>
         </header>
-        <div class="r-row">
+        <div class="r-row flex-row">
             <aside class="sidebar">
                 <nav class="wireframed">
                     <ul class="wireframed">
@@ -149,14 +147,14 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="status wireframed">
+                <div class="status wireframed flex-row">
                     <h3>Im</h3>
                     <div class="wireframed">
                         <h3>Online</h3>
                     </div>
                     <div class="detail wireframed"></div>
                 </div>
-                <div class="hitcounter wireframed">
+                <div class="hitcounter wireframed flex-row">
                     <div class="left">
                         <h3>HitCounter /ᐠ&gt;ヮ&lt;マ</h3>
                         <div class="output wireframed">
