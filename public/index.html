@@ -60,17 +60,33 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="darkreader-lock" content="">
     <style>
-        body{
+        body {
             padding: 0;
             margin: 0;
         }
+
         .wireframed {
             outline: 2px black solid;
+        }
+        
+        .intro {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .screen-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px; 
+            border-radius: 5px;
         }
 
         .crt-bevel {
             clip-path: url(#curvePath);
-            background: rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #222 0%, #000 40%, #222 100%), linear-gradient(to top, #000000b3 0%, transparent 100%), linear-gradient(to right, #000000b3 0%, transparent 100%), linear-gradient(to left, #ffffff0a 0%, transparent 100%), linear-gradient(#ffffff0a 0%, transparent 100%);
+            padding: 10px;
             width: 500px;
             height: 375px;
             display: flex;
@@ -79,22 +95,96 @@
         }
 
         .crt {
-            clip-path: url(#crtPath);
+            width: 100%;
+            height: 100%;
             background: white;
-            width: 90%;
-            height: 90%;
+            clip-path: url(#crtPath);
+            box-sizing: content-box;
         }
-        .flex-row{
+        
+        .intro .i-controls {
+            display: flex;
+            justify-content: space-between;
+            height: 28px;
+        }
+
+        .intro .i-controls .i-tray {
+            display: flex;
+            flex-direction: row;
+            width: 120px;
+            margin-bottom: -20px;
+            padding: 20px;
+            margin-right: -105px;
+        }
+
+        .flex-row {
             display: flex;
         }
-        .sidebar nav{
+
+        .sidebar nav {
             padding: 10px;
         }
-        .sidebar nav ul{
-            list-style-type: none;
+
+        .sidebar nav > ul {
+            width: fit-content;
+            list-style: none;
             padding: 0;
             margin: 0;
-            width: fit-content;
+        }
+        .sidebar nav ul li ul.internal li:nth-child(1)::marker {
+            content: "├── ";
+        }
+        .sidebar nav ul li ul.internal li::marker {
+            content: "│ ├── ";
+        }
+        .sidebar nav ul li ul.internal li:last-child::marker {
+            content: "│ └── ";
+        }
+        .sidebar nav ul li ul.external li:nth-child(1)::marker {
+            content: "└── ";
+        }
+        .sidebar nav ul li ul.external li::marker {
+            content: " ├── ";
+        }   
+        .sidebar nav ul li ul.external li:last-child::marker {
+            content: " └── ";
+        }
+
+
+        header .cables {
+            display: flex;
+            gap: 10px;
+        }
+
+        header .cables .cable {
+            width: 20px;
+        }
+        .hitcounter {
+            display: flex;
+            padding: 15px;
+            gap: 15px;
+        }
+        .hitcounter .warning {
+            font-size: 0.8em;
+            background: rgba(202, 28, 28, 0.3);
+            color: rgb(165, 23, 23);
+            outline:rgb(165, 23, 23) solid 2px;
+            box-shadow: rgb(165, 23, 23) 0px 0px 15px;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .hitcounter .fan {
+            width: 160px;
+            height: 160px;
+            overflow: hidden;
+        }
+        .hitcounter .fan img {
+            width: 100%;
+            height: auto;
+            animation: spin 2s linear infinite;
         }
     </style>
 </head>
@@ -182,7 +272,7 @@
                             ⚠Please do not poke the fan!
                         </div>
                         <div class="fan wireframed">
-
+                            <img src="https://ocelot.zip/files/catci/anim-fan.gif" alt="A spinning fan." />
                         </div>
                     </aside>
                 </div>
@@ -190,17 +280,23 @@
             <main>
                 <div class="m-row">
                     <div class="intro wireframed">
-                        <div class="crt-bevel">
-                            <div class="crt">
-                                <div class="crt-screen">
-                                    <h2>Welcome to catci.net!</h2>
+                        <div class="screen-container wireframed">
+                            <div class="crt-bevel">
+                                <div class="crt">
+                                    <div class="crt-screen">
+                                        <h2>Welcome to catci.net!</h2>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="i-controls">
                             <div class="i-sticker wireframed"></div>
                             <div class="i-tray wireframed"></div>
-                            <div class="i-power wireframed"></div>
+                            <div class="i-power wireframed">
+                                <input type="checkbox" id="power-switch" />
+                                <label for="power-switch">Power</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -208,6 +304,10 @@
                     <div class="blog wireframed">
 
                     </div>
+                    <div class="loadstats wireframed"></div>
+                </div>
+                <div class="m-row">
+                    
                 </div>
             </main>
         </div>
