@@ -1,0 +1,225 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+
+.wireframed {
+    outline: 2px black solid;
+}
+
+.flex-row {
+    display: flex;
+}
+
+header .cables {
+    display: flex;
+    gap: 10px;
+
+    & .cable {
+        width: 20px;
+    }
+}
+
+.sidebar {
+    & nav {
+        padding: 10px;
+
+        &>ul {
+            width: fit-content;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        & ul li ul.internal li:nth-child(1)::marker {
+            content: "├── ";
+        }
+
+        & ul li ul.internal li::marker {
+            content: "│ ├── ";
+        }
+
+        & ul li ul.internal li:last-child::marker {
+            content: "│ └── ";
+        }
+
+        & ul li ul.external li:nth-child(1)::marker {
+            content: "└── ";
+        }
+
+        & ul li ul.external li::marker {
+            content: " ├── ";
+        }
+
+        & ul li ul.external li:last-child::marker {
+            content: " └── ";
+        }
+    }
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    & .screen-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    & .crt-bevel {
+        clip-path: url(#curvePath);
+        background: linear-gradient(135deg, #222 0%, #000 40%, #222 100%), linear-gradient(to top, #000000b3 0%, transparent 100%), linear-gradient(to right, #000000b3 0%, transparent 100%), linear-gradient(to left, #ffffff0a 0%, transparent 100%), linear-gradient(#ffffff0a 0%, transparent 100%);
+        padding: 10px;
+        width: 500px;
+        height: 375px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & .crt {
+        width: 100%;
+        height: 100%;
+        background: white;
+        clip-path: url(#crtPath);
+        box-sizing: content-box;
+    }
+
+    & .i-controls {
+        display: flex;
+        justify-content: space-between;
+        height: 28px;
+
+        & .i-tray {
+            display: flex;
+            flex-direction: row;
+            width: 120px;
+            margin-bottom: -20px;
+            padding: 20px;
+            margin-right: -105px;
+        }
+    }
+}
+
+.hitcounter {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    background: linear-gradient(90deg, rgb(34, 34, 34), rgb(17, 17, 17), rgb(34, 34, 34));
+    box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+    border-radius: 10px;
+
+    & h3 {
+        text-shadow: rgb(34, 34, 34) 1px 1px 2px, rgb(17, 17, 17) -1px -1px 2px;
+        color: rgb(23, 23, 23);
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        margin-top: 0px;
+    }
+
+    & .left {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    & .warning {
+        font-size: 0.8em;
+        background: rgba(202, 28, 28, 0.3);
+        color: rgb(165, 23, 23);
+        outline: rgb(165, 23, 23) solid 2px;
+        box-shadow: rgb(165, 23, 23) 0px 0px 15px;
+        padding: 5px;
+        width: 110px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        font-size: 0.7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & span {
+            font-weight: bold;
+            margin-right: 5px;
+            font-size: 1rem;
+        }
+    }
+
+    & .fan {
+        width: 160px;
+        height: 160px;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 4px solid rgb(31, 31, 31);
+        background-color: #000;
+        box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+
+        & img {
+            width: 110%;
+            height: 110%;
+            filter: brightness(0.3);
+        }
+    }
+
+    & aside {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    & .output {
+        background: linear-gradient(90deg, rgb(51, 51, 51), rgb(34, 34, 34), rgb(51, 51, 51));
+        box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+        border: 2px solid rgb(15, 15, 15);
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+
+        & table {
+            width: 100%;
+            border-collapse: collapse;
+
+            & tr {
+                display: flex;
+                justify-content: space-between;
+                font-size: 1.3em;
+                text-shadow: rgb(116, 116, 116) 1px 1px 2px, rgb(63, 63, 63) -1px -1px 2px;
+            }
+
+            & td:first-child {
+                color: rgb(255, 200, 0);
+                margin-right: 10px;
+            }
+
+            & td:last-child {
+                color: beige;
+            }
+        }
+    }
+
+    & .barcode {
+        width: 150px;
+        height: 30px;
+        filter: drop-shadow(1px 1px 2px rgb(34, 34, 34)) drop-shadow(-1px -1px 2px rgb(17, 17, 17));
+        position: absolute;
+        bottom: -15px;
+
+        & h4 {
+            clip-path: url(#barcode);
+            width: 100%;
+            height: 100%;
+            background: rgb(23, 23, 23);
+            position: absolute;
+            bottom: 10px;
+        }
+    }
+}
