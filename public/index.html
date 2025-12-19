@@ -63,12 +63,13 @@
         body {
             padding: 0;
             margin: 0;
+            font-family: monospace;
         }
 
         .wireframed {
             outline: 2px black solid;
         }
-        
+
         .intro {
             display: flex;
             flex-direction: column;
@@ -79,7 +80,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px; 
+            padding: 20px;
             border-radius: 5px;
         }
 
@@ -101,7 +102,7 @@
             clip-path: url(#crtPath);
             box-sizing: content-box;
         }
-        
+
         .intro .i-controls {
             display: flex;
             justify-content: space-between;
@@ -125,27 +126,33 @@
             padding: 10px;
         }
 
-        .sidebar nav > ul {
+        .sidebar nav>ul {
             width: fit-content;
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         .sidebar nav ul li ul.internal li:nth-child(1)::marker {
             content: "├── ";
         }
+
         .sidebar nav ul li ul.internal li::marker {
             content: "│ ├── ";
         }
+
         .sidebar nav ul li ul.internal li:last-child::marker {
             content: "│ └── ";
         }
+
         .sidebar nav ul li ul.external li:nth-child(1)::marker {
             content: "└── ";
         }
+
         .sidebar nav ul li ul.external li::marker {
             content: " ├── ";
-        }   
+        }
+
         .sidebar nav ul li ul.external li:last-child::marker {
             content: " └── ";
         }
@@ -159,32 +166,124 @@
         header .cables .cable {
             width: 20px;
         }
+
         .hitcounter {
             display: flex;
             padding: 15px;
             gap: 15px;
-        }
-        .hitcounter .warning {
-            font-size: 0.8em;
-            background: rgba(202, 28, 28, 0.3);
-            color: rgb(165, 23, 23);
-            outline:rgb(165, 23, 23) solid 2px;
-            box-shadow: rgb(165, 23, 23) 0px 0px 15px;
-            padding: 5px;
-            width: 100px;
-            text-align: center;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        .hitcounter .fan {
-            width: 160px;
-            height: 160px;
-            overflow: hidden;
-        }
-        .hitcounter .fan img {
-            width: 100%;
-            height: auto;
-            animation: spin 2s linear infinite;
+            background: linear-gradient(90deg, rgb(34, 34, 34), rgb(17, 17, 17), rgb(34, 34, 34));
+            box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+            border-radius: 10px;
+
+            & h3 {
+                text-shadow: rgb(34, 34, 34) 1px 1px 2px, rgb(17, 17, 17) -1px -1px 2px;
+                color: rgb(23, 23, 23);
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                margin-top: 0px;
+            }
+
+            & .left {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+
+            & .warning {
+                font-size: 0.8em;
+                background: rgba(202, 28, 28, 0.3);
+                color: rgb(165, 23, 23);
+                outline: rgb(165, 23, 23) solid 2px;
+                box-shadow: rgb(165, 23, 23) 0px 0px 15px;
+                padding: 5px;
+                width: 110px;
+                text-align: center;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                font-size: 0.7rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                & span {
+                    font-weight: bold;
+                    margin-right: 5px;
+                    font-size: 1rem;
+                }
+            }
+
+            & .fan {
+                width: 160px;
+                height: 160px;
+                overflow: hidden;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 4px solid rgb(31, 31, 31);
+                background-color: #000;
+                box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+
+                & img {
+                    width: 110%;
+                    height: 110%;
+                    filter: brightness(0.3);
+                }
+            }
+
+            & aside {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            & .output {
+                background: linear-gradient(90deg, rgb(51, 51, 51), rgb(34, 34, 34), rgb(51, 51, 51));
+                box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+                border: 2px solid rgb(15, 15, 15);
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 10px;
+
+                & table {
+                    width: 100%;
+                    border-collapse: collapse;
+
+                    & tr {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 1.3em;
+                        text-shadow: rgb(116, 116, 116) 1px 1px 2px, rgb(63, 63, 63) -1px -1px 2px;
+                    }
+
+                    & td:first-child {
+                        color: rgb(255, 200, 0);
+                        margin-right: 10px;
+                    }
+
+                    & td:last-child {
+                        color: beige;
+                    }
+
+                }
+
+            }
+
+            & .barcode {
+                width: 150px;
+                height: 30px;
+                filter: drop-shadow(1px 1px 2px rgb(34, 34, 34)) drop-shadow(-1px -1px 2px rgb(17, 17, 17));
+                position: absolute;
+                bottom: -15px;
+
+                & h4 {
+                    clip-path: url(#barcode);
+                    width: 100%;
+                    height: 100%;
+                    background: rgb(23, 23, 23);
+                    position: absolute;
+                    bottom: 10px;
+                }
+            }
         }
     </style>
 </head>
@@ -244,34 +343,36 @@
                     </div>
                     <div class="detail wireframed"></div>
                 </div>
-                <div class="hitcounter wireframed flex-row">
+                <div class="hitcounter flex-row">
                     <div class="left">
                         <h3>HitCounter /ᐠ&gt;ヮ&lt;マ</h3>
-                        <div class="output wireframed">
+                        <div class="output">
                             <table>
                                 <th>
                                     <tr>
-                                        <td>Unique</td>
-                                        <td>000000</td>
+                                        <td>Visits:</td>
+                                        <td>00000000</td>
                                     </tr>
                                     <tr>
-                                        <td>Total</td>
-                                        <td>000000</td>
+                                        <td>Uniq Visits:</td>
+                                        <td>00000000</td>
                                     </tr>
                                     <tr>
-                                        <td>Live</td>
-                                        <td>000000</td>
+                                        <td>Live:</td>
+                                        <td>00000000</td>
                                     </tr>
                                 </th>
                             </table>
                         </div>
-                        <div class="barcode wireframed"></div>
+                        <div class="barcode">
+                            <h4></h4>
+                        </div>
                     </div>
                     <aside>
-                        <div class="warning wireframed">
-                            ⚠Please do not poke the fan!
+                        <div class="warning">
+                            <span>⚠</span>Please do not poke the fan!
                         </div>
-                        <div class="fan wireframed">
+                        <div class="fan">
                             <img src="https://ocelot.zip/files/catci/anim-fan.gif" alt="A spinning fan." />
                         </div>
                     </aside>
@@ -307,7 +408,7 @@
                     <div class="loadstats wireframed"></div>
                 </div>
                 <div class="m-row">
-                    
+
                 </div>
             </main>
         </div>
@@ -341,8 +442,45 @@
                 S38.77.5,47.78.5Z
                 "></path>
         </clipPath>
-
+        <svg width="0" height="0">
+            <defs>
+                <clipPath id="barcode" clipPathUnits="userSpaceOnUse">
+                    <rect x="10" y="10" width="4" height="100" />
+                    <rect x="16" y="10" width="2" height="100" />
+                    <rect x="22" y="10" width="2" height="100" />
+                    <rect x="32" y="10" width="4" height="100" />
+                    <rect x="42" y="10" width="2" height="100" />
+                    <rect x="46" y="10" width="2" height="100" />
+                    <rect x="54" y="10" width="2" height="100" />
+                    <rect x="62" y="10" width="4" height="100" />
+                    <rect x="68" y="10" width="2" height="100" />
+                    <rect x="76" y="10" width="2" height="100" />
+                    <rect x="84" y="10" width="4" height="100" />
+                    <rect x="90" y="10" width="6" height="100" />
+                    <rect x="98" y="10" width="2" height="100" />
+                    <rect x="106" y="10" width="4" height="100" />
+                    <rect x="112" y="10" width="6" height="100" />
+                    <rect x="120" y="10" width="2" height="100" />
+                    <rect x="128" y="10" width="6" height="100" />
+                    <rect x="136" y="10" width="4" height="100" />
+                    <rect x="142" y="10" width="6" height="100" />
+                    <rect x="152" y="10" width="2" height="100" />
+                    <rect x="158" y="10" width="4" height="100" />
+                    <rect x="164" y="10" width="2" height="100" />
+                    <rect x="168" y="10" width="4" height="100" />
+                    <rect x="178" y="10" width="2" height="100" />
+                    <rect x="186" y="10" width="2" height="100" />
+                    <rect x="190" y="10" width="4" height="100" />
+                    <rect x="200" y="10" width="2" height="100" />
+                    <rect x="208" y="10" width="4" height="100" />
+                    <rect x="218" y="10" width="6" height="100" />
+                    <rect x="226" y="10" width="2" height="100" />
+                    <rect x="230" y="10" width="4" height="100" />
+                </clipPath>
+            </defs>
+        </svg>
     </svg>
+
     <!--scripts-->
     <script src="scripts/dialup.js"></script>
 </body>
