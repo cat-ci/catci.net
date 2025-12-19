@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="c-controls">
-                        <div  class="c-sticker wireframed"></div>
+                        <div class="c-sticker wireframed"></div>
                         <div class="c-tray wireframed"></div>
                         <div class="c-power">
                             <input type="checkbox" id="power-switch" />
@@ -157,52 +157,75 @@
             </div>
         </main>
     </div>
+    <div class="test-output"></div>
     <script>
-const script = document.createElement('script');
-script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
-document.head.appendChild(script);
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+        document.head.appendChild(script);
 
-script.onload = function() {
-    (async function() {
-        try {
-            const response = await fetch('https://ocelot.zip/api/package', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username: "catci",
-                    files: [
-                        {
-                            path: "/files/catci/metal.avif",
-                            w: 800,
-                            f: "webp"
+        script.onload = function () {
+            (async function () {
+                try {
+                    const response = await fetch('https://ocelot.zip/api/package', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
                         },
-                        {
-                            path: "/files/catci/video.avif",
-                            w: 600,
-                            f: "png"
+                        body: JSON.stringify({
+                            username: "catci",
+                            files: [
+                                {
+                                    path: "/files/catci/images/1765982450672-video.avif"
+                                },
+                                {
+                                    path: "/video.avif"
+                                }
+                            ]
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const zipBlob = await response.blob();
+                    const zip = new JSZip();
+                    await zip.loadAsync(zipBlob);
+
+                    const testOutput = document.querySelector('.test-output');
+                    console.log('Files in zip:', Object.keys(zip.files));
+                    
+                    for (const filename in zip.files) {
+                        const file = zip.files[filename];
+                        console.log('Processing file:', filename, 'Is directory:', file.dir);
+                        if (!file.dir) {
+                            const blob = await file.async('blob');
+                            console.log('Blob created for:', filename, 'Size:', blob.size);
+                            const url = URL.createObjectURL(blob);
+                            
+                            const container = document.createElement('div');
+                            const label = document.createElement('p');
+                            label.textContent = filename;
+                            
+                            const img = document.createElement('img');
+                            img.src = url;
+                            img.style.maxWidth = '100%';
+                            img.style.margin = '10px';
+                            
+                            container.appendChild(label);
+                            container.appendChild(img);
+                            testOutput.appendChild(container);
+                            console.log('Added image to DOM for:', filename);
                         }
-                    ]
-                })
-            });
+                    }
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+                    console.log('SUCCESS: Package downloaded and extracted successfully');
 
-            // Extract ZIP
-            const zipBlob = await response.blob();
-            const zip = new JSZip();
-            await zip.loadAsync(zipBlob);
-            
-            console.log('SUCCESS: Package downloaded and extracted successfully');
-            
-        } catch (error) {
-            console.log('FAILED: Package extraction failed -', error.message);
-        }
-    })();
-};
+                } catch (error) {
+                    console.log('FAILED: Package extraction failed -', error.message);
+                }
+            })();
+        };
     </script>
 </body>
 
