@@ -2,261 +2,208 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catci.net</title>
-    <meta name="description" content="My website, blog and showcase.">
-    <meta name="keywords" content="Catci, Cacti, JS, JavaScript, neocities, industrial">
-    <meta name="author" content="catci">
-    <meta name="robots" content="index, follow">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
 
-    <link rel="preconnect" href="https://ocelot.zip" crossorigin>
+        .wireframed {
+            outline: 1px solid black;
+        }
 
-    <link rel="icon" type="image/png" href="./assets/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Catci" />
-    <link rel="manifest" href="./assets/favicon/site.webmanifest" />
-    <link rel="mask-icon" href="./assets/favicon/favicon.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#333">
-    <meta name="theme-color" content="#333">
+        .subframed {
+            outline: 1px dashed black;
+        }
 
-    <meta property="og:title" content="Catci.net">
-    <meta property="og:description" content="My website, blog and showcase.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://catci.net">
-    <meta property="og:image" content="https://usercontent.aalpaca.com/catci/og-image.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Catci.net">
-    <meta name="twitter:description" content="A concise description of your page.">
-    <meta name="twitter:image" content="https://usercontent.aalpaca.com/catci/og-image.png">
-    <meta name="twitter:site" content="@_catci">
-
-    <link rel="canonical" href="https://catci.net">
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "catci.net",
-  "url": "https://catci.net",
-  "description": "A personal site featuring projects, games, and a blog by Catci.",
-  "publisher": {
-    "@type": "Person",
-    "name": "Catci",
-    "url": "https://catci.net"
-  }
-}
-</script>
-    <link rel="preload" as="image" href="https://catci.ocelot.zip/images/stain-concreted.avif" type="image/avif"
-        fetchpriority="high" />
-    <meta name="application-name" content="Catci.net">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="darkreader-lock" content="">
-    <link rel="stylesheet" href="assets/styles/styles.css">
+        .wire-image {
+            outline: 1px dotted black;
+            background: url(placeholder.png);
+            background-size: 100% 100%;
+            width: 100%;
+            height: 200px;
+        }
+    </style>
 </head>
 
 <body>
-    <!--main site-->
-    <div id="root">
-        <header class="flex-row">
-            <div class="heading wireframed" aria-labelledby="main-heading">
-                <h1 id="main-heading">catci.net</h1>
-            </div>
-            <div class="cables wireframed">
-                <div class="cable video wireframed"></div>
-                <div class="cable audio-left wireframed"></div>
-                <div class="cable audio-right wireframed"></div>
-            </div>
-        </header>
-        <div class="r-row flex-row">
-            <aside class="sidebar">
-                <nav class="wireframed">
-                    <ul class="wireframed">
-                        <li>
-                            <ul class="internal">
-                                <li>
-                                    <h3>Internal</h3>
-                                </li>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="projects.html">Projects</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <ul class="external">
-                                <li>
-                                    <h3>External</h3>
-                                </li>
-                                <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
-                                <li><a href="#" target="_blank" rel="noopener">Guestbook</a></li>
-                                <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-                                <li><a href="#" target="_blank" rel="noopener">Bluesky</a></li>
-                                <li><a href="#" target="_blank" rel="noopener">Itch.io</a></li>
-                                <li><a href="#" target="_blank" rel="noopener">Patreon</a></li>
-                                <li><a href="#" target="_blank" rel="noopener">Mastodon</a></li>
-                                <li><a href="#" target="_blank" rel="noopener">Last.fm</a></li>
-                                <li><a href="mailto:hello@catci.net" target="_blank" rel="noopener">hello@catci.net</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="status wireframed flex-row">
-                    <h3>Im</h3>
-                    <div class="wireframed">
-                        <h3>Online</h3>
-                    </div>
-                    <div class="detail wireframed"></div>
-                </div>
-                <div class="hitcounter flex-row">
-                    <div class="left">
-                        <h3>HitCounter /ᐠ&gt;ヮ&lt;マ</h3>
-                        <div class="output">
-                            <table>
-                                <th>
-                                    <tr>
-                                        <td>Visits:</td>
-                                        <td>00000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Uniq Visits:</td>
-                                        <td>00000000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Live:</td>
-                                        <td>00000000</td>
-                                    </tr>
-                                </th>
-                            </table>
-                        </div>
-                        <div class="barcode">
-                            <h4></h4>
-                        </div>
-                    </div>
-                    <aside>
-                        <div class="warning">
-                            <span>⚠</span>Please do not poke the fan!
-                        </div>
-                        <div class="fan">
-                            <img src="https://ocelot.zip/files/catci/anim-fan.gif" alt="A spinning fan." />
-                        </div>
-                    </aside>
-                </div>
-            </aside>
-            <main>
-                <div class="m-row">
-                    <div class="intro wireframed">
-                        <div class="screen-container wireframed">
-                            <div class="crt-bevel">
-                                <div class="crt">
-                                    <div class="crt-screen">
-                                        <h2>Welcome to catci.net!</h2>
+    <header>
+        <div class="wireframed title">
+            <h1>Catci.net</h1>
+        </div>
+        <div class="wireframed cables">
+            <div class="wireframed cable audio-left"></div>
+            <div class="wireframed cable audio-right"></div>
+            <div class="wireframed cable video"></div>
+        </div>
+    </header>
+    <div class="root">
+        <aside class="sidebar">
+            <nav class="wireframed navigation">
+                <ul class="wireframed">
+                    <li class="subframed">
+                        <ul class="internal">
+                            <li>
+                                <h3>Internal</h3>
+                            </li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                    <li class="subframed">
+                        <ul class="external">
+                            <li>
+                                <h3>External</h3>
+                            </li>
+                            <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Guestbook</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Bluesky</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Itch.io</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Patreon</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Mastodon</a></li>
+                            <li><a href="#" target="_blank" rel="noopener">Last.fm</a></li>
+                            <li><a href="mailto:hello@catci.net" target="_blank" rel="noopener">hello@catci.net</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <div class="m-row">
+                <div class="intro wireframed">
+                    <div class="crt-container wireframed">
+                        <div class="crt-bevel wireframed">
+                            <div class="crt-screen wireframed">
+                                <div class="content subframed">
+                                    <h2>Welcome to Catci.net!</h2>
+                                    <div class="c-row subframed">
+                                        <div class="wire-image ascii-pfp"></div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </p>
+                                    </div>
+                                    <div class="c-row subframed">
+                                        <ul>
+                                            <li>Some facts:</li>
+                                            <ul>
+                                                <li>words about facts.</li>
+                                                <li>facts about me.</li>
+                                                <li>things for viewer to read.</li>
+                                            </ul>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="i-controls">
-                            <div class="i-sticker wireframed"></div>
-                            <div class="i-tray wireframed"></div>
-                            <div class="i-power wireframed">
-                                <input type="checkbox" id="power-switch" />
-                                <label for="power-switch">Power</label>
-                            </div>
+                    </div>
+                    <div class="c-controls">
+                        <div  class="c-sticker wireframed"></div>
+                        <div class="c-tray wireframed"></div>
+                        <div class="c-power">
+                            <input type="checkbox" id="power-switch" />
+                            <label for="power-switch" class="wireframed"></label>
                         </div>
                     </div>
                 </div>
                 <div class="m-row">
-                    <div class="blog wireframed">
-
+                    <div class="blog">
+                        <div class="wire-image"></div>
+                        <div class="content subframed">
+                            <ul>
+                                <li><a href="#">Hello World!</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="loadstats wireframed"></div>
+                    <div class="wireframed loadstats">
+                        <h3>Load Stats</h3>
+                        <div class="wireframed">
+                            <table>
+                                <tr>
+                                    <td>First paint:</td>
+                                    <td>0.2s</td>
+                                </tr>
+                                <tr>
+                                    <td>Largest paint:</td>
+                                    <td>0.3s</td>
+                                </tr>
+                                <tr>
+                                    <td>Image load:</td>
+                                    <td>0.5s</td>
+                                </tr>
+                                <tr>
+                                    <td>Local Speed:</td>
+                                    <td>30 Mbps</td>
+                                </tr>
+                                <tr>
+                                    <td>Average Speed:</td>
+                                    <td>120 Mbps</td>
+                                </tr>
+                            </table>
+                            <div class="stats graph wireframed">
+                                1
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="m-row">
-
-                </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
-    <!--svgs-->
-    <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
-        <clipPath id="crtPath" clipPathUnits="objectBoundingBox" transform="scale(0.01065 0.01312)">
-            <path d="M47.78,0.5
-        c8,0,36.5,0.5,41.81,2.5
-        c4,2,3.79,20.28,3.79,35.69
-        c0,15-.08,29.79-3.53,32.24
-        S62.3,75.69,47.78,75.69
-        c-13,0-38.89-0.86-43-3.27
-        S.57,54.42.57,38.73
-        S.31,6.56,4.5,3.38
-        S38.77.5,47.78.5Z
-        "></path>
-        </clipPath>
+    <script>
+const script = document.createElement('script');
+script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+document.head.appendChild(script);
 
-    </svg>
-    <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
-        <clipPath id="curvePath" clipPathUnits="objectBoundingBox" transform="scale(0.01065 0.01312)">
-            <path d="M47.78,0.5
-                c8,0,36.5,0.5,41.81,2.5
-                c4,2,3.79,20.28,3.79,35.69
-                c0,15-.08,29.79-3.53,32.24
-                S62.3,75.69,47.78,75.69
-                c-13,0-38.89-0.86-43-3.27
-                S.57,54.42.57,38.73
-                S.31,6.56,4.5,3.38
-                S38.77.5,47.78.5Z
-                "></path>
-        </clipPath>
-        <svg width="0" height="0">
-            <defs>
-                <clipPath id="barcode" clipPathUnits="userSpaceOnUse">
-                    <rect x="10" y="10" width="4" height="100" />
-                    <rect x="16" y="10" width="2" height="100" />
-                    <rect x="22" y="10" width="2" height="100" />
-                    <rect x="32" y="10" width="4" height="100" />
-                    <rect x="42" y="10" width="2" height="100" />
-                    <rect x="46" y="10" width="2" height="100" />
-                    <rect x="54" y="10" width="2" height="100" />
-                    <rect x="62" y="10" width="4" height="100" />
-                    <rect x="68" y="10" width="2" height="100" />
-                    <rect x="76" y="10" width="2" height="100" />
-                    <rect x="84" y="10" width="4" height="100" />
-                    <rect x="90" y="10" width="6" height="100" />
-                    <rect x="98" y="10" width="2" height="100" />
-                    <rect x="106" y="10" width="4" height="100" />
-                    <rect x="112" y="10" width="6" height="100" />
-                    <rect x="120" y="10" width="2" height="100" />
-                    <rect x="128" y="10" width="6" height="100" />
-                    <rect x="136" y="10" width="4" height="100" />
-                    <rect x="142" y="10" width="6" height="100" />
-                    <rect x="152" y="10" width="2" height="100" />
-                    <rect x="158" y="10" width="4" height="100" />
-                    <rect x="164" y="10" width="2" height="100" />
-                    <rect x="168" y="10" width="4" height="100" />
-                    <rect x="178" y="10" width="2" height="100" />
-                    <rect x="186" y="10" width="2" height="100" />
-                    <rect x="190" y="10" width="4" height="100" />
-                    <rect x="200" y="10" width="2" height="100" />
-                    <rect x="208" y="10" width="4" height="100" />
-                    <rect x="218" y="10" width="6" height="100" />
-                    <rect x="226" y="10" width="2" height="100" />
-                    <rect x="230" y="10" width="4" height="100" />
-                </clipPath>
-            </defs>
-        </svg>
-    </svg>
+script.onload = function() {
+    (async function() {
+        try {
+            const response = await fetch('https://ocelot.zip/api/package', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: "catci",
+                    files: [
+                        {
+                            path: "/files/catci/metal.avif",
+                            w: 800,
+                            f: "webp"
+                        },
+                        {
+                            path: "/files/catci/video.avif",
+                            w: 600,
+                            f: "png"
+                        }
+                    ]
+                })
+            });
 
-    <!--scripts-->
-    <script src="scripts/dialup.js"></script>
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Extract ZIP
+            const zipBlob = await response.blob();
+            const zip = new JSZip();
+            await zip.loadAsync(zipBlob);
+            
+            console.log('SUCCESS: Package downloaded and extracted successfully');
+            
+        } catch (error) {
+            console.log('FAILED: Package extraction failed -', error.message);
+        }
+    })();
+};
+    </script>
 </body>
 
 </html>

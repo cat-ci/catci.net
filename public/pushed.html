@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catci.net</title>
+    <meta name="description" content="My website, blog and showcase.">
+    <meta name="keywords" content="Catci, Cacti, JS, JavaScript, neocities, industrial">
+    <meta name="author" content="catci">
+    <meta name="robots" content="index, follow">
+
+    <link rel="preconnect" href="https://ocelot.zip" crossorigin>
+
+    <link rel="icon" type="image/png" href="./assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Catci" />
+    <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+    <link rel="mask-icon" href="./assets/favicon/favicon.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#333">
+    <meta name="theme-color" content="#333">
+
+    <meta property="og:title" content="Catci.net">
+    <meta property="og:description" content="My website, blog and showcase.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://catci.net">
+    <meta property="og:image" content="https://usercontent.aalpaca.com/catci/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Catci.net">
+    <meta name="twitter:description" content="A concise description of your page.">
+    <meta name="twitter:image" content="https://usercontent.aalpaca.com/catci/og-image.png">
+    <meta name="twitter:site" content="@_catci">
+
+    <link rel="canonical" href="https://catci.net">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "catci.net",
+  "url": "https://catci.net",
+  "description": "A personal site featuring projects, games, and a blog by Catci.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Catci",
+    "url": "https://catci.net"
+  }
+}
+</script>
+
+    <meta name="application-name" content="Catci.net">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="darkreader-lock" content="">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: monospace;
+        }
+
+        .wireframed {
+            outline: 2px black solid;
+        }
+
+        .flex-row {
+            display: flex;
+        }
+
+        header .cables {
+            display: flex;
+            gap: 10px;
+
+            & .cable {
+                width: 20px;
+            }
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar nav {
+            padding: 20px;
+            display: inline-block;
+            width: fit-content;
+
+            &>ul {
+                width: fit-content;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            &>ul li {
+                margin-left: 0px;
+                padding-left: 20px;
+                margin-bottom: 5px;
+
+                & :nth-child(1) {
+                    margin-left: -14px;
+                }
+
+                & h3 {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+            & ul li ul.internal li:nth-child(1)::marker {
+                content: "├── ";
+            }
+
+            & ul li ul.internal li::marker {
+                content: "│ ├── ";
+            }
+
+            & ul li ul.internal li:last-child::marker {
+                content: "│ └── ";
+            }
+
+            & ul li ul.external li:nth-child(1)::marker {
+                content: "└── ";
+            }
+
+            & ul li ul.external li::marker {
+                content: " ├── ";
+            }
+
+            & ul li ul.external li:last-child::marker {
+                content: " └── ";
+            }
+        }
+
+        .status {
+
+            & .pager {
+                display: flex;
+                flex-direction: column;
+                padding: 10px;
+                gap: 10px;
+                background: ;
+
+                & .p-border {
+                    1
+
+
+                    & .p-display {
+                        background: linear-gradient(135deg, #5a6b68 0%, #6f7e7b 50%, #5a6b68 100%);
+                        color: #3d4d4a;
+                        text-shadow: 0 10px 5px rgba(63, 77, 74, 0.3);
+                        border-radius: 5px;
+                        box-shadow: inset 0 2px 10px #2a3a37;
+                    }
+                }
+
+                & .p-controls {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    & .p-led {
+                        width: 14px;
+                        height: 7px;
+                        border-radius: 2px;
+                        background: #678d44;
+                        box-shadow:
+                            0 0 2px 1px #3a4b2a,
+                            inset 0 1px 4px #222;
+                        border-color: #2c3324;
+                        outline: none;
+                    }
+
+                    & .p-btn {
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 3px;
+                        background: #444;
+                        box-shadow:
+                            0 2px 0 #222,
+                            inset 0 1px 4px #666;
+                        border: 1px solid #111;
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+            & .screen-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                border-radius: 5px;
+            }
+
+            & .crt-bevel {
+                clip-path: url(#curvePath);
+                background: linear-gradient(135deg, #222 0%, #000 40%, #222 100%), linear-gradient(to top, #000000b3 0%, transparent 100%), linear-gradient(to right, #000000b3 0%, transparent 100%), linear-gradient(to left, #ffffff0a 0%, transparent 100%), linear-gradient(#ffffff0a 0%, transparent 100%);
+                padding: 10px;
+                width: 500px;
+                height: 375px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            & .crt {
+                width: 100%;
+                height: 100%;
+                background: white;
+                clip-path: url(#crtPath);
+                box-sizing: content-box;
+            }
+
+            & .i-controls {
+                display: flex;
+                justify-content: space-between;
+                height: 28px;
+
+                & .i-tray {
+                    display: flex;
+                    flex-direction: row;
+                    width: 120px;
+                    margin-bottom: -20px;
+                    padding: 20px;
+                    margin-right: -105px;
+                }
+            }
+        }
+
+        .hitcounter {
+            display: flex;
+            padding: 15px;
+            gap: 15px;
+            background: linear-gradient(90deg, rgb(34, 34, 34), rgb(17, 17, 17), rgb(34, 34, 34));
+            box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+            border-radius: 10px;
+
+            & h3 {
+                text-shadow: rgb(34, 34, 34) 1px 1px 2px, rgb(17, 17, 17) -1px -1px 2px;
+                color: rgb(23, 23, 23);
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+                margin-top: 0px;
+            }
+
+            & .left {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+            }
+
+            & .warning {
+                font-size: 0.8em;
+                background: rgba(202, 28, 28, 0.3);
+                color: rgb(165, 23, 23);
+                outline: rgb(165, 23, 23) solid 2px;
+                box-shadow: rgb(165, 23, 23) 0px 0px 15px;
+                padding: 5px;
+                width: 90px;
+                text-align: center;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                font-size: 0.6rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & span {
+                    font-weight: bold;
+                    margin-right: 5px;
+                    font-size: 0.7rem;
+                }
+            }
+
+            & .fan {
+                width: 160px;
+                height: 160px;
+                overflow: hidden;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 4px solid rgb(31, 31, 31);
+                background-color: #000;
+                box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+
+                & img {
+                    width: 110%;
+                    height: 110%;
+                    filter: brightness(0.3);
+                }
+            }
+
+            & aside {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            & .output {
+                background: linear-gradient(90deg, rgb(51, 51, 51), rgb(34, 34, 34), rgb(51, 51, 51));
+                box-shadow: rgb(17, 17, 17) 0px 0px 5px inset, rgb(32, 32, 32) 0px 0px 15px;
+                border: 2px solid rgb(15, 15, 15);
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 10px;
+                width: 180px;
+                display: inline-flex;
+
+                & table {
+                    width: 100%;
+                    border-collapse: collapse;
+
+                    & tr {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 1.15em;
+                        padding: 2px 0;
+                        text-shadow: rgb(116, 116, 116) 1px 1px 2px, rgb(63, 63, 63) -1px -1px 2px;
+                    }
+
+
+                    & td:first-child {
+                        color: rgb(255, 200, 0);
+                        margin-right: 10px;
+                    }
+
+                    & td:last-child {
+                        color: beige;
+                    }
+                }
+            }
+
+            & .barcode {
+                width: 150px;
+                height: 30px;
+                filter: drop-shadow(1px 1px 2px rgb(34, 34, 34)) drop-shadow(-1px -1px 2px rgb(17, 17, 17));
+                position: absolute;
+                bottom: -15px;
+
+                & h4 {
+                    clip-path: url(#barcode);
+                    width: 100%;
+                    height: 100%;
+                    background: rgb(23, 23, 23);
+                    position: absolute;
+                    bottom: 10px;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--main site-->
+    <div id="root">
+        <header class="flex-row">
+            <div class="heading wireframed" aria-labelledby="main-heading">
+                <h1 id="main-heading">catci.net</h1>
+            </div>
+            <div class="cables wireframed">
+                <div class="cable video wireframed"></div>
+                <div class="cable audio-left wireframed"></div>
+                <div class="cable audio-right wireframed"></div>
+            </div>
+        </header>
+        <div class="r-row flex-row">
+            <aside class="sidebar">
+                <nav class="wireframed">
+                    <ul class="wireframed">
+                        <li>
+                            <ul class="internal">
+                                <li>
+                                    <h3>Internal</h3>
+                                </li>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="projects.html">Projects</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul class="external">
+                                <li>
+                                    <h3>External</h3>
+                                </li>
+                                <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Guestbook</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Bluesky</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Itch.io</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Patreon</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Mastodon</a></li>
+                                <li><a href="#" target="_blank" rel="noopener">Last.fm</a></li>
+                                <li><a href="mailto:hello@catci.net" target="_blank" rel="noopener">hello@catci.net</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="status flex-row">
+                    <div class="pager wireframed">
+                        <div class="p-border">
+                            <div class="p-display">
+                                <span>ONLINE</span>
+                            </div>
+                        </div>
+                        <div class="p-controls">
+                            <div class="p-led"></div>
+                            <div class="flex-row">
+                                <div class="p-btn up"></div>
+                                <div class="p-btn down"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hitcounter flex-row">
+                    <div class="left">
+                        <h3>HitCounter /ᐠ&gt;ヮ&lt;マ</h3>
+                        <div class="output">
+                            <table>
+                                <th>
+                                    <tr>
+                                        <td>Visits:</td>
+                                        <td>00000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Uniq Visits:</td>
+                                        <td>00000000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Live:</td>
+                                        <td>00000000</td>
+                                    </tr>
+                                </th>
+                            </table>
+                        </div>
+                        <div class="barcode">
+                            <h4></h4>
+                        </div>
+                    </div>
+                    <aside>
+                        <div class="warning">
+                            <span>⚠</span>Please do not poke the fan!
+                        </div>
+                        <div class="fan">
+                            <img src="https://ocelot.zip/files/catci/anim-fan.gif" alt="A spinning fan." />
+                        </div>
+                    </aside>
+                </div>
+            </aside>
+            <main>
+                <div class="m-row">
+                    <div class="intro wireframed">
+                        <div class="screen-container wireframed">
+                            <div class="crt-bevel">
+                                <div class="crt">
+                                    <div class="crt-screen">
+                                        <h2>Welcome to catci.net!</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="i-controls">
+                            <div class="i-sticker wireframed"></div>
+                            <div class="i-tray wireframed"></div>
+                            <div class="i-power wireframed">
+                                <input type="checkbox" id="power-switch" />
+                                <label for="power-switch">Power</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-row">
+                    <div class="blog wireframed">
+
+                    </div>
+                    <div class="loadstats wireframed"></div>
+                </div>
+                <div class="m-row">
+
+                </div>
+            </main>
+        </div>
+    </div>
+    <!--svgs-->
+    <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
+        <clipPath id="crtPath" clipPathUnits="objectBoundingBox" transform="scale(0.01065 0.01312)">
+            <path d="M47.78,0.5
+        c8,0,36.5,0.5,41.81,2.5
+        c4,2,3.79,20.28,3.79,35.69
+        c0,15-.08,29.79-3.53,32.24
+        S62.3,75.69,47.78,75.69
+        c-13,0-38.89-0.86-43-3.27
+        S.57,54.42.57,38.73
+        S.31,6.56,4.5,3.38
+        S38.77.5,47.78.5Z
+        "></path>
+        </clipPath>
+
+    </svg>
+    <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
+        <clipPath id="curvePath" clipPathUnits="objectBoundingBox" transform="scale(0.01065 0.01312)">
+            <path d="M47.78,0.5
+                c8,0,36.5,0.5,41.81,2.5
+                c4,2,3.79,20.28,3.79,35.69
+                c0,15-.08,29.79-3.53,32.24
+                S62.3,75.69,47.78,75.69
+                c-13,0-38.89-0.86-43-3.27
+                S.57,54.42.57,38.73
+                S.31,6.56,4.5,3.38
+                S38.77.5,47.78.5Z
+                "></path>
+        </clipPath>
+    </svg>
+<svg width="0" height="0" viewBox="0 0 140 70" aria-hidden="true">
+  <defs>
+    <clipPath id="lcdPath" clipPathUnits="userSpaceOnUse">
+      <path d="
+        M12,2.333
+        H128
+        C135,2.333 139,6.222 139,10.889
+        V59.333
+        C139,64.167 135,66.833 128,66.833
+        H12
+        C5,66.833 1,64.167 1,59.333
+        V10.889
+        C1,6.222 5,2.333 12,2.333
+
+        C40,0.933 100,0.933 128,2.333
+        C100,68.667 40,68.667 12,66.833
+        Z
+      "/>
+    </clipPath>
+  </defs>
+</svg>
+
+
+
+    <svg width="0" height="0">
+        <defs>
+            <clipPath id="barcode" clipPathUnits="userSpaceOnUse">
+                <rect x="10" y="10" width="4" height="100" />
+                <rect x="16" y="10" width="2" height="100" />
+                <rect x="22" y="10" width="2" height="100" />
+                <rect x="32" y="10" width="4" height="100" />
+                <rect x="42" y="10" width="2" height="100" />
+                <rect x="46" y="10" width="2" height="100" />
+                <rect x="54" y="10" width="2" height="100" />
+                <rect x="62" y="10" width="4" height="100" />
+                <rect x="68" y="10" width="2" height="100" />
+                <rect x="76" y="10" width="2" height="100" />
+                <rect x="84" y="10" width="4" height="100" />
+                <rect x="90" y="10" width="6" height="100" />
+                <rect x="98" y="10" width="2" height="100" />
+                <rect x="106" y="10" width="4" height="100" />
+                <rect x="112" y="10" width="6" height="100" />
+                <rect x="120" y="10" width="2" height="100" />
+                <rect x="128" y="10" width="6" height="100" />
+                <rect x="136" y="10" width="4" height="100" />
+                <rect x="142" y="10" width="6" height="100" />
+                <rect x="152" y="10" width="2" height="100" />
+                <rect x="158" y="10" width="4" height="100" />
+                <rect x="164" y="10" width="2" height="100" />
+                <rect x="168" y="10" width="4" height="100" />
+                <rect x="178" y="10" width="2" height="100" />
+                <rect x="186" y="10" width="2" height="100" />
+                <rect x="190" y="10" width="4" height="100" />
+                <rect x="200" y="10" width="2" height="100" />
+                <rect x="208" y="10" width="4" height="100" />
+                <rect x="218" y="10" width="6" height="100" />
+                <rect x="226" y="10" width="2" height="100" />
+                <rect x="230" y="10" width="4" height="100" />
+            </clipPath>
+        </defs>
+    </svg>
+
+
+    <!--scripts-->
+    <script src="scripts/dialup.js"></script>
+</body>
+
+</html>
