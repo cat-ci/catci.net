@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Minimal Low‑Poly SVG (≤10 polygons)</title>
+<style>
+  body {
+    font-family: sans-serif;
+    background: #fafafa;
+    text-align: center;
+    padding: 20px;
+  }
+  .result {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  .svgbox {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+  }
+  .svgbox svg {
+    filter: blur(4px);
+    width: 350px;
+    height: auto;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<h1>Low‑Poly SVG (≤10 Polygons)</h1>
+<p>Upload an image or a ZIP of images. Each will turn into a simple blurred low‑poly SVG with at most ~10 polygons.</p>
+
+<input type="file" id="input" accept=".zip,image/*" />
+<div id="result" class="result"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
+
+<script>
+async function blobToSVG(blob, name) {
+  console.log("Processing", name);
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    const fr = new FileReader();
+    fr.onload = () => {
+      img.onload = () => {
+        try {
+          const c = document.createElement("canvas");
+          c.width = img.width;
+          c.height = img.height;
+          const ctx = c.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          const data = ctx.getImageData(0, 0, img.width, img.height);
+
+          // Very coarse simplification to force as few shapes as possible
+          const options = {
+            numberofcolors: 3,
+            pathomit: 10,  // ignore small spots
+            ltres: 100,    // huge = vastly reduced shape splitting
+            qtres: 100,
+            strokewidth: 0,
+            linefilter: false,
+          };
+
+          let svg = ImageTracer.imagedataToSVG(data, options);
+
+          // Post‑process: drop extra paths if more than 10
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(svg, "image/svg+xml");
+          const paths = Array.from(doc.querySelectorAll("path"));
+          if (paths.length > 10) {
+            // sort by area (approx.)
+            paths.sort((a, b) => {
+              const abox = a.getBBox ? a.getBBox() : { width: 0, height: 0 };
+              const bbox = b.getBBox ? b.getBBox() : { width: 0, height: 0 };
+              return bbox.width * bbox.height - abox.width * abox.height;
+            });
+            paths.slice(10).forEach((p) => p.remove());
+          }
+          svg = new XMLSerializer().serializeToString(doc.documentElement);
+          resolve({ name, svg: svg });
+        } catch (err) {
+          console.error("Trace error", err);
+          resolve({ name, svg: `<div>❌ Error tracing ${name}</div>` });
+        }
+      };
+      img.src = fr.result;
+    };
+    fr.readAsDataURL(blob);
+  });
+}
+
+async function processFile(file) {
+  const out = document.getElementById("result");
+  out.innerHTML = "Processing...";
+  const results = [];
+
+  if (file.name.toLowerCase().endsWith(".zip")) {
+    const zip = await JSZip.loadAsync(file);
+    for (const fname of Object.keys(zip.files)) {
+      if (!/\.(png|jpe?g|webp|avif)$/i.test(fname)) continue;
+      const blob = await zip.files[fname].async("blob");
+      const res = await blobToSVG(blob, fname);
+      results.push(res);
+    }
+  } else {
+    const res = await blobToSVG(file, file.name);
+    results.push(res);
+  }
+
+  out.innerHTML = "";
+  for (const { name, svg } of results) {
+    const div = document.createElement("div");
+    div.className = "svgbox";
+    div.innerHTML = `<div>${name}</div>${svg}`;
+    const el = div.querySelector("svg");
+    if (el) el.style.filter = "blur(4px)";
+    out.appendChild(div);
+  }
+}
+
+document.getElementById("input").addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (file) processFile(file);
+});
+</script>
+</body>
+</html>
