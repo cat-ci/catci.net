@@ -1,133 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>Minimal Low‑Poly SVG (≤10 polygons)</title>
-<style>
-  body {
-    font-family: sans-serif;
-    background: #fafafa;
-    text-align: center;
-    padding: 20px;
-  }
-  .result {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-  }
-  .svgbox {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    padding: 10px;
-  }
-  .svgbox svg {
-    filter: blur(4px);
-    width: 350px;
-    height: auto;
-    border-radius: 6px;
-  }
-</style>
-</head>
-<body>
-<h1>Low‑Poly SVG (≤10 Polygons)</h1>
-<p>Upload an image or a ZIP of images. Each will turn into a simple blurred low‑poly SVG with at most ~10 polygons.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bulk Low‑Poly SVG Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 40px;
+        background: #fafafa;
+        text-align: center;
+      }
+      #previewArea {
+        margin-top: 20px;
+      }
+      button {
+        margin-top: 30px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 6px;
+        border: none;
+        background: #007bff;
+        color: white;
+        cursor: pointer;
+      }
+      button:disabled {
+        background: #999;
+      }
+      #status {
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Bulk Low‑Poly SVG Generator</h1>
+    <input type="file" id="zipInput" accept=".zip" />
+    <button id="processBtn" disabled>Generate All SVGs</button>
+    <div id="status"></div>
+    <script>
+      const zipInput = document.getElementById("zipInput");
+      const processBtn = document.getElementById("processBtn");
+      const statusDiv = document.getElementById("status");
+      let imageFiles = [];
 
-<input type="file" id="input" accept=".zip,image/*" />
-<div id="result" class="result"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js"></script>
-
-<script>
-async function blobToSVG(blob, name) {
-  console.log("Processing", name);
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.crossOrigin = "anonymous";
-    const fr = new FileReader();
-    fr.onload = () => {
-      img.onload = () => {
-        try {
-          const c = document.createElement("canvas");
-          c.width = img.width;
-          c.height = img.height;
-          const ctx = c.getContext("2d");
-          ctx.drawImage(img, 0, 0);
-          const data = ctx.getImageData(0, 0, img.width, img.height);
-
-          // Very coarse simplification to force as few shapes as possible
-          const options = {
-            numberofcolors: 3,
-            pathomit: 10,  // ignore small spots
-            ltres: 100,    // huge = vastly reduced shape splitting
-            qtres: 100,
-            strokewidth: 0,
-            linefilter: false,
-          };
-
-          let svg = ImageTracer.imagedataToSVG(data, options);
-
-          // Post‑process: drop extra paths if more than 10
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(svg, "image/svg+xml");
-          const paths = Array.from(doc.querySelectorAll("path"));
-          if (paths.length > 10) {
-            // sort by area (approx.)
-            paths.sort((a, b) => {
-              const abox = a.getBBox ? a.getBBox() : { width: 0, height: 0 };
-              const bbox = b.getBBox ? b.getBBox() : { width: 0, height: 0 };
-              return bbox.width * bbox.height - abox.width * abox.height;
-            });
-            paths.slice(10).forEach((p) => p.remove());
-          }
-          svg = new XMLSerializer().serializeToString(doc.documentElement);
-          resolve({ name, svg: svg });
-        } catch (err) {
-          console.error("Trace error", err);
-          resolve({ name, svg: `<div>❌ Error tracing ${name}</div>` });
+      zipInput.addEventListener("change", async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        imageFiles = [];
+        statusDiv.textContent = "Reading ZIP contents...";
+        const z = new JSZip();
+        const zip = await z.loadAsync(file);
+        const all = Object.values(zip.files).filter(
+          (f) =>
+            !f.dir &&
+            /\.(jpe?g|png|webp|bmp|tiff|avif|heic|heif)$/i.test(f.name)
+        );
+        for (const entry of all) {
+          const blob = await entry.async("blob");
+          const fileObj = new File([blob], entry.name);
+          imageFiles.push({ fileObj, name: entry.name });
         }
-      };
-      img.src = fr.result;
-    };
-    fr.readAsDataURL(blob);
-  });
-}
+        statusDiv.textContent = `${imageFiles.length} image(s) ready.`;
+        processBtn.disabled = imageFiles.length === 0;
+      });
 
-async function processFile(file) {
-  const out = document.getElementById("result");
-  out.innerHTML = "Processing...";
-  const results = [];
+      // === simplified low-poly generator logic from your code ===
+      function colorDist(a, b) {
+        const dr = a[0] - b[0],
+          dg = a[1] - b[1],
+          db = a[2] - b[2];
+        return Math.sqrt(dr * dr + dg * dg + db * db);
+      }
 
-  if (file.name.toLowerCase().endsWith(".zip")) {
-    const zip = await JSZip.loadAsync(file);
-    for (const fname of Object.keys(zip.files)) {
-      if (!/\.(png|jpe?g|webp|avif)$/i.test(fname)) continue;
-      const blob = await zip.files[fname].async("blob");
-      const res = await blobToSVG(blob, fname);
-      results.push(res);
-    }
-  } else {
-    const res = await blobToSVG(file, file.name);
-    results.push(res);
-  }
+      function softenPoints(points, strength = 0.4, angleMin = 25) {
+        if (points.length < 4) return points;
+        const newPts = [];
+        const deg2rad = Math.PI / 180;
+        for (let i = 0; i < points.length; i++) {
+          const prev = points[(i - 1 + points.length) % points.length];
+          const curr = points[i];
+          const next = points[(i + 1) % points.length];
+          const v1x = prev.x - curr.x,
+            v1y = prev.y - curr.y;
+          const v2x = next.x - curr.x,
+            v2y = next.y - curr.y;
+          const len1 = Math.hypot(v1x, v1y),
+            len2 = Math.hypot(v2x, v2y);
+          const dot = (v1x * v2x + v1y * v2y) / (len1 * len2);
+          const angle = Math.acos(Math.max(-1, Math.min(1, dot))) / deg2rad;
+          newPts.push(curr);
+          if (angle < angleMin) {
+            const mx = (prev.x + next.x) / 2;
+            const my = (prev.y + next.y) / 2;
+            const mid = {
+              x: curr.x + (mx - curr.x) * strength,
+              y: curr.y + (my - curr.y) * strength,
+            };
+            newPts.push(mid);
+          }
+        }
+        return newPts;
+      }
 
-  out.innerHTML = "";
-  for (const { name, svg } of results) {
-    const div = document.createElement("div");
-    div.className = "svgbox";
-    div.innerHTML = `<div>${name}</div>${svg}`;
-    const el = div.querySelector("svg");
-    if (el) el.style.filter = "blur(4px)";
-    out.appendChild(div);
-  }
-}
+      async function generateSVG(img) {
+        const fullW = img.naturalWidth;
+        const fullH = img.naturalHeight;
+        const maxTrace = 480;
+        let scaleTrace = 1;
+        if (Math.max(fullW, fullH) > maxTrace)
+          scaleTrace = maxTrace / Math.max(fullW, fullH);
+        const w = Math.round(fullW * scaleTrace),
+          h = Math.round(fullH * scaleTrace);
 
-document.getElementById("input").addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (file) processFile(file);
-});
-</script>
-</body>
+        const c = document.createElement("canvas");
+        const ctx = c.getContext("2d", { willReadFrequently: true });
+        c.width = w;
+        c.height = h;
+        ctx.drawImage(img, 0, 0, w, h);
+        const { data } = ctx.getImageData(0, 0, w, h);
+
+        let R = 0,
+          G = 0,
+          B = 0,
+          n = 0;
+        for (let i = 0; i < data.length; i += 32) {
+          if (data[i + 3] > 100) {
+            R += data[i];
+            G += data[i + 1];
+            B += data[i + 2];
+            n++;
+          }
+        }
+        if (!n) return "";
+        const avg = [R / n, G / n, B / n];
+        const avgColor = `rgb(${avg.map((v) => Math.round(v)).join(",")})`;
+
+        const clusters = {};
+        for (let i = 0; i < data.length; i += 4) {
+          if (data[i + 3] < 100) continue;
+          const rr = Math.round(data[i] / 20),
+            gg = Math.round(data[i + 1] / 20),
+            bb = Math.round(data[i + 2] / 20);
+          const k = (rr << 16) | (gg << 8) | bb;
+          clusters[k] = (clusters[k] || 0) + 1;
+        }
+
+        const palette = Object.entries(clusters)
+          .map(([k, area]) => {
+            const r = (k >> 16) * 20,
+              g = ((k >> 8) & 255) * 20,
+              b = (k & 255) * 20;
+            return { rgb: [r, g, b], area };
+          })
+          .sort((a, b) => b.area - a.area);
+
+        const best1 = palette[0];
+        let best2 = palette[1];
+        let maxScore = -1;
+        for (const p of palette.slice(0, 200)) {
+          const d = colorDist(avg, p.rgb) * Math.sqrt(p.area);
+          if (d > maxScore) {
+            maxScore = d;
+            best2 = p;
+          }
+        }
+
+        const overlays = [
+          { rgb: best1.rgb, color: `rgb(${best1.rgb.map(Math.round)})` },
+          { rgb: best2.rgb, color: `rgb(${best2.rgb.map(Math.round)})` },
+        ];
+
+        function largestComponent(mask, w, h) {
+          const visited = new Uint8Array(mask.length);
+          let best = [];
+          for (let i = 0; i < mask.length; i++) {
+            if (mask[i] && !visited[i]) {
+              const stack = [i];
+              const comp = [];
+              visited[i] = 1;
+              while (stack.length) {
+                const id = stack.pop();
+                comp.push(id);
+                const x = id % w,
+                  y = (id / w) | 0;
+                const nbs = [id - 1, id + 1, id - w, id + w];
+                for (const ni of nbs) {
+                  if (ni >= 0 && ni < mask.length && mask[ni] && !visited[ni]) {
+                    visited[ni] = 1;
+                    stack.push(ni);
+                  }
+                }
+              }
+              if (comp.length > best.length) best = comp;
+            }
+          }
+          const res = new Uint8Array(mask.length);
+          for (const i of best) res[i] = 1;
+          return res;
+        }
+
+        function polyFromMask(mask, color) {
+          const pts = [];
+          const step = Math.max(1, Math.round(w / 220));
+          for (let y = 1; y < h - 1; y += step) {
+            for (let x = 1; x < w - 1; x += step) {
+              if (mask[y * w + x]) {
+                if (
+                  !mask[(y - 1) * w + x] ||
+                  !mask[(y + 1) * w + x] ||
+                  !mask[y * w + (x - 1)] ||
+                  !mask[y * w + (x + 1)]
+                )
+                  pts.push({ x, y });
+              }
+            }
+          }
+          if (pts.length < 3) return "";
+          const cx = pts.reduce((a, p) => a + p.x, 0) / pts.length;
+          const cy = pts.reduce((a, p) => a + p.y, 0) / pts.length;
+          const maxPts = 12;
+          const sectors = new Array(maxPts).fill(null);
+          for (const p of pts) {
+            const a =
+              ((Math.atan2(p.y - cy, p.x - cx) + Math.PI * 2) %
+                (Math.PI * 2)) /
+              (Math.PI * 2);
+            const idx = Math.floor(a * maxPts);
+            const d2 = (p.x - cx) ** 2 + (p.y - cy) ** 2;
+            if (!sectors[idx] || sectors[idx].d2 < d2)
+              sectors[idx] = { x: p.x, y: p.y, d2 };
+          }
+          let poly = sectors.filter(Boolean);
+          poly = softenPoints(poly, 0.5, 25);
+          poly.sort(
+            (a, b) =>
+              Math.atan2(a.y - cy, a.x - cx) -
+              Math.atan2(b.y - cy, b.x - cx)
+          );
+          const scaleBack = 1 / scaleTrace;
+          const d =
+            "M" +
+            poly
+              .map(
+                (p) =>
+                  `${(p.x * scaleBack).toFixed(1)},${(p.y * scaleBack).toFixed(
+                    1
+                  )}`
+              )
+              .join(" L ") +
+            " Z";
+          return `<path d="${d}" fill="${color}"/>\n`;
+        }
+
+        const baseMask = new Uint8Array(w * h);
+        for (let i = 0; i < w * h; i++)
+          baseMask[i] = data[i * 4 + 3] > 100 ? 1 : 0;
+
+        const layers = [{ mask: baseMask, color: avgColor, area: baseMask.length }];
+
+        for (const ol of overlays) {
+          const mask = new Uint8Array(w * h);
+          for (let i = 0; i < w * h; i++) {
+            if (data[i * 4 + 3] < 100) continue;
+            const R = data[i * 4],
+              G = data[i * 4 + 1],
+              B = data[i * 4 + 2];
+            if (colorDist([R, G, B], ol.rgb) < 55) mask[i] = 1;
+          }
+          const main = largestComponent(mask, w, h);
+          const area = main.reduce((a, b) => a + b, 0);
+          if (area > 10) layers.push({ mask: main, color: ol.color, area });
+        }
+
+        layers.sort((a, b) => b.area - a.area);
+
+        let svgPaths = "";
+        for (const L of layers) svgPaths += polyFromMask(L.mask, L.color);
+
+        return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${fullW} ${fullH}">
+${svgPaths}</svg>`;
+      }
+
+      processBtn.addEventListener("click", async () => {
+        processBtn.disabled = true;
+        statusDiv.textContent = "Processing images...";
+        let htmlOutput = "<!DOCTYPE html><html><body>\n";
+        let count = 0;
+        for (const { fileObj, name } of imageFiles) {
+          count++;
+          statusDiv.textContent = `Processing ${count}/${imageFiles.length}: ${name}`;
+          const img = new Image();
+          const url = URL.createObjectURL(fileObj);
+          img.src = url;
+          await new Promise((res) => (img.onload = res));
+          const svgMarkup = await generateSVG(img);
+          URL.revokeObjectURL(url);
+          htmlOutput += `<!-- ${name} -->\n${svgMarkup}\n<br><br>\n`;
+        }
+        htmlOutput += "</body></html>";
+        const blob = new Blob([htmlOutput], { type: "text/html" });
+        saveAs(blob, "lowpoly_svg_gallery.html");
+        statusDiv.textContent = "Done. Download generated.";
+        processBtn.disabled = false;
+      });
+    </script>
+  </body>
 </html>
