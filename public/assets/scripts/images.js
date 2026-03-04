@@ -1,4 +1,3 @@
-// ---------- Image Format Detection ----------
 const formatTestImages = {
   avif: 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADrbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAETAAAAFwAAAChpaW5mAAAAAAABAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAABqaXBycAAAAEtpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGl4aQAAAAADCAgIAAAADGF2MUOBAAwAAAAAE2NvbHJuY2x4AAEADQAGgAAAABdpcG1hAAAAAAAAAAEAAQQBAoMEAAAAH21kYXQSAAoIGAAOSAhoNCAyCR/wAABAAACvsA==',
   webp: 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEADMDOJaQAA3AA/uuuAAA='
@@ -21,7 +20,7 @@ async function detectBestFormat() {
   return 'png';
 }
 
-// ---------- Cache / IndexedDB ----------
+
 const DB_NAME = 'cwImageCacheDB';
 const STORE_NAME = 'images';
 const DB_VERSION = 1;
@@ -40,7 +39,7 @@ function openDB() {
     };
     request.onsuccess = () => {
       openDBHandle = request.result;
-      // Handle DB versionclosing on window unload to prevent leaks
+      
       window.addEventListener('beforeunload', () => {
         try {
           openDBHandle.close();
@@ -84,7 +83,7 @@ async function cacheImage(name, blob) {
   }
 }
 
-// ---------- Memory-safe image handling ----------
+
 async function loadImagesAndAnimate() {
   if (window.__cwImagesAnimated) return;
   window.__cwImagesAnimated = true;
@@ -161,7 +160,7 @@ async function loadImagesAndAnimate() {
 
     const img = document.createElement('img');
     img.src = dataUrl;
-    img.loading = 'lazy'; // modern browsers optimization
+    img.loading = 'lazy'; 
 
     const altText = el.getAttribute('cw-alt');
     img.alt = altText || key;
@@ -180,9 +179,9 @@ async function loadImagesAndAnimate() {
       }
     });
 
-    // Cleanup Blob URL when image unloads or is removed
+    
     img.addEventListener('load', () => {
-      // Revoke object URLs slightly delayed to avoid flicker
+      
       setTimeout(() => {
         try {
           URL.revokeObjectURL(dataUrl);
@@ -192,7 +191,7 @@ async function loadImagesAndAnimate() {
     });
   }
 
-  // Fallback cleanup routine — in case DOM elements removed dynamically later
+  
   window.addEventListener('beforeunload', () => {
     for (const url of activeObjectURLs) {
       try {
