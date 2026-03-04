@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Format Support Test</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 40px;
+        background: #fafafa;
+        color: #333;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      #result {
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Browser Image Format Test</h1>
+    <div id="result">Testing...</div>
+
+    <script>
+      // Base64 images provided by you
+      const images = {
+        avif: 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADrbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAAAAAAAOcGl0bQAAAAAAAQAAAB5pbG9jAAAAAEQAAAEAAQAAAAEAAAETAAAAFwAAAChpaW5mAAAAAAABAAAAGmluZmUCAAAAAAEAAGF2MDFDb2xvcgAAAABqaXBycAAAAEtpcGNvAAAAFGlzcGUAAAAAAAAAAQAAAAEAAAAQcGl4aQAAAAADCAgIAAAADGF2MUOBAAwAAAAAE2NvbHJuY2x4AAEADQAGgAAAABdpcG1hAAAAAAAAAAEAAQQBAoMEAAAAH21kYXQSAAoIGAAOSAhoNCAyCR/wAABAAACvsA==',
+        webp: 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEADMDOJaQAA3AA/uuuAAA=',
+        png: null // no need to test; we assume PNG is universally supported
+      };
+
+      // Helper: test if a browser can load a given data URI
+      function testFormat(src) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(img.width > 0 && img.height >= 0);
+          img.onerror = () => resolve(false);
+          img.src = src;
+        });
+      }
+
+      async function detectBestImageFormat() {
+        const resultElement = document.getElementById('result');
+
+        const supportsAvif = await testFormat(images.avif);
+        if (supportsAvif) {
+          resultElement.textContent = 'Your browser supports: AVIF ✅';
+          return;
+        }
+
+        const supportsWebp = await testFormat(images.webp);
+        if (supportsWebp) {
+          resultElement.textContent = 'Your browser supports: WebP ✅';
+          return;
+        }
+
+        // Fallback to PNG if neither supported
+        resultElement.textContent =
+          'Your browser only supports: PNG ✅ (fallback)';
+      }
+
+      detectBestImageFormat();
+    </script>
+  </body>
+</html>
