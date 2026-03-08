@@ -7,12 +7,6 @@
     <title>Quick Loading Images Example</title>
     <script src="./assets/scripts/jszip.js"></script>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-
         [cw-image] {
             position: relative;
             width: 400px;
@@ -33,12 +27,10 @@
         [cw-image] svg {
             filter: blur(10px);
             opacity: 1;
-            z-index: 1;
         }
 
         [cw-image] img {
             opacity: 0;
-            z-index: 0;
         }
 
         [cw-image] svg.fade-out {

@@ -1,0 +1,129 @@
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+img,
+ul,
+li,
+label,
+aside,
+details,
+header,
+main,
+nav,
+section,
+summary,
+audio,
+picture {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+aside,
+details,
+header,
+main,
+nav,
+section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+ul {
+    list-style: none
+}
+
+[cw-image] {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    display: inline-block;
+}
+
+[cw-image] svg,
+[cw-image] img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1.2s ease, filter 1.2s ease;
+}
+
+[cw-image] svg {
+    filter: blur(10px);
+    opacity: 1;
+}
+
+[cw-image] img {
+    opacity: 0;
+}
+
+[cw-image] svg.fade-out {
+    filter: blur(0);
+    opacity: 0;
+}
+
+[cw-image] img.fade-in {
+    opacity: 1;
+}
+:root {
+    --metal-background: linear-gradient(90deg, #222, #111, #222);
+    --color: #e9e9e9;
+    --main-branch: '├── ';
+    --main-leaf: '└── ';
+    --internal-branch: '│ ├── ';
+    --internal-leaf: '│ └── ';
+    --external-branch: ' ├── ';
+    --external-leaf: ' └── ';
+    --display-text-shadow: #ddd 0 0 1px, #ddd 0 0 1px;
+    --display-box-shadow: #111 0 0 5px inset, #202020 0 0 15px;
+    --display-background: linear-gradient(90deg, #333, #222, #333);
+    --main-font:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #6b8e23 #232323
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background: #232323
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3a4d2d 60%, #6b8e23 100%);
+    border-radius: 6px;
+    border: 2px solid #181818;
+    box-shadow: 0 2px 6px #000a, 0 0 1px #6b8e23
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #4e6b3c 60%, #8fcf3f 100%)
+}
+
+::-webkit-scrollbar-corner {
+    background: #181818
+}
+
+body {
+    background: #110c07;
+    background-size: 100px;
+    /*cw-image: "greatea.avif";*/
+
+
+}
