@@ -1,0 +1,470 @@
+/*
+          _____                    _____                    _____          
+         /\    \                  /\    \                  /\    \         
+        /::\    \                /::\    \                /::\    \        
+       /::::\    \              /::::\    \              /::::\    \       
+      /::::::\    \            /::::::\    \            /::::::\    \      
+     /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \     
+    /:::/  \:::\    \        /:::/__\:::\    \        /:::/  \:::\    \    
+   /:::/    \:::\    \      /::::\   \:::\    \      /:::/    \:::\    \   
+  /:::/    / \:::\    \    /::::::\   \:::\    \    /:::/    / \:::\    \  
+ /:::/    /   \:::\    \  /:::/\:::\   \:::\____\  /:::/    /   \:::\ ___\ 
+/:::/____/     \:::\____\/:::/  \:::\   \:::|    |/:::/____/  ___\:::|    |
+\:::\    \      \::/    /\::/    \:::\  /:::|____|\:::\    \ /\  /:::|____|
+ \:::\    \      \/____/  \/_____/\:::\/:::/    /  \:::\    /::\ \::/    / 
+  \:::\    \                       \::::::/    /    \:::\   \:::\ \/____/  
+   \:::\    \                       \::::/    /      \:::\   \:::\____\    
+    \:::\    \                       \::/____/        \:::\  /:::/    /    
+     \:::\    \                       ~~               \:::\/:::/    /     
+      \:::\    \                                        \::::::/    /      
+       \:::\____\                                        \::::/    /       
+        \::/    /                                         \::/____/        
+         \/____/                                                           
+                                                                           
+Catci's Paper Generator
+V1.0.1
+Https://catci.net
+*/
+
+.cpg-paper {
+    position: relative;
+    background-blend-mode: multiply;
+    background-size: cover;
+    --catcis-margin-color: var(--catcis-pg-accent-color)
+}
+
+.cpg-paper.cpg-brown {
+    --catcis-pg-background-color: #fff8e6;
+    --catcis-pg-foreground-color: #7b7365;
+    --catcis-pg-accent-color: #e3b8af
+}
+
+.cpg-paper.cpg-yellow {
+    --catcis-pg-background-color: #fff4a6;
+    --catcis-pg-foreground-color: #ccad3b;
+    --catcis-pg-accent-color: #e6c86e
+}
+
+.cpg-paper.cpg-blue {
+    --catcis-pg-background-color: #e8f1ff;
+    --catcis-pg-foreground-color: #4a76a8;
+    --catcis-pg-accent-color: #90b4e5
+}
+
+.cpg-paper.cpg-green {
+    --catcis-pg-background-color: #e9f9e6;
+    --catcis-pg-foreground-color: #5d8b61;
+    --catcis-pg-accent-color: #a5d6a7
+}
+
+.cpg-paper.cpg-pink {
+    --catcis-pg-background-color: #ffeaf2;
+    --catcis-pg-foreground-color: #d47fa6;
+    --catcis-pg-accent-color: #f1aacb
+}
+
+.cpg-paper.cpg-purple {
+    --catcis-pg-background-color: #f3e8ff;
+    --catcis-pg-foreground-color: #8b5fbf;
+    --catcis-pg-accent-color: #c4a7e0
+}
+
+.cpg-paper.cpg-orange {
+    --catcis-pg-background-color: #fff2e8;
+    --catcis-pg-foreground-color: #cc7a3b;
+    --catcis-pg-accent-color: #f0b88a
+}
+
+.cpg-paper.cpg-red {
+    --catcis-pg-background-color: #ffe8e8;
+    --catcis-pg-foreground-color: #c85a5a;
+    --catcis-pg-accent-color: #f0a0a0
+}
+
+.cpg-paper.cpg-cyan {
+    --catcis-pg-background-color: #e8ffff;
+    --catcis-pg-foreground-color: #4a9999;
+    --catcis-pg-accent-color: #7fcccc
+}
+
+.cpg-paper.cpg-lime {
+    --catcis-pg-background-color: #f0ffe8;
+    --catcis-pg-foreground-color: #7bb33b;
+    --catcis-pg-accent-color: #b3d99a
+}
+
+.cpg-paper.cpg-teal {
+    --catcis-pg-background-color: #e8fffa;
+    --catcis-pg-foreground-color: #3b8066;
+    --catcis-pg-accent-color: #7fbfaa
+}
+
+.cpg-paper.cpg-indigo {
+    --catcis-pg-background-color: #f0f0ff;
+    --catcis-pg-foreground-color: #5a5acc;
+    --catcis-pg-accent-color: #9999e6
+}
+
+.cpg-paper.cpg-coral {
+    --catcis-pg-background-color: #fff0f0;
+    --catcis-pg-foreground-color: #e67373;
+    --catcis-pg-accent-color: #ffb3b3
+}
+
+.cpg-paper.cpg-mint {
+    --catcis-pg-background-color: #f0fff8;
+    --catcis-pg-foreground-color: #4d9966;
+    --catcis-pg-accent-color: #99ccaa
+}
+
+.cpg-paper.cpg-lavender {
+    --catcis-pg-background-color: #f8f0ff;
+    --catcis-pg-foreground-color: #9966cc;
+    --catcis-pg-accent-color: #ccaaee
+}
+
+.cpg-paper.cpg-peach {
+    --catcis-pg-background-color: #fff8f0;
+    --catcis-pg-foreground-color: #e6994d;
+    --catcis-pg-accent-color: #ffcc99
+}
+
+.cpg-paper.cpg-sage {
+    --catcis-pg-background-color: #f8fff0;
+    --catcis-pg-foreground-color: #809966;
+    --catcis-pg-accent-color: #b3cc99
+}
+
+.cpg-paper.cpg-cream {
+    --catcis-pg-background-color: #fffdf0;
+    --catcis-pg-foreground-color: #b3a680;
+    --catcis-pg-accent-color: #e6d9b3
+}
+
+.cpg-paper.cpg-slate {
+    --catcis-pg-background-color: #f0f8ff;
+    --catcis-pg-foreground-color: #6b7f99;
+    --catcis-pg-accent-color: #b3c2d9
+}
+
+.cpg-paper.cpg-rose {
+    --catcis-pg-background-color: #fff0f8;
+    --catcis-pg-foreground-color: #e673a6;
+    --catcis-pg-accent-color: #ffb3d9
+}
+
+.cpg-paper.cpg-amber {
+    --catcis-pg-background-color: #fffaf0;
+    --catcis-pg-foreground-color: #d99f3b;
+    --catcis-pg-accent-color: #ffcc7f
+}
+
+.cpg-short {
+    --catcis-pg-line-spacing: 5px;
+    --catcis-pg-dot-spacing: 5px
+}
+
+.cpg-medium {
+    --catcis-pg-line-spacing: 10px;
+    --catcis-pg-dot-spacing: 10px
+}
+
+.cpg-wide {
+    --catcis-pg-line-spacing: 20px;
+    --catcis-pg-dot-spacing: 20px
+}
+
+.cpg-narrow {
+    --catcis-pg-line-spacing: 8px;
+    --catcis-pg-dot-spacing: 8px
+}
+
+.cpg-extra-wide {
+    --catcis-pg-line-spacing: 25px;
+    --catcis-pg-dot-spacing: 25px
+}
+
+.cpg-tight {
+    --catcis-pg-line-spacing: 6px;
+    --catcis-pg-dot-spacing: 6px
+}
+
+.cpg-paper:not(.cpg-short):not(.cpg-medium):not(.cpg-wide):not(.cpg-narrow):not(.cpg-extra-wide):not(.cpg-tight) {
+    --catcis-pg-line-spacing: 15px;
+    --catcis-pg-dot-spacing: 10px
+}
+
+.cpg-paper.cpg-stripes {
+    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-stripes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(var(--catcis-pg-line-spacing) + 5px);
+    background-color: var(--catcis-pg-background-color);
+    background-image: url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-dots {
+    background: radial-gradient(circle at 10px 10px, var(--catcis-pg-foreground-color) 1.5px, var(--catcis-pg-background-color) 2px), url('../temp-images/paper-fibers.avif');
+    background-blend-mode: multiply;
+    background-size: var(--catcis-pg-dot-spacing) var(--catcis-pg-dot-spacing)
+}
+
+.cpg-paper.cpg-grid {
+    background: linear-gradient(0deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), linear-gradient(90deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif');
+    background-size: var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing)
+}
+
+.cpg-paper.cpg-hex-dots {
+    background: radial-gradient(circle at 50% 50%, var(--catcis-pg-foreground-color) 1.2px, transparent 1.5px), radial-gradient(circle at 50% 50%, var(--catcis-pg-foreground-color) 1.2px, var(--catcis-pg-background-color) 1.5px), url('../temp-images/paper-fibers.avif');
+    background-position: 0 0, calc(var(--catcis-pg-dot-spacing) * .866) calc(var(--catcis-pg-dot-spacing) * .5);
+    background-size: calc(var(--catcis-pg-dot-spacing) * 1.732) var(--catcis-pg-dot-spacing)
+}
+
+.cpg-paper.cpg-iso-dots {
+    background: radial-gradient(circle at 33% 33%, var(--catcis-pg-foreground-color) 1px, transparent 1.5px), radial-gradient(circle at 66% 66%, var(--catcis-pg-foreground-color) 1px, var(--catcis-pg-background-color) 1.5px), url('../temp-images/paper-fibers.avif');
+    background-size: calc(var(--catcis-pg-dot-spacing) * 2) calc(var(--catcis-pg-dot-spacing) * 2)
+}
+
+.cpg-paper.cpg-cross {
+    background: linear-gradient(0deg, transparent calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% + .5px), transparent calc(50% + .5px)), linear-gradient(90deg, transparent calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% + .5px), transparent calc(50% + .5px)), url('../temp-images/paper-fibers.avif');
+    background-size: var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing)
+}
+
+.cpg-paper.cpg-diamond {
+    background: repeating-linear-gradient(45deg, transparent 0, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), repeating-linear-gradient(-45deg, transparent 0, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-music {
+    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 30px, var(--catcis-pg-foreground-color) 31px, var(--catcis-pg-foreground-color) 32px, var(--catcis-pg-background-color) 33px, var(--catcis-pg-background-color) 41px, var(--catcis-pg-foreground-color) 42px, var(--catcis-pg-foreground-color) 43px, var(--catcis-pg-background-color) 44px, var(--catcis-pg-background-color) 52px, var(--catcis-pg-foreground-color) 53px, var(--catcis-pg-foreground-color) 54px, var(--catcis-pg-background-color) 55px, var(--catcis-pg-background-color) 63px, var(--catcis-pg-foreground-color) 64px, var(--catcis-pg-foreground-color) 65px, var(--catcis-pg-background-color) 66px, var(--catcis-pg-background-color) 74px, var(--catcis-pg-foreground-color) 75px, var(--catcis-pg-foreground-color) 76px), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-cornell {
+    background: linear-gradient(90deg, var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 29%, var(--catcis-pg-foreground-color) 29.5%, var(--catcis-pg-foreground-color) 30%, var(--catcis-pg-background-color) 30.5%, var(--catcis-pg-background-color) 100%), linear-gradient(0deg, var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 69%, var(--catcis-pg-foreground-color) 69.5%, var(--catcis-pg-foreground-color) 70%, var(--catcis-pg-background-color) 70.5%, var(--catcis-pg-background-color) 100%), repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-engineering {
+    background: linear-gradient(0deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), linear-gradient(90deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), linear-gradient(0deg, transparent calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(var(--catcis-pg-line-spacing) * 5)), linear-gradient(90deg, transparent calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(var(--catcis-pg-line-spacing) * 5)), url('../temp-images/paper-fibers.avif');
+    background-size: var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing), var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing), calc(var(--catcis-pg-line-spacing) * 5) calc(var(--catcis-pg-line-spacing) * 5), calc(var(--catcis-pg-line-spacing) * 5) calc(var(--catcis-pg-line-spacing) * 5)
+}
+
+.cpg-paper.cpg-triangular {
+    background: repeating-linear-gradient(0deg, transparent 0, transparent calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 1.732)), repeating-linear-gradient(60deg, transparent 0, transparent calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 1.732)), repeating-linear-gradient(-60deg, transparent 0, transparent calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 1.732)), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-seyes {
+    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 16px, var(--catcis-pg-accent-color) 17px, var(--catcis-pg-accent-color) 18px, var(--catcis-pg-background-color) 19px, var(--catcis-pg-background-color) 24px, var(--catcis-pg-foreground-color) 25px, var(--catcis-pg-foreground-color) 26px, var(--catcis-pg-background-color) 27px, var(--catcis-pg-background-color) 32px, var(--catcis-pg-accent-color) 33px, var(--catcis-pg-accent-color) 34px), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-blank {
+    background: var(--catcis-pg-background-color), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-calligraphy {
+    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 19px, var(--catcis-pg-accent-color) 20px, var(--catcis-pg-accent-color) 21px, var(--catcis-pg-background-color) 22px, var(--catcis-pg-background-color) 29px, var(--catcis-pg-foreground-color) 30px, var(--catcis-pg-foreground-color) 31px, var(--catcis-pg-background-color) 32px, var(--catcis-pg-background-color) 39px, var(--catcis-pg-accent-color) 40px, var(--catcis-pg-accent-color) 41px, var(--catcis-pg-background-color) 42px, var(--catcis-pg-background-color) 49px, var(--catcis-pg-foreground-color) 50px, var(--catcis-pg-foreground-color) 51px), url('../temp-images/paper-fibers.avif')
+}
+
+.cpg-paper.cpg-margin-double::after,
+.cpg-paper.cpg-margin-single::after,
+.cpg-paper.cpg-margin-triple::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none
+}
+
+.cpg-paper {
+  --catcis-margin-line-width: 2px;
+  --catcis-margin-offset: 20px;
+  --catcis-margin-gap: 4px;
+}
+
+.cpg-margin-left::after {
+  background: linear-gradient(
+    90deg,
+    transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+    var(--catcis-margin-color) var(--catcis-margin-offset),
+    transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+  );
+}
+
+.cpg-margin-right::after {
+  background: linear-gradient(
+    90deg,
+    transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+    var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset)),
+    transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+  );
+}
+
+.cpg-margin-both::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+      var(--catcis-margin-color) var(--catcis-margin-offset),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset)),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+    );
+}
+
+.cpg-margin-center::after {
+  background: linear-gradient(
+    90deg,
+    transparent calc(50% - var(--catcis-margin-line-width)),
+    var(--catcis-margin-color) 50%,
+    transparent calc(50% + var(--catcis-margin-line-width))
+  );
+}
+
+.cpg-margin-double.cpg-margin-left::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent var(--catcis-margin-offset)
+    ),
+    linear-gradient(
+      90deg,
+      transparent var(--catcis-margin-offset),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    );
+}
+
+.cpg-margin-double.cpg-margin-right::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    );
+}
+
+.cpg-margin-double.cpg-margin-both::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent var(--catcis-margin-offset)
+    ),
+    linear-gradient(
+      90deg,
+      transparent var(--catcis-margin-offset),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    );
+}
+
+.cpg-margin-triple.cpg-margin-left::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) * 1.5),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) var(--catcis-margin-offset),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) + var(--catcis-margin-gap)),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) * 1.5)
+    );
+}
+
+.cpg-margin-triple.cpg-margin-right::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) * 1.5),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset)),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap)),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) * 1.5)
+    );
+}
+
+.cpg-margin-red {
+    --catcis-margin-color: #ff6b6b
+}
+
+.cpg-margin-blue {
+    --catcis-margin-color: #4dabf7
+}
+
+.cpg-margin-green {
+    --catcis-margin-color: #69db7c
+}
+
+.cpg-margin-yellow {
+    --catcis-margin-color: #ffd43b
+}
+
+.cpg-margin-purple {
+    --catcis-margin-color: #da77f2
+}
+
+.cpg-margin-orange {
+    --catcis-margin-color: #ff922b
+}
+
+.cpg-margin-pink {
+    --catcis-margin-color: #f783ac
+}
+
+.cpg-margin-gray {
+    --catcis-margin-color: #868e96
+}
+
+.cpg-margin-black {
+    --catcis-margin-color: #495057
+}
