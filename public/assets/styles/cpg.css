@@ -194,11 +194,11 @@ Https://catci.net
     --catcis-pg-dot-spacing: 10px
 }
 
-.cpg-paper.cpg-stripes {
+.cpg-paper.cpg-lined {
     background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif')
 }
 
-.cpg-paper.cpg-stripes::before {
+.cpg-paper.cpg-lined::before {
     content: '';
     position: absolute;
     top: 0;
@@ -214,10 +214,25 @@ Https://catci.net
     background-blend-mode: multiply;
     background-size: var(--catcis-pg-dot-spacing) var(--catcis-pg-dot-spacing)
 }
-
 .cpg-paper.cpg-grid {
-    background: linear-gradient(0deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), linear-gradient(90deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif');
-    background-size: var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing)
+  background:
+    linear-gradient(
+      0deg,
+      var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)
+    ),
+    linear-gradient(
+      90deg,
+      var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)
+    ),
+    url('../temp-images/paper-fibers.avif');
+  background-size:
+    var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing),
+    var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing),
+    cover;
 }
 
 .cpg-paper.cpg-hex-dots {
@@ -241,7 +256,7 @@ Https://catci.net
 }
 
 .cpg-paper.cpg-music {
-    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 30px, var(--catcis-pg-foreground-color) 31px, var(--catcis-pg-foreground-color) 32px, var(--catcis-pg-background-color) 33px, var(--catcis-pg-background-color) 41px, var(--catcis-pg-foreground-color) 42px, var(--catcis-pg-foreground-color) 43px, var(--catcis-pg-background-color) 44px, var(--catcis-pg-background-color) 52px, var(--catcis-pg-foreground-color) 53px, var(--catcis-pg-foreground-color) 54px, var(--catcis-pg-background-color) 55px, var(--catcis-pg-background-color) 63px, var(--catcis-pg-foreground-color) 64px, var(--catcis-pg-foreground-color) 65px, var(--catcis-pg-background-color) 66px, var(--catcis-pg-background-color) 74px, var(--catcis-pg-foreground-color) 75px, var(--catcis-pg-foreground-color) 76px), url('../temp-images/paper-fibers.avif')
+  background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 6px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 7px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 8px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 9px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 17px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 18px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 19px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 20px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 28px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 29px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 30px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 31px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 39px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 40px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 41px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 42px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 50px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 51px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 52px)), url('../temp-images/paper-fibers.avif')
 }
 
 .cpg-paper.cpg-cornell {
@@ -262,7 +277,9 @@ Https://catci.net
 }
 
 .cpg-paper.cpg-blank {
-    background: var(--catcis-pg-background-color), url('../temp-images/paper-fibers.avif')
+    background-color: var(--catcis-pg-background-color);
+    background-image: url('../temp-images/paper-fibers.avif');
+    background-blend-mode: multiply;
 }
 
 .cpg-paper.cpg-calligraphy {
@@ -277,13 +294,19 @@ Https://catci.net
     top: 0;
     height: 100%;
     width: 100%;
-    pointer-events: none
+    pointer-events: none;
+    left:0;
 }
 
 .cpg-paper {
   --catcis-margin-line-width: 2px;
   --catcis-margin-offset: 20px;
   --catcis-margin-gap: 4px;
+}
+
+.cpg-paper-content {
+  position: absolute;
+  z-index: 2;
 }
 
 .cpg-margin-left::after {

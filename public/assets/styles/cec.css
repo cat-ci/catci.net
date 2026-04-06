@@ -25,3 +25,470 @@ Catci'c Element Creator
 V1.0.1
 Https://catci.net
 */
+
+
+.cec-paper {
+    position: relative;
+    background-blend-mode: multiply;
+    background-size: cover;
+    --catcis-margin-color: var(--catcis-pg-accent-color)
+}
+
+.cec-paper.cec-brown {
+    --catcis-pg-background-color: #fff8e6;
+    --catcis-pg-foreground-color: #7b7365;
+    --catcis-pg-accent-color: #e3b8af
+}
+
+.cec-paper.cec-yellow {
+    --catcis-pg-background-color: #fff4a6;
+    --catcis-pg-foreground-color: #ccad3b;
+    --catcis-pg-accent-color: #e6c86e
+}
+
+.cec-paper.cec-blue {
+    --catcis-pg-background-color: #e8f1ff;
+    --catcis-pg-foreground-color: #4a76a8;
+    --catcis-pg-accent-color: #90b4e5
+}
+
+.cec-paper.cec-green {
+    --catcis-pg-background-color: #e9f9e6;
+    --catcis-pg-foreground-color: #5d8b61;
+    --catcis-pg-accent-color: #a5d6a7
+}
+
+.cec-paper.cec-pink {
+    --catcis-pg-background-color: #ffeaf2;
+    --catcis-pg-foreground-color: #d47fa6;
+    --catcis-pg-accent-color: #f1aacb
+}
+
+.cec-paper.cec-purple {
+    --catcis-pg-background-color: #f3e8ff;
+    --catcis-pg-foreground-color: #8b5fbf;
+    --catcis-pg-accent-color: #c4a7e0
+}
+
+.cec-paper.cec-orange {
+    --catcis-pg-background-color: #fff2e8;
+    --catcis-pg-foreground-color: #cc7a3b;
+    --catcis-pg-accent-color: #f0b88a
+}
+
+.cec-paper.cec-red {
+    --catcis-pg-background-color: #ffe8e8;
+    --catcis-pg-foreground-color: #c85a5a;
+    --catcis-pg-accent-color: #f0a0a0
+}
+
+.cec-paper.cec-cyan {
+    --catcis-pg-background-color: #e8ffff;
+    --catcis-pg-foreground-color: #4a9999;
+    --catcis-pg-accent-color: #7fcccc
+}
+
+.cec-paper.cec-lime {
+    --catcis-pg-background-color: #f0ffe8;
+    --catcis-pg-foreground-color: #7bb33b;
+    --catcis-pg-accent-color: #b3d99a
+}
+
+.cec-paper.cec-teal {
+    --catcis-pg-background-color: #e8fffa;
+    --catcis-pg-foreground-color: #3b8066;
+    --catcis-pg-accent-color: #7fbfaa
+}
+
+.cec-paper.cec-indigo {
+    --catcis-pg-background-color: #f0f0ff;
+    --catcis-pg-foreground-color: #5a5acc;
+    --catcis-pg-accent-color: #9999e6
+}
+
+.cec-paper.cec-coral {
+    --catcis-pg-background-color: #fff0f0;
+    --catcis-pg-foreground-color: #e67373;
+    --catcis-pg-accent-color: #ffb3b3
+}
+
+.cec-paper.cec-mint {
+    --catcis-pg-background-color: #f0fff8;
+    --catcis-pg-foreground-color: #4d9966;
+    --catcis-pg-accent-color: #99ccaa
+}
+
+.cec-paper.cec-lavender {
+    --catcis-pg-background-color: #f8f0ff;
+    --catcis-pg-foreground-color: #9966cc;
+    --catcis-pg-accent-color: #ccaaee
+}
+
+.cec-paper.cec-peach {
+    --catcis-pg-background-color: #fff8f0;
+    --catcis-pg-foreground-color: #e6994d;
+    --catcis-pg-accent-color: #ffcc99
+}
+
+.cec-paper.cec-sage {
+    --catcis-pg-background-color: #f8fff0;
+    --catcis-pg-foreground-color: #809966;
+    --catcis-pg-accent-color: #b3cc99
+}
+
+.cec-paper.cec-cream {
+    --catcis-pg-background-color: #fffdf0;
+    --catcis-pg-foreground-color: #b3a680;
+    --catcis-pg-accent-color: #e6d9b3
+}
+
+.cec-paper.cec-slate {
+    --catcis-pg-background-color: #f0f8ff;
+    --catcis-pg-foreground-color: #6b7f99;
+    --catcis-pg-accent-color: #b3c2d9
+}
+
+.cec-paper.cec-rose {
+    --catcis-pg-background-color: #fff0f8;
+    --catcis-pg-foreground-color: #e673a6;
+    --catcis-pg-accent-color: #ffb3d9
+}
+
+.cec-paper.cec-amber {
+    --catcis-pg-background-color: #fffaf0;
+    --catcis-pg-foreground-color: #d99f3b;
+    --catcis-pg-accent-color: #ffcc7f
+}
+
+.cec-short {
+    --catcis-pg-line-spacing: 5px;
+    --catcis-pg-dot-spacing: 5px
+}
+
+.cec-medium {
+    --catcis-pg-line-spacing: 10px;
+    --catcis-pg-dot-spacing: 10px
+}
+
+.cec-wide {
+    --catcis-pg-line-spacing: 20px;
+    --catcis-pg-dot-spacing: 20px
+}
+
+.cec-narrow {
+    --catcis-pg-line-spacing: 8px;
+    --catcis-pg-dot-spacing: 8px
+}
+
+.cec-extra-wide {
+    --catcis-pg-line-spacing: 25px;
+    --catcis-pg-dot-spacing: 25px
+}
+
+.cec-tight {
+    --catcis-pg-line-spacing: 6px;
+    --catcis-pg-dot-spacing: 6px
+}
+
+.cec-paper:not(.cec-short):not(.cec-medium):not(.cec-wide):not(.cec-narrow):not(.cec-extra-wide):not(.cec-tight) {
+    --catcis-pg-line-spacing: 15px;
+    --catcis-pg-dot-spacing: 10px
+}
+
+.cec-paper.cec-lined {
+    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-lined::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(var(--catcis-pg-line-spacing) + 5px);
+    background-color: var(--catcis-pg-background-color);
+    background-image: url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-dots {
+    background: radial-gradient(circle at 10px 10px, var(--catcis-pg-foreground-color) 1.5px, var(--catcis-pg-background-color) 2px), url('../temp-images/paper-fibers.avif');
+    background-blend-mode: multiply;
+    background-size: var(--catcis-pg-dot-spacing) var(--catcis-pg-dot-spacing)
+}
+.cec-paper.cec-grid {
+  background:
+    linear-gradient(
+      0deg,
+      var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)
+    ),
+    linear-gradient(
+      90deg,
+      var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px),
+      var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)
+    ),
+    url('../temp-images/paper-fibers.avif');
+  background-size:
+    var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing),
+    var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing),
+    cover;
+}
+
+.cec-paper.cec-hex-dots {
+    background: radial-gradient(circle at 50% 50%, var(--catcis-pg-foreground-color) 1.2px, transparent 1.5px), radial-gradient(circle at 50% 50%, var(--catcis-pg-foreground-color) 1.2px, var(--catcis-pg-background-color) 1.5px), url('../temp-images/paper-fibers.avif');
+    background-position: 0 0, calc(var(--catcis-pg-dot-spacing) * .866) calc(var(--catcis-pg-dot-spacing) * .5);
+    background-size: calc(var(--catcis-pg-dot-spacing) * 1.732) var(--catcis-pg-dot-spacing)
+}
+
+.cec-paper.cec-iso-dots {
+    background: radial-gradient(circle at 33% 33%, var(--catcis-pg-foreground-color) 1px, transparent 1.5px), radial-gradient(circle at 66% 66%, var(--catcis-pg-foreground-color) 1px, var(--catcis-pg-background-color) 1.5px), url('../temp-images/paper-fibers.avif');
+    background-size: calc(var(--catcis-pg-dot-spacing) * 2) calc(var(--catcis-pg-dot-spacing) * 2)
+}
+
+.cec-paper.cec-cross {
+    background: linear-gradient(0deg, transparent calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% + .5px), transparent calc(50% + .5px)), linear-gradient(90deg, transparent calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% - .5px), var(--catcis-pg-foreground-color) calc(50% + .5px), transparent calc(50% + .5px)), url('../temp-images/paper-fibers.avif');
+    background-size: var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing)
+}
+
+.cec-paper.cec-diamond {
+    background: repeating-linear-gradient(45deg, transparent 0, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), repeating-linear-gradient(-45deg, transparent 0, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-music {
+  background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 6px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 7px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 8px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 9px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 17px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 18px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 19px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 20px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 28px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 29px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 30px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 31px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 39px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 40px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 41px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 42px), var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) * 3 + 50px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 51px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 3 + 52px)), url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-cornell {
+    background: linear-gradient(90deg, var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 29%, var(--catcis-pg-foreground-color) 29.5%, var(--catcis-pg-foreground-color) 30%, var(--catcis-pg-background-color) 30.5%, var(--catcis-pg-background-color) 100%), linear-gradient(0deg, var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 69%, var(--catcis-pg-foreground-color) 69.5%, var(--catcis-pg-foreground-color) 70%, var(--catcis-pg-background-color) 70.5%, var(--catcis-pg-background-color) 100%), repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-engineering {
+    background: linear-gradient(0deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), linear-gradient(90deg, transparent calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) - 1px), var(--catcis-pg-foreground-color) var(--catcis-pg-line-spacing)), linear-gradient(0deg, transparent calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(var(--catcis-pg-line-spacing) * 5)), linear-gradient(90deg, transparent calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(calc(var(--catcis-pg-line-spacing) * 5) - 2px), var(--catcis-pg-accent-color) calc(var(--catcis-pg-line-spacing) * 5)), url('../temp-images/paper-fibers.avif');
+    background-size: var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing), var(--catcis-pg-line-spacing) var(--catcis-pg-line-spacing), calc(var(--catcis-pg-line-spacing) * 5) calc(var(--catcis-pg-line-spacing) * 5), calc(var(--catcis-pg-line-spacing) * 5) calc(var(--catcis-pg-line-spacing) * 5)
+}
+
+.cec-paper.cec-triangular {
+    background: repeating-linear-gradient(0deg, transparent 0, transparent calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 1.732)), repeating-linear-gradient(60deg, transparent 0, transparent calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 1.732)), repeating-linear-gradient(-60deg, transparent 0, transparent calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(calc(var(--catcis-pg-line-spacing) * 1.732) - 1px), var(--catcis-pg-foreground-color) calc(var(--catcis-pg-line-spacing) * 1.732)), url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-seyes {
+    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 16px, var(--catcis-pg-accent-color) 17px, var(--catcis-pg-accent-color) 18px, var(--catcis-pg-background-color) 19px, var(--catcis-pg-background-color) 24px, var(--catcis-pg-foreground-color) 25px, var(--catcis-pg-foreground-color) 26px, var(--catcis-pg-background-color) 27px, var(--catcis-pg-background-color) 32px, var(--catcis-pg-accent-color) 33px, var(--catcis-pg-accent-color) 34px), url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-blank {
+    background-color: var(--catcis-pg-background-color);
+    background-image: url('../temp-images/paper-fibers.avif');
+    background-blend-mode: multiply;
+}
+
+.cec-paper.cec-calligraphy {
+    background: repeating-linear-gradient(var(--catcis-pg-background-color) 0, var(--catcis-pg-background-color) 19px, var(--catcis-pg-accent-color) 20px, var(--catcis-pg-accent-color) 21px, var(--catcis-pg-background-color) 22px, var(--catcis-pg-background-color) 29px, var(--catcis-pg-foreground-color) 30px, var(--catcis-pg-foreground-color) 31px, var(--catcis-pg-background-color) 32px, var(--catcis-pg-background-color) 39px, var(--catcis-pg-accent-color) 40px, var(--catcis-pg-accent-color) 41px, var(--catcis-pg-background-color) 42px, var(--catcis-pg-background-color) 49px, var(--catcis-pg-foreground-color) 50px, var(--catcis-pg-foreground-color) 51px), url('../temp-images/paper-fibers.avif')
+}
+
+.cec-paper.cec-margin-double::after,
+.cec-paper.cec-margin-single::after,
+.cec-paper.cec-margin-triple::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    left:0;
+}
+
+.cec-paper {
+  --catcis-margin-line-width: 2px;
+  --catcis-margin-offset: 20px;
+  --catcis-margin-gap: 4px;
+}
+
+.cec-paper-content {
+  position: absolute;
+  z-index: 2;
+}
+
+.cec-margin-left::after {
+  background: linear-gradient(
+    90deg,
+    transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+    var(--catcis-margin-color) var(--catcis-margin-offset),
+    transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+  );
+}
+
+.cec-margin-right::after {
+  background: linear-gradient(
+    90deg,
+    transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+    var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset)),
+    transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+  );
+}
+
+.cec-margin-both::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+      var(--catcis-margin-color) var(--catcis-margin-offset),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-line-width)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset)),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-line-width))
+    );
+}
+
+.cec-margin-center::after {
+  background: linear-gradient(
+    90deg,
+    transparent calc(50% - var(--catcis-margin-line-width)),
+    var(--catcis-margin-color) 50%,
+    transparent calc(50% + var(--catcis-margin-line-width))
+  );
+}
+
+.cec-margin-double.cec-margin-left::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent var(--catcis-margin-offset)
+    ),
+    linear-gradient(
+      90deg,
+      transparent var(--catcis-margin-offset),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    );
+}
+
+.cec-margin-double.cec-margin-right::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    );
+}
+
+.cec-margin-double.cec-margin-both::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent var(--catcis-margin-offset)
+    ),
+    linear-gradient(
+      90deg,
+      transparent var(--catcis-margin-offset),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset))
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset)),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap))
+    );
+}
+
+.cec-margin-triple.cec-margin-left::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) * 1.5),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) var(--catcis-margin-offset),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) calc(var(--catcis-margin-offset) + var(--catcis-margin-gap)),
+      transparent calc(var(--catcis-margin-offset) + var(--catcis-margin-gap) * 1.5)
+    );
+}
+
+.cec-margin-triple.cec-margin-right::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) * 1.5),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap)),
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) - var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset)),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2)
+    ),
+    linear-gradient(
+      90deg,
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) / 2),
+      var(--catcis-margin-color) calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap)),
+      transparent calc(100% - var(--catcis-margin-offset) + var(--catcis-margin-gap) * 1.5)
+    );
+}
+
+.cec-margin-red {
+    --catcis-margin-color: #ff6b6b
+}
+
+.cec-margin-blue {
+    --catcis-margin-color: #4dabf7
+}
+
+.cec-margin-green {
+    --catcis-margin-color: #69db7c
+}
+
+.cec-margin-yellow {
+    --catcis-margin-color: #ffd43b
+}
+
+.cec-margin-purple {
+    --catcis-margin-color: #da77f2
+}
+
+.cec-margin-orange {
+    --catcis-margin-color: #ff922b
+}
+
+.cec-margin-pink {
+    --catcis-margin-color: #f783ac
+}
+
+.cec-margin-gray {
+    --catcis-margin-color: #868e96
+}
+
+.cec-margin-black {
+    --catcis-margin-color: #495057
+}

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to SVG Path Tracer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: #007bff;
+        }
+        
+        .upload-area.dragover {
+            border-color: #007bff;
+            background-color: #f0f8ff;
+        }
+        
+        input[type="file"] {
+            margin: 10px 0;
+        }
+        
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        label {
+            font-weight: bold;
+        }
+        
+        input[type="range"] {
+            width: 150px;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        .preview-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .preview-section {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .preview-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        canvas {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f0f0f0 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        
+        svg {
+            max-width: 100%;
+            border: 1px solid #ccc;
+            background: white;
+        }
+        
+        .output {
+            margin: 20px 0;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 200px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        
+        .stats {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .preview-area {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image to SVG Path Tracer</h1>
+        <p>Upload an image and trace its outline into a single SVG path, ignoring transparent areas.</p>
+        
+        <div class="upload-area" id="uploadArea">
+            <p>Drag and drop an image here or click to select</p>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="threshold">Alpha Threshold:</label>
+                <input type="range" id="threshold" min="1" max="255" value="128">
+                <span id="thresholdValue">128</span>
+            </div>
+            
+            <div class="control-group">
+                <label for="smoothness">Smoothness:</label>
+                <input type="range" id="smoothness" min="0" max="10" value="2">
+                <span id="smoothnessValue">2</span>
+            </div>
+            
+            <button id="traceButton" disabled>Trace Path</button>
+            <button id="downloadButton" disabled>Download SVG</button>
+        </div>
+        
+        <div class="preview-area">
+            <div class="preview-section">
+                <h3>Original Image</h3>
+                <canvas id="originalCanvas"></canvas>
+            </div>
+            
+            <div class="preview-section">
+                <h3>SVG Trace</h3>
+                <svg id="svgPreview"></svg>
+            </div>
+        </div>
+        
+        <div id="messages"></div>
+        
+        <div class="output">
+            <h3>SVG Path Data</h3>
+            <textarea id="pathOutput" placeholder="SVG path data will appear here..." readonly></textarea>
+            <button id="copyButton" onclick="copyPath()">Copy Path</button>
+        </div>
+    </div>
+
+    <script>
+        class ImageTracer {
+            constructor() {
+                this.canvas = document.getElementById('originalCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.svg = document.getElementById('svgPreview');
+                this.imageData = null;
+                this.width = 0;
+                this.height = 0;
+                this.maxDimension = 800; // Limit size to prevent memory issues
+                
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                const uploadArea = document.getElementById('uploadArea');
+                const imageInput = document.getElementById('imageInput');
+                const thresholdSlider = document.getElementById('threshold');
+                const smoothnessSlider = document.getElementById('smoothness');
+                const traceButton = document.getElementById('traceButton');
+                const downloadButton = document.getElementById('downloadButton');
+                
+                // File upload
+                uploadArea.addEventListener('click', () => imageInput.click());
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('dragover');
+                });
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('dragover');
+                });
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('dragover');
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        this.loadImage(files[0]);
+                    }
+                });
+                
+                imageInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        this.loadImage(e.target.files[0]);
+                    }
+                });
+                
+                // Controls
+                thresholdSlider.addEventListener('input', (e) => {
+                    document.getElementById('thresholdValue').textContent = e.target.value;
+                });
+                
+                smoothnessSlider.addEventListener('input', (e) => {
+                    document.getElementById('smoothnessValue').textContent = e.target.value;
+                });
+                
+                traceButton.addEventListener('click', () => this.tracePath());
+                downloadButton.addEventListener('click', () => this.downloadSVG());
+            }
+            
+            showMessage(message, type = 'info') {
+                const messagesDiv = document.getElementById('messages');
+                messagesDiv.innerHTML = `<div class="${type}">${message}</div>`;
+                
+                if (type !== 'error' && type !== 'loading') {
+                    setTimeout(() => {
+                        messagesDiv.innerHTML = '';
+                    }, 3000);
+                }
+            }
+            
+            loadImage(file) {
+                this.showMessage('Loading image...', 'loading');
+                
+                const img = new Image();
+                const reader = new FileReader();
+                
+                reader.onload = (e) => {
+                    img.onload = () => {
+                        try {
+                            this.drawImage(img);
+                            document.getElementById('traceButton').disabled = false;
+                            this.showMessage('Image loaded successfully!');
+                        } catch (error) {
+                            this.showMessage(`Error processing image: ${error.message}`, 'error');
+                        }
+                    };
+                    img.onerror = () => {
+                        this.showMessage('Error loading image file', 'error');
+                    };
+                    img.src = e.target.result;
+                };
+                
+                reader.onerror = () => {
+                    this.showMessage('Error reading file', 'error');
+                };
+                
+                reader.readAsDataURL(file);
+            }
+            
+            drawImage(img) {
+                // Calculate canvas size with memory limit
+                let ratio = Math.min(this.maxDimension / img.width, this.maxDimension / img.height, 1);
+                this.width = Math.floor(img.width * ratio);
+                this.height = Math.floor(img.height * ratio);
+                
+                // Additional safety check
+                if (this.width * this.height > 1000000) { // 1 million pixels max
+                    const newRatio = Math.sqrt(1000000 / (this.width * this.height));
+                    this.width = Math.floor(this.width * newRatio);
+                    this.height = Math.floor(this.height * newRatio);
+                }
+                
+                this.canvas.width = this.width;
+                this.canvas.height = this.height;
+                
+                this.ctx.clearRect(0, 0, this.width, this.height);
+                this.ctx.drawImage(img, 0, 0, this.width, this.height);
+                
+                this.imageData = this.ctx.getImageData(0, 0, this.width, this.height);
+            }
+            
+            isOpaque(x, y, threshold) {
+                if (x < 0 || x >= this.width || y < 0 || y >= this.height) {
+                    return false;
+                }
+                
+                const index = (y * this.width + x) * 4;
+                const alpha = this.imageData.data[index + 3];
+                return alpha >= threshold;
+            }
+            
+            getPixelKey(x, y) {
+                return `${x},${y}`;
+            }
+            
+            findContour(threshold) {
+                const visited = new Set();
+                const contour = [];
+                
+                try {
+                    // Find starting point (first opaque pixel from top-left)
+                    let startX = -1, startY = -1;
+                    
+                    outerLoop: for (let y = 0; y < this.height; y++) {
+                        for (let x = 0; x < this.width; x++) {
+                            if (this.isOpaque(x, y, threshold)) {
+                                // Find the leftmost edge of this opaque region
+                                while (x > 0 && this.isOpaque(x - 1, y, threshold)) {
+                                    x--;
+                                }
+                                startX = x;
+                                startY = y;
+                                break outerLoop;
+                            }
+                        }
+                    }
+                    
+                    if (startX === -1) return contour; // No opaque pixels found
+                    
+                    // Use boundary following algorithm
+                    const directions = [
+                        [1, 0],   // East
+                        [1, 1],   // Southeast  
+                        [0, 1],   // South
+                        [-1, 1],  // Southwest
+                        [-1, 0],  // West
+                        [-1, -1], // Northwest
+                        [0, -1],  // North
+                        [1, -1]   // Northeast
+                    ];
+                    
+                    let x = startX, y = startY;
+                    let dir = 6; // Start looking North
+                    let stepCount = 0;
+                    const maxSteps = Math.min(this.width * this.height, 50000); // Prevent infinite loops
+                    
+                    do {
+                        contour.push([x, y]);
+                        visited.add(this.getPixelKey(x, y));
+                        
+                        // Find next boundary pixel
+                        let found = false;
+                        
+                        for (let i = 0; i < 8; i++) {
+                            const checkDir = (dir + i) % 8;
+                            const [dx, dy] = directions[checkDir];
+                            const nx = x + dx;
+                            const ny = y + dy;
+                            
+                            if (this.isOpaque(nx, ny, threshold)) {
+                                x = nx;
+                                y = ny;
+                                dir = (checkDir + 6) % 8; // Turn counter-clockwise for next search
+                                found = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!found) break;
+                        
+                        stepCount++;
+                        if (stepCount > maxSteps) {
+                            console.warn('Trace terminated: too many steps');
+                            break;
+                        }
+                        
+                    } while (!(x === startX && y === startY) || contour.length < 3);
+                    
+                    return contour;
+                    
+                } catch (error) {
+                    console.error('Error in findContour:', error);
+                    throw new Error(`Contour tracing failed: ${error.message}`);
+                }
+            }
+            
+            simplifyPath(points, tolerance = 2) {
+                if (points.length <= 2) return points;
+                
+                const simplified = [points[0]];
+                
+                for (let i = 1; i < points.length - 1; i++) {
+                    const prev = simplified[simplified.length - 1];
+                    const curr = points[i];
+                    const next = points[i + 1];
+                    
+                    // Calculate distance from current point to line between prev and next
+                    const A = next[1] - prev[1];
+                    const B = prev[0] - next[0];
+                    const C = next[0] * prev[1] - prev[0] * next[1];
+                    const distance = Math.abs(A * curr[0] + B * curr[1] + C) / Math.sqrt(A * A + B * B);
+                    
+                    if (distance > tolerance) {
+                        simplified.push(curr);
+                    }
+                }
+                
+                simplified.push(points[points.length - 1]);
+                return simplified;
+            }
+            
+            smoothPath(points, smoothness) {
+                if (points.length < 3 || smoothness === 0) return points;
+                
+                const smoothed = [];
+                const factor = smoothness / 20; // Reduced factor for less aggressive smoothing
+                
+                for (let i = 0; i < points.length; i++) {
+                    const prev = points[(i - 1 + points.length) % points.length];
+                    const curr = points[i];
+                    const next = points[(i + 1) % points.length];
+                    
+                    const smoothX = curr[0] + (prev[0] + next[0] - 2 * curr[0]) * factor;
+                    const smoothY = curr[1] + (prev[1] + next[1] - 2 * curr[1]) * factor;
+                    
+                    smoothed.push([smoothX, smoothY]);
+                }
+                
+                return smoothed;
+            }
+            
+            createSVGPath(points) {
+                if (points.length === 0) return '';
+                
+                let path = `M ${points[0][0].toFixed(1)} ${points[0][1].toFixed(1)}`;
+                
+                for (let i = 1; i < points.length; i++) {
+                    path += ` L ${points[i][0].toFixed(1)} ${points[i][1].toFixed(1)}`;
+                }
+                
+                path += ' Z';
+                return path;
+            }
+            
+            async tracePath() {
+                try {
+                    this.showMessage('Tracing path...', 'loading');
+                    
+                    const threshold = parseInt(document.getElementById('threshold').value);
+                    const smoothness = parseInt(document.getElementById('smoothness').value);
+                    
+                    // Use setTimeout to allow UI to update
+                    await new Promise(resolve => setTimeout(resolve, 10));
+                    
+                    // Find contour
+                    const contour = this.findContour(threshold);
+                    
+                    if (contour.length === 0) {
+                        this.showMessage('No opaque pixels found with the current threshold!', 'error');
+                        return;
+                    }
+                    
+                    if (contour.length < 3) {
+                        this.showMessage('Not enough points to create a valid path!', 'error');
+                        return;
+                    }
+                    
+                    // Simplify and smooth the path
+                    const simplified = this.simplifyPath(contour, 1);
+                    const smoothed = this.smoothPath(simplified, smoothness);
+                    
+                    // Create SVG path
+                    const pathData = this.createSVGPath(smoothed);
+                    
+                    // Update SVG preview
+                    this.svg.setAttribute('width', this.width);
+                    this.svg.setAttribute('height', this.height);
+                    this.svg.setAttribute('viewBox', `0 0 ${this.width} ${this.height}`);
+                    
+                    this.svg.innerHTML = `
+                        <path d="${pathData}" 
+                              fill="rgba(0, 123, 255, 0.3)" 
+                              stroke="rgb(0, 123, 255)" 
+                              stroke-width="2" 
+                              vector-effect="non-scaling-stroke"/>
+                    `;
+                    
+                    // Update output
+                    document.getElementById('pathOutput').value = pathData;
+                    
+                    // Update stats
+                    this.showMessage(`
+                        <strong>Trace Complete!</strong><br>
+                        Original Points: ${contour.length} | 
+                        Simplified: ${simplified.length} | 
+                        Final Points: ${smoothed.length} | 
+                        Alpha Threshold: ${threshold}
+                    `);
+                    
+                    document.getElementById('downloadButton').disabled = false;
+                    
+                } catch (error) {
+                    console.error('Error in tracePath:', error);
+                    this.showMessage(`Error tracing path: ${error.message}`, 'error');
+                }
+            }
+            
+            downloadSVG() {
+                const pathData = document.getElementById('pathOutput').value;
+                if (!pathData) return;
+                
+                const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${this.width}" height="${this.height}" viewBox="0 0 ${this.width} ${this.height}">
+    <path d="${pathData}" fill="currentColor"/>
+</svg>`;
+                
+                const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'traced-path.svg';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                this.showMessage('SVG downloaded successfully!');
+            }
+        }
+        
+        function copyPath() {
+            const textarea = document.getElementById('pathOutput');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999);
+            
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                const button = document.getElementById('copyButton');
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 1000);
+            }).catch(() => {
+                // Fallback for older browsers
+                document.execCommand('copy');
+                const button = document.getElementById('copyButton');
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 1000);
+            });
+        }
+        
+        // Initialize the tracer
+        new ImageTracer();
+    </script>
+</body>
+</html>

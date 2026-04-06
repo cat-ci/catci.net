@@ -1,47 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catci's CSS Paper Generator</title>
-    <style>
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #f5f5f5;
-        color: #333;
-        margin: 40px;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catci's CSS Paper Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      margin: 40px;
+    }
+
+    h1 {
+      color: #444;
+    }
+
+    .mascot-pages {
+      position: relative;
+      --mascot-notes-shadow: 2px 5px 5px rgba(0, 0, 0, 0.7);
+      display: flex;
+    }
+
+    .mascot-pages .mp-body-container {
+      position: relative;
+    }
+
+    .mascot-pages .mp-page.mp-page-0 {
+      position: relative;
+      width: 114px;
+      height: 257px;
+      transform: rotate(-3deg);
+      filter: drop-shadow(var(--mascot-notes-shadow));
+      z-index: 3;
+      margin-top: 45px;
+      /* clip-path: polygon(20% 0, 100% 0, 100% 98%, 0 91%, 0 45%, 8% 28%, 12% 24%, 14% 18%, 21% 15%, 18% 11%); */
+
+    }
+
+    .mascot-pages .mp-page.mp-page-1 {
+      position: relative;
+      width: 184px;
+      height: 117px;
+      transform: rotate(6deg);
+      filter: drop-shadow(var(--mascot-notes-shadow));
+      z-index: 2;
+      /* clip-path: polygon(88% 3%, 84% 27%, 94% 54%, 90% 92%, 93% 100%, 6% 92%, 0 80%, 0 16%, 6% 8%, 26% 0); */
+    }
+
+    .mascot-pages .mp-page.mp-page-2 {
+      position: relative;
+      width: 164px;
+      height: 107px;
+      transform: rotate(-2deg);
+      filter: drop-shadow(var(--mascot-notes-shadow));
+      z-index: 1;
+      margin-top: -5px;
+    }
+
+    .mascot-pages .mp-page.mp-page-3 {
+      position: relative;
+      width: 204px;
+      height: 142px;
+      transform: rotate(3deg);
+      filter: drop-shadow(var(--mascot-notes-shadow));
+      z-index: 1;
+      margin-left: -21px;
+      margin-top: -14px;
+      /* clip-path: polygon(0 8%, 3% 4%, 8% 2%, 0 0, 75% 0, 81% 39%, 88% 51%, 91% 75%, 85% 84%, 85% 92%, 60% 100%, 5% 98%, 2% 95%, 0 92%); */
+    }
+
+    .mascot-pages .mp-page.mp-page-4 {
+      position: relative;
+      width: 174px;
+      height: 182px;
+      transform: rotate(-4deg);
+      z-index: 0;
+      filter: drop-shadow(var(--mascot-notes-shadow));
+      margin-left: -31px;
+      margin-top: px;
+      /* clip-path: polygon(5% 17%, 10% 5%, 97% 0, 100% 85%, 92% 100%, 56% 100%, 23% 88%, 17% 69%, 12% 50%, 16% 33%); */
+    }
+
+    .mascot-pages .mp-page .cec-paper {
+      width: 100%;
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .mascot-pages .mp-page.mp-page-0 .mascot-section-0 {
+      width: 100%;
+      height: 100%;
+      background-image: url('./assets/temp-images/mascot.png');
+      z-index: 2;
+      position: absolute;
+      background-size: 350px auto;
+      background-position: -20px -60px;
+      background-repeat: no-repeat;
+    }
+
+    .mascot-pages .mp-page.mp-page-0 .mascot-section-0::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(./assets/temp-images/paper-texturea.jpg);
+      background-size: 110% 110%;
+      background-position: center;
+      filter: opacity(0.2);
+
+    }
+
+    .mascot-pages .mp-page.mp-page-1 .mascot-section-1 {
+      width: 100%;
+      height: 100%;
+      background-image: url('./assets/temp-images/mascot.png');
+      z-index: 3;
+      position: relative;
+      background-size: 350px auto;
+      background-position: -140px -10px;
+      background-repeat: no-repeat;
+
+    }
+
+    .mascot-pages .mp-page.mp-page-1 .mascot-section-1::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(./assets/temp-images/paper-texturee.jpg);
+      background-size: 100% 100%;
+      opacity: 0.25;
+    }
+
+    .mascot-pages .mp-page.mp-page-2 .mascot-section-2 {
+      width: 100%;
+      height: 100%;
+      background-image: url('./assets/temp-images/mascot.png');
+      z-index: 2;
+      position: absolute;
+      background-size: 350px auto;
+      background-position: -145px -123px;
+      background-repeat: no-repeat;
+    }
+
+    .mascot-pages .mp-page.mp-page-2 .mascot-section-2::before {
+      content: '';
+      position: absolute;
+      top: -10p;
+      left: -30px;
+      width: 210px;
+      height: 140px;
+      background: url(./assets/temp-images/coffee-stainb.png);
+      background-size: 100% auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: opacity(0.3) blur(1px);
+      background-blend-mode: multiply;
+
+    }
+
+    .mascot-pages .mp-page.mp-page-3 .mascot-section-3 {
+      width: 100%;
+      height: 100%;
+      background-image: url('./assets/temp-images/mascot.png');
+      z-index: 4;
+      position: absolute;
+      background-size: 350px auto;
+      background-position: -125px -212px;
+      background-repeat: no-repeat;
+    }
+
+    .mascot-pages .mp-page.mp-page-3 .mascot-section-3::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(./assets/temp-images/paper-texturec.jpg);
+      background-size: 100% 100%;
+      filter: opacity(0.3);
+    }
+
+    .mascot-pages .mp-page.mp-page-4 .mascot-section-4 {
+      width: 100%;
+      height: 100%;
+      background-image: url('./assets/temp-images/mascot.png');
+      z-index: 2;
+      position: absolute;
+      background-size: 350px auto;
+      background-position: -115px -344px;
+      background-repeat: no-repeat;
+    }
+
+    .mascot-pages .mp-page.mp-page-4 .mascot-section-4::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(./assets/temp-images/paper-textureb.jpg);
+      background-size: 100% 100%;
+      opacity: 0.3;
+    }
+
+    .mascot-pages .mp-page-layered {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .mascot-pages .mp-page-layered .mp-tape.mp-tape-1 {
+      position: absolute;
+      width: 180px;
+      height: 120px;
+      background: url(./assets/temp-images/paper-tapes.png);
+      background-size: 260px;
+      z-index: 4;
+      top: 60px;
+      left: 70px;
+      transform: rotate(4deg);
+      filter: opacity(0.6);
+    }
+
+    .mascot-pages .mp-page-layered .mp-tape.mp-tape-2 {
+      position: absolute;
+      width: 140px;
+      height: 35px;
+      background: url(./assets/temp-images/paper-tapes.png);
+      background-size: 260px;
+      background-position: 400px 75px;
+      z-index: 4;
+      top: 190px;
+      left: 160px;
+      transform: rotate(-1deg) scaleX(75%);
+      filter: opacity(0.6);
+    }
+
+    .mascot-pages .mp-page-layered .mp-tape.mp-tape-3 {
+      position: absolute;
+      width: 71px;
+      height: 40px;
+      background: url(./assets/temp-images/paper-tapes.png);
+      background-size: 260px;
+      background-position: -60px -230px;
+      z-index: 4;
+      top: 330px;
+      left: 90px;
+      transform: rotate(7deg) scaleX(130%);
+      filter: opacity(0.6);
+    }
+
+    .main-crt {}
+
+    .mc-screen {
+      width: 800px;
+      height: 650px;
+      background: #000;
+      position: relative;
+      clip-path: url(#innercrt);
+    }
+
+    .mc-screen-overlays {
+      position: absolute;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      pointer-events: none;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      clip-path: url(#innercrt);
+      overflow: hidden;
+
+    }
+
+    .mc-screen .mc-screen-overlays::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 100%;
+      height: 100%;
+      background: url(./assets/temp-images/crtdots.svg);
+      background-size: 5px;
+      background-repeat: repeat;
+
+      opacity: 0.2;
+    }
+
+    .mc-screen .mc-screen-overlays .mc-screen-scanlines {
+      --speed-multiplier: 0.5s;
+    }
+
+    .mc-screen .mc-screen-overlays .mc-screen-scanlines::after {
+      content: '';
+      position: absolute;
+
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg,
+          #444,
+          #444 7px,
+          #333 7px,
+          #333 14px);
+      opacity: 0.4;
+      animation: scanlinesAnim calc(0.5 * var(--speed-multiplier)) linear infinite;
+
+    }
+
+    .mc-screen .mc-screen-overlays .mc-screen-scanlines::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 100%;
+      height: 7px;
+      background: #444;
+      opacity: 0.4;
+      animation: scanlineAnim calc(9 * var(--speed-multiplier)) linear reverse infinite;
+    }
+
+    @keyframes scanlinesAnim {
+      0% {
+        background-position: 0 0;
       }
 
-      h1 {
-        color: #444;
+      100% {
+        background-position: 0 14px;
+      }
+    }
+
+    @keyframes scanlineAnim {
+      0% {
+        top: 0;
       }
 
-      .elements {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
+      100% {
+        top: 100%;
       }
+    }
 
-      .element {
-        position: relative;
-      }
-      .cpg-paper{
-        width: 200px;
-        height: 300px;
-      }
-      </style>
-    <link rel="stylesheet" href="./assets/styles/cpg.css" />
-  </head>
-  <body>
+    .mc-screen .mc-screen-overlays .mc-screen-shine {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      filter: drop-shadow(0 5px 40px white);
 
-    <div class="elements">
-      <div class="element">
-        <div class="cpg-paper cpg-brown cpg-stripes cpg-narrow cpg-margin-triple cpg-margin-left"></div>
-      </div>
+    }
 
-      <div class="element">
-        
+    .mc-screen .mc-screen-overlays .mc-screen-shine .mc-screen-shine-nw::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: -50px;
+      width: 220px;
+      height: 250px;
+      transform: scaleX(30%) scaleY(70%);
+      filter: opacity(0.3);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 80%);
+      clip-path: path('m 210,99.7 c 0,10 -27,3 -50,9.5 -19,5 -45,19 -55,28 -15,15 -18,41 -22,62 -4,21 3,43 -12,43 -55,0 -55,-46 -55,-70 0,-30 18,-65 37,-83 17,-16 56,-33 82,-34 31,-2 75,-4 75,45 z');
+    }
+
+    .mc-screen .mc-screen-overlays .mc-screen-shine .mc-screen-shine-cross {
+      width: 100%;
+      height: 100%;
+      --transparency: 0.1;
+      background: linear-gradient(135deg, transparent 0%, transparent 55%, rgba(255, 255, 255, var(--transparency)) 59.5%, rgba(255, 255, 255, var(--transparency)) 60.5%, transparent 65%, transparent 100%);
+    }
+
+    .mc-screen .mc-screen-overlays .mc-screen-vignette {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(transparent 0%, rgba(0, 0, 0, 0.7) 90%);
+      pointer-events: none;
+    }
+
+    .mc-screen .mc-screen-content {
+      padding: 50px;
+    }
+
+    .mc-screen .mc-screen-content .text {
+      font-size: 48px;
+      filter: blur(0.7px);
+      color: rgb(204, 200, 200);
+      text-shadow: 0 0 5px rgb(204, 200, 200), 0 0 10px rgb(204, 200, 200), 0 0 20px rgb(204, 200, 200);
+    }
+  </style>
+
+  <link rel="stylesheet" href="./assets/styles/cec.css">
+</head>
+
+<body>
+
+  <div class="main-crt">
+    <div class="mc-screen-container">
+      <div class="mc-screen">
+        <div class="mc-screen-overlays">
+          <div class="mc-screen-vignette"></div>
+          <div class="mc-screen-shine">
+            <div class="mc-screen-shine-nw"></div>
+            <div class="mc-screen-shine-cross"></div>
+          </div>
+          <div class="mc-screen-scanlines"></div>
+        </div>
+        <div class="mc-screen-content">
+          <div class="text">hello</div>
+        </div>
       </div>
     </div>
-  </body>
+
+  </div>
+  <div class="mascot-pages">
+    <aside>
+      <div class="mp-page mp-page-0">
+        <div class="cec-paper cec-yellow cec-blank">
+          <div class="mascot-section-0"></div>
+        </div>
+      </div>
+    </aside>
+    <div class="mp-body-container">
+      <div class="mp-page mp-page-1">
+        <div class="cec-paper cec-brown cec-dots ">
+          <div class="mascot-section-1"></div>
+        </div>
+      </div>
+      <div class="mp-page mp-page-2">
+        <div class="cec-paper cec-yellow cec-lined cec-narrow cec-margin-left cec-margin-single">
+          <div class="mascot-section-2"></div>
+        </div>
+      </div>
+      <div class="mp-page mp-page-3">
+        <div class="cec-paper cec-green cec-calligraphy cec-medium cec-margin-right cec-margin-double">
+          <div class="mascot-section-3"></div>
+        </div>
+      </div>
+      <div class="mp-page mp-page-4">
+        <div class="cec-paper cec-brown cec-lined cec-medium cec-margin-left cec-margin-triple">
+          <div class="mascot-section-4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mp-page-layered">
+      <div class="mp-tape mp-tape-1"></div>
+      <div class="mp-tape mp-tape-2"></div>
+      <div class="mp-tape mp-tape-3"></div>
+    </div>
+  </div>
+  <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
+    <clipPath id="crtPath" clipPathUnits="objectBoundingBox" transform="scale(0.01065 0.01312)">
+      <path d="M47.78,0.5
+        c8,0,36.5,0.5,41.81,2.5
+        c4,2,3.79,20.28,3.79,35.69
+        c0,15-.08,29.79-3.53,32.24
+        S62.3,75.69,47.78,75.69
+        c-13,0-38.89-0.86-43-3.27
+        S.57,54.42.57,38.73
+        S.31,6.56,4.5,3.38
+        S38.77.5,47.78.5Z
+        "></path>
+    </clipPath>
+
+  </svg>
+  <svg height="0" width="0" viewBox="0 0 93.88 76.19" aria-hidden="true">
+    <clipPath id="innercrt" clipPathUnits="objectBoundingBox" transform="scale(0.01065 0.01312)">
+      <path d="M47.78,0.5
+                c8,0,36.5,0.5,41.81,2.5
+                c4,2,3.79,20.28,3.79,35.69
+                c0,15-.08,29.79-3.53,32.24
+                S62.3,75.69,47.78,75.69
+                c-13,0-38.89-0.86-43-3.27
+                S.57,54.42.57,38.73
+                S.31,6.56,4.5,3.38
+                S38.77.5,47.78.5Z
+                "></path>
+    </clipPath>
+  </svg>
+</body>
+
 </html>
